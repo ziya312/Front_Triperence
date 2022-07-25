@@ -3,7 +3,7 @@
     background-color: aqua;
     width: 1200px;
     margin-top: 120px;
-    height: 600px;
+    height: 550px;
 }
 .option {
     width: 384px;
@@ -52,11 +52,14 @@ border-radius: 20px
     float: right;
 }
 .statuis {
-    width: 792px;   
-    height: 559px;
+    width: 744px;   
+    height: 495px;
 
     float: right;
-    background: #77AEFC;
+
+    
+    background: #FFFFFF;
     border: 1px solid #D9D9D9;
     border-radius: 20px;
+    padding: 24px 32px;
 }
