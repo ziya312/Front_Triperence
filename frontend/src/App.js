@@ -17,6 +17,7 @@ import TestPureum from 'pages/testPureum';
 import TestSodam from 'pages/testsodam';
 import TestNori from 'pages/testNori';
 import ChoaShow from 'pages/choaShow';
+import MyPage from 'pages/myPage';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/testSodam" element={<TestSodam />}></Route>
           <Route path="/testNori" element={<TestNori />}></Route>
           <Route path="/choaShow" element={<ChoaShow />}></Route>
+          <Route path='/m' element={<MyPage />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

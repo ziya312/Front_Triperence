@@ -13,7 +13,7 @@ function Header(){
         return (
             <div>
                 <div className="a">
-                    <Link to="/">
+                    <Link to="/m">
                         <div className="logo">
                             <img className="w" src={require("../../icons/Vector.svg").default} alt=""/>
                         </div>
