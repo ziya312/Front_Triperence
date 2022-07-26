@@ -8,6 +8,8 @@ function Footer() {
     const [MEET, setMEET] = useState("out");
     const [searchbox, setsearchbox] = useState("none");
 
+    if(window.location.pathname === '/search' || window.location.pathname === '/login') return null;
+
     return (
         <div>
             <div className="af">
