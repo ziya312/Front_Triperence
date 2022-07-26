@@ -139,7 +139,7 @@
   text-align: center;
 }
 
-button {
+.fsbtn button {
   width: 48%;
   height: 48px;
   border: none;
@@ -152,7 +152,7 @@ button {
   margin-bottom: 15px;
 }
 
-button:hover {
+.fsbtn button:hover {
   background-color: #77aefc;
 }
 .gabox div label input[type='radio']:checked {

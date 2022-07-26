@@ -17,10 +17,7 @@ import TestPureum from 'pages/testPureum';
 import TestSodam from 'pages/testsodam';
 import TestNori from 'pages/testNori';
 import ChoaShow from 'pages/choaShow';
-
 import MyPage from 'pages/myPage';
-
-import PlaceList from 'components/map/PlaceList';
 
 function App() {
   return (
@@ -35,7 +32,7 @@ function App() {
           <Route path="/surveySecond" element={<SurveySecond />}></Route>
           <Route path="/checkLayout" element={<CheckLayout />}></Route>
           <Route path="/detail" element={<Detail />}></Route>
-          <Route path="/search" element={<PlaceList />}></Route>
+          <Route path="/search" element={<Search />}></Route>
           <Route path="/testChoa" element={<TestChoa />}></Route>
           <Route path="/testMir" element={<TestMir />}></Route>
           <Route path="/testHimchan" element={<TestHimchan />}></Route>
@@ -43,7 +40,7 @@ function App() {
           <Route path="/testSodam" element={<TestSodam />}></Route>
           <Route path="/testNori" element={<TestNori />}></Route>
           <Route path="/choaShow" element={<ChoaShow />}></Route>
-          <Route path="/m" element={<MyPage />}></Route>
+          <Route path='/m' element={<MyPage />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
