@@ -3,15 +3,15 @@ import styled from "styled-components";
 import {useState} from "react";
 
 
-const ModalPerformance = () => {
+const ModalPerformance = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const onClickButton = () => {
         setIsOpen(true);
     };
     return (
-        <ModalPerformanceWrap>
-            <Button onClick={onClickButton}></Button>
+<>
+            <TXT onClick={onClickButton}>{}</TXT>
             {isOpen && (
                 <Modal
                     open={isOpen}
@@ -20,11 +20,11 @@ const ModalPerformance = () => {
                     }}
                 />
             )}
-        </ModalPerformanceWrap>
+        </>
     );
 };
 
-const Button = styled.button`
+const TXT = styled.button`
 
 
   height: 48px;

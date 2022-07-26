@@ -6,7 +6,6 @@ import glogo from 'icons/googleLogo.svg';
 import flogo from 'icons/faceLogo.svg';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import LoginGoogle from './login/LoginGoogle';
 
 
 const Login = () => {

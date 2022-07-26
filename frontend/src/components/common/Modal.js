@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import M from "icons/x.svg"
+import "components/common/Modal.css"
 
 const Modal = ({onClose}) => {
     const [values, setValues] = useState({
@@ -25,6 +26,7 @@ const Modal = ({onClose}) => {
     };
 
     return (
+
         <Overlay>
             <ModalWrap>
                 <CloseButton onClick={handleClose}>
@@ -33,7 +35,25 @@ const Modal = ({onClose}) => {
                 <Contents>
                     <div style={{height:"18px", width:"100%"}}/>
                   <Mimg/>
-                    <Button onClick={handleClose}>닫혀라 모달!</Button>
+<div className="Mtitle">Gender Change</div>
+<div className="gender">
+                    <label>
+                        <input onChange={onchange} style={{display:'none'}} value="Male" type="radio" name="gender"/>
+                        <div style={{marginLeft:"-36px"}}>Male </div>
+                    </label>
+                    <label>
+                        <input onChange={onchange} style={{display:'none'}} value="Male" type="radio" name="gender"/>
+                        <div style={{marginLeft:"24px", marginRight:"24px"}}>Female </div>
+                    </label>
+                    <label>
+                        <input  onChange={onchange} style={{display:'none'}} value="Male" type="radio" name="gender"/>
+                        <div style={{}}>Other</div>
+                    </label>
+</div>
+
+
+
+                    <Button style={{float:"bottom"}} onClick={handleClose}>CHECK</Button>
 
 
 
@@ -96,16 +116,27 @@ const Contents = styled.div`
 `;
 
 const Button = styled.div`
-  font-size: 14px;
+
   padding: 10px 20px;
-  border: none;
-  background-color: #ababab;
-  border-radiusc: 10px;
-  color: white;
-  cursor: pointer;
-  $: hover {
-    background-color: #898989;
-  }
+
+ 
+  margin 0 auto;
+ 
+width: 334px;
+height: 28px;
+
+background: #77AEFC;
+border-radius: 30px;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
+
+align-items: center;
+text-align: center;
+
+color: #FFFFFF;
 `;
 
 export default Modal;
