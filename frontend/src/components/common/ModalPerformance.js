@@ -11,9 +11,9 @@ const ModalPerformance = (props) => {
     };
     return (
 <>
-            <TXT onClick={onClickButton}>{}</TXT>
+            <TXT style={{color:'#77AEFC'}} onClick={onClickButton}>Change</TXT>
             {isOpen && (
-                <Modal
+                <Modal N={props.V}
                     open={isOpen}
                     onClose={() => {
                         setIsOpen(false);
@@ -27,30 +27,21 @@ const ModalPerformance = (props) => {
 const TXT = styled.button`
 
 
-  height: 48px;
-  width: 48px;
-  border: none;
-  background-repeat: no-repeat;
+
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
+line-height: 19px;
 
 
-  border-radius: 10px;
+text-align: right;
+width: 78px;
+height: 18px
 
 
-  background-color: red;
-  background-repeat: no-repeat;
-  background-size: contain;
 
 `;
 
-const ModalPerformanceWrap = styled.button`
-
-  margin: 10px -370px;
-  border: 0px none;
-  clear: none;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: relative;
-`;
 
 export default ModalPerformance;

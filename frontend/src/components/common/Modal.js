@@ -5,7 +5,7 @@ import {useState} from "react";
 import M from "icons/x.svg"
 import "components/common/Modal.css"
 
-const Modal = ({onClose}) => {
+const Modal = ({onClose, N}) => {
     const [values, setValues] = useState({
         gender: "",
         age: "",
@@ -35,7 +35,7 @@ const Modal = ({onClose}) => {
                 <Contents>
                     <div style={{height:"18px", width:"100%"}}/>
                   <Mimg/>
-<div className="Mtitle">Gender Change</div>
+<div className="Mtitle">{N} Change</div>
 <div className="gender">
                     <label>
                         <input onChange={onchange} style={{display:'none'}} value="Male" type="radio" name="gender"/>

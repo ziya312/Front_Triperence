@@ -5,11 +5,16 @@ import ModalPerformance from 'components/common/ModalPerformance';
 
 function Home() {
     return (
-        <div class="lb-wrap">
+        <div class="lb-wrap"><ModalPerformance V='aaaaa'/>
+            <ModalPerformance V='bbbbb'/>
+            <ModalPerformance V='ccccc'/>
+            <ModalPerformance V='ddddd'/>
             <div class="lb-text">
                 <h1>Let me know your travel preferences!</h1>
                 <h1>We'll recommend a perfect travel destination for you!</h1>
-<ModalPerformance />
+
+
+
                 <Link to="./surveyFirst">
                 <button> Let's Test
                     <img src={require("../icons/next.svg")}></img>
