@@ -4,6 +4,9 @@
     margin-left: 102px;
     /*width:588px;*/
     height: 48px;
+    align-items: center;
+    text-align: center;
+
 }
 
 .gender input:checked + div {

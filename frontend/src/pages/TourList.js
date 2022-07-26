@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import TourItem from 'components/common/place';
+import TourItem from 'pages/TourItem';
 import axios from 'axios';
 import Tag from 'components/common/tag';
 import Map from 'components/map/map';
@@ -17,9 +17,9 @@ const CardPlace = styled.div`
   overflow: auto;
   float: left;
   padding: 10px;
-  width: 28.95vw;
+  width: 33.5vw;
 
-  height: 550px;
+  height: 850px;
 `;
 
 const TourListBlock = styled.div`
@@ -30,6 +30,8 @@ const TourListBlock = styled.div`
   }
 `;
 const TourList = () => {
+
+
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -39,9 +41,9 @@ const TourList = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-            "http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
+            "http://localhost:8081/places/category=82"
         );
-        setItem(response.data.response.body.items.item);
+        setItem(response.data);
       } catch (e) {
         console.log(e);
       }
@@ -63,9 +65,11 @@ const TourList = () => {
     <>
       <Box>
         <Tag />
+        <CardPlace>
         {item.map((item1) => (
             <TourItem key={item1.title} item1={item1} />
         ))}
+        </CardPlace>
  
       </Box>
       <Map />

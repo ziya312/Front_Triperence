@@ -1,42 +1,45 @@
-// import React, { Component, useState } from "react";
-// import { Link } from "react-router-dom";
-// import SecondHeader from "../Header/secondHeader";
-// import "./checkout.css";
-// import Button from "../common/Button";
+import React, { Component, useState } from "react";
+import { Link } from "react-router-dom";
+import SecondHeader from "../Header/secondHeader";
+import "./checkout.css";
+import Button from "../common/Button";
 
-// const CheckLayout = () =>  {
-//     const [values, setValues] = useState({
-//         gender: "",
-//         age: "",
-//     });
 
-//     const handleSubmit = (e) => {
-//         e.preventDefault();
-//     };
+const CheckLayout = () =>  {
+    const [values, setValues] = useState({
+        gender: "",
+        age: "",
+    });
 
-//     const onChange = (e) => {
-//         setValues({ ...values, [e.target.name]: e.target.value });
-//     };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    };
 
-//     const showData = () => {
-//         console.log("value:", values);
-//     };
+    const onChange = (e) => {
+        setValues({ ...values, [e.target.name]: e.target.value });
+    };
 
-//     return (
-//         <div>
-//             <SecondHeader/>
+    const showData = () => {
+        console.log("value:", values);
+    };
 
-//             <div className="check-wr">
-//                 <form onSubmit={handleSubmit}>
-//                     <label> Where do you like to stay?</label>
-//                     <span className="boderSpan"></span>
-//                 <Link to="/">
-//                     <Button onClick={showData}>Finish!-></Button>
-//                 </Link>
-//                 </form>
-//             </div>
-//         </div>
-//     );
-// };
+    return (
+        <div>
+            <SecondHeader/>
 
-// export default CheckLayout;
+            <div className="check-wr">
+                <form onSubmit={handleSubmit}>
+                    <label> Where do you like to stay?</label>
+                    <span className="boderSpan"></span>
+                <Link to="/">
+                    <Button onClick={showData}>Finish!-></Button>
+                </Link>
+                </form>
+            </div>
+        </div>
+    );
+};
+
+export default CheckLayout;
+
+

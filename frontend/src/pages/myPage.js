@@ -13,16 +13,16 @@ const MyPage = () => {
       if (e.target.value === 'B') {
         setoption(e.target.value);
       } else {
-        setoption(e.target.value);
+        //탈퇴
       }
     }
   };
 
   return (
     <section className="mainsection">
-      <article className="option">
+      <article className="option2">
         <MyPageoption />
-        {option}
+
         <label className="option1">
           <input
             onChange={onchange}
