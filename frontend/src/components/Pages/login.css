@@ -28,7 +28,7 @@ h1{
 }
 
 /* //마우스 올렸을 때 */
-.ps button:hover{
+button:hover{
     background-color: #77AEFC;
 }
 

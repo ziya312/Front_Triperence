@@ -19,7 +19,7 @@ function Header() {
                         <img src={require("../../icons/Triperence.svg").default} alt=""/>
                     </div>
                 </Link>
-                <div className='dlatll'>
+                <div className='dlatl'>
                     <Link className="menu" to="/search"
                           style={{marginRight: '24px'}}
                           onMouseOver={() => setsearch("on")}
@@ -29,7 +29,7 @@ function Header() {
                             : (<div style={{color:"#77AEFC"}}>SEARCH</div>)}
                     </Link>
 
-                    <Link className="menu" to="/place"
+                    <Link className="menu" to="/search"
                           style={{marginRight: '24px', marginLeft: '0px'}}
                           onMouseOver={() => setCOURSE("on")}
                           onMouseOut={() => setCOURSE("out")}>
@@ -38,7 +38,7 @@ function Header() {
                             : (<div style={{color:"#77AEFC"}}>PLACE</div>)}
                     </Link>
 
-                    <Link className="menu" to="/meet"
+                    <Link className="menu" to="/search"
                           style={{marginLeft: '0px'}}
                           onMouseOver={() => setMEET("on")}
                           onMouseOut={() => setMEET("out")}>
