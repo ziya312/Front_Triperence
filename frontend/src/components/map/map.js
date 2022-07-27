@@ -27,8 +27,8 @@ const Map = () => {
             <GoogleMap
 
                 mapContainerStyle={{
-                    width: "64.4vw",
-                    height: "89.5vh",
+                    width: "65.3vw",
+                    height: "87.1vh",
                     float: "right",
                     marginRight:"0px"
 

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 import Heart from 'components/common/heart';
 
 const C = styled.div`
@@ -79,23 +79,28 @@ const Cardclass = styled.div`
 `;
 
 const TourItem = ({ item1 }) => {
-  const { title, addr1, tel, firstimage } = item1;
+  const { title, addr1, tel, firstimage, contentid } = item1;
   return (
 
     <div className="contents">
       <C>
+      
         <Cardbox>
-          <H>
-            <Cardtitle>{title}</Cardtitle>
+          <Link to="/detail" state={{contentid}}>
+            <H>
+              <Cardtitle>{title}</Cardtitle>
 
-          </H>
-          <CardImage
-            img
-            src={firstimage}
-            onerror="this.src='images/default.png'"
-          ></CardImage>
+            </H>
+          
+            <CardImage
+              img
+              src={firstimage}
+              onerror="this.src='images/default.png'"
+            ></CardImage>
+           </Link>
           <Heart />
         </Cardbox>
+       
         <Cardname></Cardname>
         <Cardclass></Cardclass>
       </C>

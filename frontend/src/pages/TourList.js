@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import TourItem from 'pages/TourItem';
-import axios from 'axios';
-import Tag from 'components/common/tag';
-import Map from 'components/map/map';
+import { useState, useEffect } from "react";
+import styled from "styled-components";
+import TourItem from "./TourItem";
+import axios from "axios";
+import Map from "components/map/map";
+import Tag from "components/common/tag";
+
 
 
 const Box = styled.div`
@@ -11,7 +12,7 @@ const Box = styled.div`
   padding: 0px;
   width: 28.95vw;
 
-  height: 850px;
+  height: 675px;
 `;
 const CardPlace = styled.div`
   overflow: auto;
@@ -19,7 +20,7 @@ const CardPlace = styled.div`
   padding: 10px;
   width: 33.5vw;
 
-  height: 850px;
+  height: 550px;
 `;
 
 const TourListBlock = styled.div`
@@ -30,8 +31,6 @@ const TourListBlock = styled.div`
   }
 `;
 const TourList = () => {
-
-
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -41,7 +40,7 @@ const TourList = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-            "http://localhost:8081/places/category=82"
+            "http://localhost:8080/places"
         );
         setItem(response.data);
       } catch (e) {
@@ -53,7 +52,6 @@ const TourList = () => {
   }, []);
 
   if (loading) {
-    return <TourListBlock>대기 중...</TourListBlock>;
   }
   // 아직 item 값이 설정되지 않았을 때
   if (!item) {
@@ -67,12 +65,15 @@ const TourList = () => {
         <Tag />
         <CardPlace>
         {item.map((item1) => (
+          
             <TourItem key={item1.title} item1={item1} />
+
         ))}
         </CardPlace>
- 
+        
+
       </Box>
-      <Map />
+     <Map />
     </>
   );
 };

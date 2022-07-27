@@ -15,19 +15,19 @@ const D = styled.button`
   background: #FFFFFF;
   text-align: center;
   color: #77AEFC;
-  margin-left: 24px;
+  margin-left: 16px;
 
   &:hover {
     background: #FFFFFF;
   }
 `
 const R = styled.button`
-  width: 17.5vw;
-  height: 2.5vw;
+  width: 21vw;
+  height: 48px;
   margin-left: 1.25vw;
 
-  margin-top: 1.875vw;
-  margin-bottom: 1.25vw;
+  margin-top: 2vw;
+  margin-bottom: 2.5vw;
 
   background: #77AEFC;
   border-radius: 30px;
@@ -58,8 +58,8 @@ const L = styled.div`
       display: none;
     }
   }
-  width: 20vw;
-  height: 10vw;
+  width: 24vw;
+  height: 192px;
 
   left: 1176px;
 
