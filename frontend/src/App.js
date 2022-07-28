@@ -10,13 +10,13 @@ import Search from 'pages/practice';
 import Footer from 'components/Footer/footer';
 import CheckLayout from 'components/CheckForm/CheckLayout';
 import Detail from 'pages/detail';
-import TestChoa from 'pages/testChoa';
-import TestMir from 'pages/testMir';
-import TestHimchan from 'pages/testHimchan';
-import TestPureum from 'pages/testPureum';
-import TestSodam from 'pages/testsodam';
-import TestNori from 'pages/testNori';
-import ChoaShow from 'pages/choaShow';
+import SurveyMir from 'pages/surveyMir';
+import SurveyHimchan from 'pages/surveyHimchan';
+import SurveyPureum from 'pages/surveyPureum';
+import SurveySodam from 'pages/surveySodam';
+import SurveyNori from 'pages/surveyNori';
+import ShowChoa from 'pages/surveyChoa';
+import ShowResult from 'pages/showResult'
 
 function App() {
   return (
@@ -32,13 +32,15 @@ function App() {
           <Route path="/checkLayout" element={<CheckLayout />}></Route>
           <Route path="/detail" element={<Detail />}></Route>
           <Route path="/search" element={<Search />}></Route>
-          <Route path="/testChoa" element={<TestChoa />}></Route>
-          <Route path="/testMir" element={<TestMir />}></Route>
-          <Route path="/testHimchan" element={<TestHimchan />}></Route>
-          <Route path="/testPureum" element={<TestPureum />}></Route>
-          <Route path="/testSodam" element={<TestSodam />}></Route>
-          <Route path="/testNori" element={<TestNori />}></Route>
-          <Route path="/choaShow" element={<ChoaShow />}></Route>
+      
+          <Route path="/surveyMir" element={<SurveyMir />}></Route>
+          <Route path="/surveyHimchan" element={<SurveyHimchan />}></Route>
+          <Route path="/surveyPureum" element={<SurveyPureum />}></Route>
+          <Route path="/surveySodam" element={<SurveySodam />}></Route>
+          <Route path="/surveyNori" element={<SurveyNori />}></Route>
+          <Route path="/surveyChoa" element={<ShowChoa />}></Route>
+
+          <Route path="/showResult" element={<ShowResult />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

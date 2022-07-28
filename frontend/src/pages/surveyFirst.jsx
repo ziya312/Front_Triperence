@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SecondHeader from 'components/Header/secondHeader';
 import 'components/Pages/surveyFirst.css';
 import Button from 'components/common/Button';
@@ -8,7 +8,48 @@ import axios from 'axios';
 const SurveyFirst = () => {
   const [values, setValues] = useState({});
   const [isChecked, setIsChecked] = useState(false);
-  const [checkedItems, setCheckeditems] = useState({});
+  const [checkedItems1, setCheckeditems1] = useState(new Set());
+  const [checkedItems2, setCheckeditems2] = useState(new Set());
+  const [category1, setcategory1] = useState({ allergy: [] });
+  const [category2, setcategory2] = useState({ eat: [] });
+  const navigate = useNavigate();
+
+  // const handleApi = () => {
+  //   console.debug(category1, '하하하ㅏ');
+  //   console.debug(category2, '하하하ㅏ');
+
+  //   axios
+  //     .post('https://jsonplaceholder.typicode.com/posts', {
+  //       // nature: arr
+  //       param: values,
+  //       param2: category1, //백에서 param이라는 이름으로
+  //       param3: category2,
+  //     })
+
+  //     .then((result) => {
+  //       console.log(result.data);
+  //       alert('success');
+  //       navigate('/surveySecond');
+  //     })
+
+  //     .catch((error) => {
+  //       console.log(error);
+  //       alert('service error');
+  //     });
+  // };
+
+  const handleClick = () => {
+    navigate('/surveySecond', {
+      state: {
+        param: values,
+        param2: category1, //백에서 param이라는 이름으로
+        param3: category2,
+      },
+    });
+    // console.debug(values, '모야아');
+    // console.debug(category1, '되는건가');
+    // console.debug(category2, '모르겠어ㅓ');
+  };
 
   const formtrans = [
     { id: 1, name: 'transportation', value: 'Public transport' },
@@ -45,33 +86,48 @@ const SurveyFirst = () => {
     e.preventDefault();
   };
 
-  const checkHandler = ({ target }) => {
+  const checkHandler1 = ({ target }) => {
     setIsChecked(!isChecked);
-    checkedItemHandler(target.parentNode, target.value, target.checked);
+    checkedItemHandler1(target.name, target.value, target.checked);
+  };
+
+  const checkHandler2 = ({ target }) => {
+    setIsChecked(!isChecked);
+    checkedItemHandler2(target.name, target.value, target.checked);
   };
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
-    // axios.get('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
-    //   setValues(response.data);
-    // });
   };
 
-  const checkedItemHandler = (box, id, isChecked) => {
+  const checkedItemHandler1 = (name, id, isChecked) => {
     if (isChecked) {
-      checkedItems.add(id);
-      setCheckeditems(checkedItems);
-    } else if (!isChecked && checkedItems.has(id)) {
-      checkedItems.delete(id);
-      setCheckeditems(checkedItems);
+      checkedItems1.add(id);
+      setCheckeditems1(checkedItems1);
+    } else if (!isChecked && checkedItems1.has(id)) {
+      checkedItems1.delete(id);
+      setCheckeditems1(checkedItems1);
     }
-    return checkedItems;
+    setcategory1({ [name]: Array.from(checkedItems1) });
+    return checkedItems1;
   };
 
-  const showData = () => {
-    console.log('value:', values);
-    console.log('checked Items: ', checkedItems);
+  const checkedItemHandler2 = (name, id, isChecked) => {
+    if (isChecked) {
+      checkedItems2.add(id);
+      setCheckeditems2(checkedItems2);
+    } else if (!isChecked && checkedItems2.has(id)) {
+      checkedItems2.delete(id);
+      setCheckeditems2(checkedItems2);
+    }
+    setcategory2({ [name]: Array.from(checkedItems2) });
+    return checkedItems2;
   };
+
+  // const showData = () => {
+  //   console.log('value:', values);
+  //   console.log('checked Items: ', checkedItems);
+  // };
 
   return (
     <div>
@@ -83,7 +139,7 @@ const SurveyFirst = () => {
               <label className="bd">What kind of transportation do you prefer?</label>
               {formtrans.map((item) => (
                 <label key={item.id} className="fi-map">
-                  <input type="radio" name={item.name} value={item.value} />
+                  <input type="radio" name={item.name} value={item.value} onChange={onChange} />
                   <div>{item.value}</div>
                 </label>
               ))}
@@ -113,7 +169,7 @@ const SurveyFirst = () => {
                     type="checkbox"
                     name={item.name}
                     value={item.value}
-                    onChange={(e) => checkHandler(e)}
+                    onChange={(e) => checkHandler1(e)}
                   />
                   <div>{item.value}</div>
                 </label>
@@ -128,7 +184,7 @@ const SurveyFirst = () => {
                     type="checkbox"
                     name={item.name}
                     value={item.value}
-                    onChange={(e) => checkHandler(e)}
+                    onChange={(e) => checkHandler2(e)}
                   />
                   <div>{item.value}</div>
                 </label>
@@ -150,9 +206,8 @@ const SurveyFirst = () => {
           <span className="boderSpan"></span>
           <div className="fsbtn">
             <Link to="/surveySecond">
-              <Button onClick={showData}>Next -></Button>
+              <Button onClick={handleClick}>Next -></Button>
             </Link>
-            {/* {data && <textarea rows={7} value={JSON.stringify(data, null, 2)} readOnly={true} />} */}
           </div>
         </form>
       </div>
