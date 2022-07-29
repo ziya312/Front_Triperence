@@ -1,11 +1,20 @@
-label {
-  display: block;
-  margin-top: 10px;
+.App {
+  text-align: center;
 }
 
-.card-container.card {
-  max-width: 350px !important;
-  padding: 40px 40px;
+.btn btn-primary btn-block span {
+  width: 20px;
+  border-radius: 30px;
+}
+
+
+
+.spanDiv  {
+  /* width: 28.25%;
+  display: inline-block;
+  border-bottom: 1px solid #c1c1c1; */
+  color: #c1c1c1;
+  margin-bottom: 20px;
 }
 
 .card {

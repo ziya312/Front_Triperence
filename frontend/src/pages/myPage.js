@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import AM from 'components/myPagecomponents/optionckd/AM';
 
 const MyPage = () => {
-  const [option, setoption] = useState('');
+
+  const [option, setoption] = useState('AM');
   const onchange = (e) => {
     if (e.target.value === 'AM') {
       setoption(e.target.value);

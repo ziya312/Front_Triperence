@@ -6,49 +6,68 @@ import Button from 'components/common/Button';
 import axios from 'axios';
 
 const SurveyFirst = () => {
-  const [values, setValues] = useState({});
+  const [values, setValues] = useState([
+    {
+      transportation: '',
+      stay: '',
+      destination: '',
+    },
+  ]);
   const [isChecked, setIsChecked] = useState(false);
   const [checkedItems1, setCheckeditems1] = useState(new Set());
   const [checkedItems2, setCheckeditems2] = useState(new Set());
-  const [category1, setcategory1] = useState({ allergy: [] });
-  const [category2, setcategory2] = useState({ eat: [] });
+  const [category1, setcategory1] = useState( ['null'] );
+  const [category2, setcategory2] = useState({ eat: ['null'] });
   const navigate = useNavigate();
 
-  // const handleApi = () => {
-  //   console.debug(category1, '하하하ㅏ');
-  //   console.debug(category2, '하하하ㅏ');
 
-  //   axios
-  //     .post('https://jsonplaceholder.typicode.com/posts', {
-  //       // nature: arr
-  //       param: values,
-  //       param2: category1, //백에서 param이라는 이름으로
-  //       param3: category2,
-  //     })
 
-  //     .then((result) => {
-  //       console.log(result.data);
-  //       alert('success');
-  //       navigate('/surveySecond');
-  //     })
+  
 
-  //     .catch((error) => {
-  //       console.log(error);
-  //       alert('service error');
-  //     });
-  // };
+  const handleApi = () => {
+    // console.log('transportation: ', values.transportation);
+    // console.log('value: ', values.transportation);
+    // console.log('value: ', values.transportation);
+    axios
+      .post('https://jsonplaceholder.typicode.com/posts', {
+        //값 전송
+        data: {
+          transportation: values.transportation,
+          stay: values.stay,
+          destination: values.destination,
+          allergy: category1,
+        },
+      })
+
+      .then((result) => {
+        alert('success');
+        console.log(result.data);
+        // navigate('/surveySecond');
+      })
+
+      .catch((error) => {
+        console.log(error);
+        alert('service error');
+      });
+  };
 
   const handleClick = () => {
+    console.debug('퍼스트에서');
     navigate('/surveySecond', {
       state: {
-        param: values,
+        param1: values,
         param2: category1, //백에서 param이라는 이름으로
         param3: category2,
+
+        // data: {
+        //   transportation: values.transportation,
+        //   stay: values.stay,
+        //   destination: values.destination,
+        //   allergy: category1,
+        // },
+        // test: values.transportation,
       },
     });
-    // console.debug(values, '모야아');
-    // console.debug(category1, '되는건가');
-    // console.debug(category2, '모르겠어ㅓ');
   };
 
   const formtrans = [
@@ -162,7 +181,10 @@ const SurveyFirst = () => {
             </div>
             <span className="boderSpan"></span>
             <div>
-              <label className="bd"> Are you allergic to food?</label>
+              <label className="bd-s"> Are you allergic to food?</label>
+              <label className="bd-m">
+                *If you do not have an item, you do not need to select it.
+              </label>
               {formAllergy.map((item) => (
                 <label key={item.id} className="fi-map">
                   <input
@@ -177,7 +199,10 @@ const SurveyFirst = () => {
             </div>
             <span className="boderSpan"></span>
             <div>
-              <label className="bd">What do you eat?</label>
+              <label className="bd-s">What do you eat?</label>
+              <label className="bd-m">
+                *If you do not have an item, you do not need to select it.
+              </label>
               {formEat.map((item) => (
                 <label key={item.id} className="fi-s">
                   <input
@@ -205,9 +230,10 @@ const SurveyFirst = () => {
           </div>
           <span className="boderSpan"></span>
           <div className="fsbtn">
-            <Link to="/surveySecond">
-              <Button onClick={handleClick}>Next -></Button>
-            </Link>
+            {/* <Button type="button" onClick={handleClick}>Next </Button> */}
+            <Button type="button" onClick={handleClick}>
+              Next{' '}
+            </Button>
           </div>
         </form>
       </div>

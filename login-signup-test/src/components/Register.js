@@ -3,6 +3,8 @@ import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import { isEmail } from "validator";
+import logo from "../icons/logo.svg";
+import "./Pages/login.css";
 
 import AuthService from "../services/auth.service";
 
@@ -129,7 +131,8 @@ const Register = () => {
 
     form.current.validateAll();
 
-    if (checkBtn.current.context._errors.length === 0) {
+    // if (checkBtn.current.context._errors.length === 0) {
+      
       AuthService.register(
         email,
         password,
@@ -157,17 +160,12 @@ const Register = () => {
         }
       );
     }
-  };
-
+ 
   return (
-    <div className="col-md-12">
-      <div className="card card-container">
-        <img
-          src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-          alt="profile-img"
-          className="profile-img-card"
+    <div className="app">
+      <div className="form-container">
+        <img src={logo}
         />
-
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>
@@ -177,6 +175,7 @@ const Register = () => {
                   type="text"
                   className="form-control"
                   name="email"
+                  placeholder="Email"
                   value={email}
                   onChange={onChangeEmail}
                   validations={[required, validEmail]}
@@ -189,6 +188,7 @@ const Register = () => {
                   type="password"
                   className="form-control"
                   name="password"
+                  placeholder="Password"
                   value={password}
                   onChange={onChangePassword}
                   validations={[required, vpassword]}
@@ -201,6 +201,7 @@ const Register = () => {
                   type="text"
                   className="form-control"
                   name="nickname"
+                  placeholder="Nickname"
                   value={nickname}
                   onChange={onChangeNickname}
                   validations={[required, vnickname]}
@@ -213,6 +214,7 @@ const Register = () => {
                   type="text"
                   className="form-control"
                   name="givenname"
+                  placeholder="Givename"
                   value={givenname}
                   onChange={onChangeGivenname}
                   validations={[required, vgivenname]}
@@ -225,19 +227,21 @@ const Register = () => {
                   type="text"
                   className="form-control"
                   name="familyname"
+                  placeholder="Familyname"
                   value={familyname}
                   onChange={onChangeFamilyname}
                   validations={[required, vfamilyname]}
                 />
               </div>
 
-              <div className="form-group">
+              <div className="form-group"> 
                 <label htmlFor="age">Age</label>
                 <Input
                   type="text"
                   className="form-control"
                   name="age"
                   value={age}
+                  
                   onChange={onChangeAge}
                 />
               </div>
@@ -288,5 +292,6 @@ const Register = () => {
     </div>
   );
 };
+            
 
 export default Register;

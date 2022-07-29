@@ -9,6 +9,7 @@
 
 }
 
+
 .gender input:checked + div {
     width: 112px;
     height: 48px;

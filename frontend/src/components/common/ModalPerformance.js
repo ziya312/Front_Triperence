@@ -3,54 +3,45 @@ import styled from "styled-components";
 import {useState} from "react";
 import op from "icons/filter.svg"
 
-const ModalPerformance = () => {
+const ModalPerformance = (props) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const onClickButton = () => {
         setIsOpen(true);
     };
     return (
-        <ModalPerformanceWrap>
-            <Button onClick={onClickButton}></Button>
+        <>
+            <Button onClick={onClickButton}>Change</Button>
             {isOpen && (
                 <Modal
                     open={isOpen}
                     onClose={() => {
                         setIsOpen(false);
                     }}
-                />
+               value={props.value} />
             )}
-        </ModalPerformanceWrap>
+        </>
     );
 };
 
 const Button = styled.button`
 
 
-  height: 48px;
-  width: 48px;
-  border: none;
-  background-repeat: no-repeat;
+border: 0;
+outline: 0;
+background-color:transparent;
+font-family: 'Pretendard';
+font-style: normal;
+font-weight: 700;
+font-size: 16px;
 
-  background-image: url(${op});
-  border-radius: 10px;
 
+text-align: right;
 
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-
+color: #77AEFC;
+float:left;
 `;
 
-const ModalPerformanceWrap = styled.button`
 
-  margin: 10px -370px;
-  border: 0px none;
-  clear: none;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: relative;
-`;
 
 export default ModalPerformance;

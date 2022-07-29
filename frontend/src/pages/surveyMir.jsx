@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation  } from 'react-router-dom';
 import SecondHeader from 'components/Header/secondHeader';
 import 'components/Pages/character.css';
 import Button from 'components/common/Button';
@@ -10,17 +10,26 @@ const SurveyMir = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [checkedItems, setCheckeditems] = useState(new Set());
   const [category1, setcategory1] = useState({ era: [] });
+  const navigate = useNavigate();
+  const location = useLocation(); //가져올 때  
+
+  
+  useEffect(() => {
+    console.log('값', location);
+  }, []);
 
   const handleApi = () => {
     axios
       .post('https://jsonplaceholder.typicode.com/posts', {
         param1: values,
         param2: category1,
+        param: location,
       })
 
       .then((result) => {
         console.log(result.data);
-        alert('success');
+        alert('다음장');
+        navigate('/showResult');
       })
 
       .catch((error) => {

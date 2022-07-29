@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SecondHeader from 'components/Header/secondHeader';
 import 'components/Pages/surveyFirst.css';
 import Button from 'components/common/Button';
@@ -13,6 +13,10 @@ const SurveyNori = () => {
   });
   const [isChecked, setIsChecked] = useState(false);
   const [checkedItems, setCheckeditems] = useState(new Set());
+
+  const navigate = useNavigate();
+  const location = useLocation(); //가져올 때
+  const state = '';
 
   const formPlaceOne = [
     {
@@ -43,16 +47,23 @@ const SurveyNori = () => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    console.log('값', location);
+  }, []);
+
   const handleApi = () => {
-    console.log('value: ', values);
+    console.debug('value: ', values);
+
     axios
       .post('https://jsonplaceholder.typicode.com/posts', {
-        values,
+        param1: values,
+        param: location,
       })
 
       .then((result) => {
         console.log(result.data);
-        alert('success');
+        alert('다음장');
+        navigate('/showResult');
       })
 
       .catch((error) => {

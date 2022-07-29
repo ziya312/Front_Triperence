@@ -28,7 +28,7 @@ const Map = () => {
 
                 mapContainerStyle={{
                     width: "70vw",
-                    height: "45.55vw",
+                    height: "89.5vh",
                     float: "right",
                     marginRight:"0px"
 
@@ -38,6 +38,9 @@ const Map = () => {
             >
                 {properties.map((property) => (
                     <Marker
+                    title={'The marker`s title will appear as a tooltip.'}
+    name={'SOMA'}
+
                         key={property.masterid}
                         position={{
                             lat: property.mapy,

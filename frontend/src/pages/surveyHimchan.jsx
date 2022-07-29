@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { Component, useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SecondHeader from 'components/Header/secondHeader';
 import 'components/Pages/character.css';
 import Button from 'components/common/Button';
@@ -14,6 +14,13 @@ const SurveyHimchan = () => {
   const [category1, setcategory1] = useState({ shoot: [] });
   const [category2, setcategory2] = useState({ subject: [] });
   const navigate = useNavigate();
+  const location = useLocation(); //가져올 때              //{state}
+  const state = '헤헤';                                   // 
+
+  useEffect(() => {
+    console.log('값', location);
+  }, []);
+
 
   const handleApi = () => {
     console.debug(category1, '하하하ㅏ');
@@ -22,13 +29,14 @@ const SurveyHimchan = () => {
     axios
       .post('https://jsonplaceholder.typicode.com/posts', {
         // nature: arr
-        param1: category1, //백에서 param이라는 이름으로
+        param1:category1, //백에서 param이라는 이름으로
         param2: category2,
+        param: 1,
       })
 
       .then((result) => {
         console.log(result.data);
-        alert('success');
+        alert('다음장');
         navigate('/showResult');
       })
 

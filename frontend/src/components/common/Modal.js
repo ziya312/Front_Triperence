@@ -2,35 +2,29 @@ import React from "react";
 import styled from "styled-components";
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import lll from "icons/x.svg"
+import Mage from "./modals/Mage";
+import "components/common/Modal.css"
+import Mgen from "./modals/Mgen";
+
+const Modal = ({onClose, value}) => {
 
 
-const Modal = ({onClose}) => {
-    const [values, setValues] = useState({
-        gender: "",
-        age: "",
-    });
     const handleClose = () => {
         onClose?.();
-    };
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    };
-
-    const onChange = (e) => {
-        setValues({...values, [e.target.name]: e.target.value});
-    };
-
-    const showData = () => {
-        console.log("value:", values);
     };
 
     return (
         <Overlay>
             <ModalWrap>
                 <CloseButton onClick={handleClose}>
-                    <i></i>
+
                 </CloseButton>
                 <Contents>
+
+                <div className="Mtitle">{value}  Change</div>
+                {value === 'gen' ? <Mgen /> : value === 'age' ? <Mage/> : <div>vxczvzxcv</div>}
+
                     <Button onClick={handleClose}>닫혀라 모달!</Button>
 
 
@@ -52,8 +46,11 @@ const Overlay = styled.div`
 `;
 
 const ModalWrap = styled.div`
-  width: 43.75vw;
-  height: 46.875vw;
+width: 588px;
+height: 278px;
+
+background: #FFFFFF;
+border-radius: 20px;
   border-radius: 20px;
   background-color: #fff;
   position: absolute;
@@ -64,15 +61,15 @@ const ModalWrap = styled.div`
 
 const CloseButton = styled.div`
   float: right;
-  width: 40px;
-  height: 40px;
+  width: 21px;
+  height: 22px;
+
   margin: 20px;
   cursor: pointer;
+  background-image: url(${lll});
+  background-repeat: no-repeat;
+    background-size: contain;
 
-  i {
-    color: #5d5d5d;
-    font-size: 30px;
-  }
 `;
 
 const Contents = styled.div`
@@ -87,15 +84,25 @@ const Contents = styled.div`
 
 const Button = styled.div`
   font-size: 14px;
-  padding: 10px 20px;
   border: none;
   background-color: #ababab;
   border-radiusc: 10px;
   color: white;
   cursor: pointer;
-  $: hover {
-    background-color: #898989;
-  }
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 45px;
+
+  color: #FFFFFF;
+margin 40px auto;
+width: 384px;
+height: 48px;
+
+background: #77AEFC;
+border-radius: 30px;
+
 `;
 
 export default Modal;

@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 
 const SS = styled.div`
-background-color: yellowgreen;
+
 width:336px;
 height:50px;
 margin-left: 24px;

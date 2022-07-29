@@ -1,37 +1,35 @@
 import React from 'react';
-import styled from "styled-components";
-import {Link} from "react-router-dom";
-
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import palette from '../../lib/styles/palette';
 const D = styled.button`
   width: 156px;
   height: 48px;
-  border: 1px solid #77AEFC;
+  border: 1px solid #77aefc;
   border-radius: 30px;
   font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
-  background: #FFFFFF;
+  background: #ffffff;
   text-align: center;
-  color: #77AEFC;
-  margin-left: 16px;
-
+  color: #77aefc;
+  margin-left: 24px;
   &:hover {
-    background: #FFFFFF;
+    background: #ffffff;
   }
-`
+`;
 const R = styled.button`
-  width: 21vw;
-  height: 48px;
+  width: 17.5vw;
+  height: 2.5vw;
   margin-left: 1.25vw;
 
-  margin-top: 2vw;
-  margin-bottom: 2.5vw;
+  margin-top: 1.875vw;
+  margin-bottom: 1.25vw;
 
-  background: #77AEFC;
+  background: #77aefc;
   border-radius: 30px;
-
 
   font-family: 'Pretendard';
   font-style: normal;
@@ -41,10 +39,8 @@ const R = styled.button`
 
   text-align: center;
 
-  color: #FFFFFF;
-
-
-`
+  color: #ffffff;
+`;
 const L = styled.div`
   float: bottom;
   z-index: 10;
@@ -58,16 +54,15 @@ const L = styled.div`
       display: none;
     }
   }
-  width: 24vw;
-  height: 192px;
+  width: 20vw;
+  height: 10vw;
 
   left: 1176px;
 
-
-  background: #FFFFFF;
-  border: 1px solid #D9D9D9;
+  background: #ffffff;
+  border: 1px solid #d9d9d9;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.25);
-  border-radius: 2
+  border-radius: 2;
 `;
 const B = styled.div`
   float: bottom;
@@ -82,32 +77,27 @@ const B = styled.div`
     }
   }
 
-  left: 1176px;${`top: calc(100vh - 460px);`}
+  left: 1176px;
 
-
+  ${`top: calc(100vh - 460px);`}
 `;
 
 const Box = () => {
-    return (
-
-        <B>
-            <L>
-                <Link to="/">
-                    <R>Reservation</R>
-                </Link>
-                <Link to="/">
-                    <D>Directions</D>
-                </Link>
-                <Link to="/">
-                    <D>Call</D>
-                </Link>
-            </L>
-        </B>
-
-    )
-}
-
+  return (
+    <B>
+      <L>
+        <Link to="/">
+          <R>Reservation</R>
+        </Link>
+        <Link to="/">
+          <D>Directions</D>
+        </Link>
+        <Link to="/">
+          <D>Call</D>
+        </Link>
+      </L>
+    </B>
+  );
+};
 
 export default Box;
-
-

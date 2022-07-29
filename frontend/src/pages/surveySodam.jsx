@@ -1,5 +1,5 @@
-import React, { Component, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component, useState, useEffect} from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SecondHeader from 'components/Header/secondHeader';
 import 'components/Pages/surveyFirst.css';
 import Button from 'components/common/Button';
@@ -13,6 +13,33 @@ const SurveySodam = () => {
   });
   const [isChecked, setIsChecked] = useState(false);
   const [checkedItems, setCheckeditems] = useState(new Set());
+  const navigate = useNavigate();
+  const location = useLocation(); //가져올 때              //{state}
+  const state = '헤헤';        
+
+  const handleApi = () => {
+    console.log('value: ', values);
+    axios
+      .post('https://jsonplaceholder.typicode.com/posts', {
+        param: values,
+        param: location,
+      })
+
+      .then((result) => {
+        console.log(result.data);
+        alert('다음장');
+        navigate('/showResult');
+      })
+
+      .catch((error) => {
+        console.log(error);
+        alert('service error');
+      });
+  };
+  
+  useEffect(() => {
+    console.log('값', location);
+  }, []);// 
 
   const formFoodOne = [
     {
@@ -48,23 +75,7 @@ const SurveySodam = () => {
     e.preventDefault();
   };
 
-  const handleApi = () => {
-    console.log('value: ', values);
-    axios
-      .post('https://jsonplaceholder.typicode.com/posts', {
-        param: values,
-      })
 
-      .then((result) => {
-        console.log(result.data);
-        alert('success');
-      })
-
-      .catch((error) => {
-        console.log(error);
-        alert('service error');
-      });
-  };
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });

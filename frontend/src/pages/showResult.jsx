@@ -93,6 +93,8 @@ function ShowResult() {
       .then((res) => {
         return res.json();
       })
+
+
       .then((data) => {
         //1 , 2 , 3
         //setType(data.~~~);

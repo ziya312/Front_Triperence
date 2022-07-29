@@ -4,8 +4,9 @@ import TourItem from "./TourItem";
 import axios from "axios";
 import Map from "components/map/map";
 import Tag from "components/common/tag";
-
-
+import Pagination from "react-js-pagination";
+import Paging from "components/common/Paging";
+import ManageEvents from "components/Container";
 
 const Box = styled.div`
   float: left;
@@ -18,9 +19,9 @@ const CardPlace = styled.div`
   overflow: auto;
   float: left;
   padding: 10px;
-  width: 33.5vw;
+  width: 28.5vw;
 
-  height: 550px;
+  height: 850px;
 `;
 
 const TourListBlock = styled.div`
@@ -31,8 +32,14 @@ const TourListBlock = styled.div`
   }
 `;
 const TourList = () => {
+
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+
+  const handlePageChange = (page) => {
+    setPage(page);
+  };
 
   useEffect(() => {
     //async 를 사용하는 함수 따로 선언
@@ -53,27 +60,32 @@ const TourList = () => {
 
   if (loading) {
   }
-  // 아직 item 값이 설정되지 않았을 때
+  //아직 item 값이 설정되지 않았을 때
   if (!item) {
     return null;
+  }
+
+  if(item) {
+
   }
 
   // item 값이 유효할 때
   return (
     <>
       <Box>
-        <Tag />
-        <CardPlace>
-        {item.map((item1) => (
+         <Tag />
+         <CardPlace>
+
+         {item.map((item1) => (
           
             <TourItem key={item1.title} item1={item1} />
-
-        ))}
-        </CardPlace>
+        ))} 
+        
+         </CardPlace>
         
 
-      </Box>
-     <Map />
+       </Box>
+      <Map />
     </>
   );
 };

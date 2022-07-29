@@ -14,7 +14,15 @@ const SurveyChoa = () => {
   const [category1, setcategory1] = useState({ pop: [] });
   const [category2, setcategory2] = useState({ media: [] });
   const navigate = useNavigate();
-  const { state } = useLocation();    //가져올 때
+  const location = useLocation(); //가져올 때
+  const state = '';
+  // const {state}=useLocation();
+  const [submitValues, setSubmitValues] = useState({ param: [] });
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    console.log('값', location.state);
+  }, []);
 
   const handleApi = () => {
     console.debug(category1, '하하하ㅏ');
@@ -25,24 +33,30 @@ const SurveyChoa = () => {
         // nature: arr
         param1: category1, //백에서 param이라는 이름으로
         param2: category2,
+        param: location,
+        // paramk: submitValues,
       })
 
       .then((result) => {
         console.log(result.data);
-        alert('success');
+        alert('다음장');
         navigate('/showResult');
       })
 
       .catch((error) => {
         console.log(error);
         alert('service error');
-      });
+      })
+      .then((response) => setData(JSON.stringify(response.data)));
   };
 
-  useEffect(() => {
-    console.log('값', state);
-  }, [state]);
+  const real = (location) => {
+    setSubmitValues({ ...submitValues, [location.key]: location.value });
+  };
 
+  // useEffect(() => {
+  //   console.log('값', state);
+  // }, [state]);
 
   const formPop = [
     { id: 1, name: 'k_pop', value: 'BTS', imageSrc: require('../images/bts1.jpeg') },
@@ -213,6 +227,7 @@ const SurveyChoa = () => {
           </div>
         </form>
       </div>
+      <code>{JSON.stringify({ data: { category1, category2, location } })}</code>
     </div>
   );
 };
