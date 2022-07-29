@@ -8,6 +8,19 @@ import Y from 'icons/스토리_(5).jpg';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import DetailMap from './detailMap';
+
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
+
+const containerStyle = {
+  width: '792px',
+  height: '420px'
+};
+
+const center = {
+  lat: 37.4692,
+  lng: 126.451,
+};
 
 const Detail = () => {
   const [Ditem, setDItem] = useState(null);
@@ -43,41 +56,37 @@ const Detail = () => {
     <div>
       <section className="section">
         <article className="categorie">
-          {A === 38
-            ? '전남'
-            : A === 1
-            ? '서울'
-            : A === 2
-            ? '인천'
-            : A === 3
-            ? '대전'
-            : A === 4
-            ? '대구'
-            : A === 5
-            ? '광주'
-            : A === 6
-            ? '부산'
-            : A === 7
-            ? '울산'
-            : A === 8
-            ? '세종'
-            : A === 31
-            ? '경기'
-            : A === 32
-            ? '강원'
-            : A === 33
-            ? '충북'
-            : A === 34
-            ? '충남'
-            : A === 35
-            ? '경북'
-            : A === 36
-            ? '경남'
-            : A === 37
-            ? '전북'
-            : A === 38
-            ? '전남'
-            : '제주'}
+          {Ditem.areacode === 1
+            ? 'Seoul'
+            : Ditem.areacode === 2
+            ? 'Incheon'
+            : Ditem.areacode === 3
+            ? 'Daejeon'
+            : Ditem.areacode === 4
+            ? 'Daegu'
+            : Ditem.areacode === 5
+            ? 'Gwangju'
+            : Ditem.areacode === 6
+            ? 'Busan'
+            : Ditem.areacode === 7
+            ? 'Ulsan'
+            : Ditem.areacode === 8
+            ? 'Sejong'
+            : Ditem.areacode === 31
+            ? 'Gyeonggi'
+            : Ditem.areacode === 32
+            ? 'Gangwon'
+            : Ditem.areacode === 33
+            ? 'Chungbuk'
+            : Ditem.areacode === 34
+            ? 'Chungnam'
+            : Ditem.areacode === 35
+            ? 'Gyeongbuk'
+            : Ditem.areacode === 36
+            ? 'GyeongNam'
+            : Ditem.areacodeA === 37
+            ? 'JeonBuk'
+            : 'Jeju'}
         </article>
 
         <article className="title">
@@ -116,17 +125,31 @@ const Detail = () => {
 
         <article className="Details">
           <img className="details" src={require('icons/t.svg').default} alt="" />
-          무엇이 들어가야 합니까?
+          <div classdangerouslySetInnerHTML={{__html:Ditem.usetime}}></div>
         </article>
 
         <article className="Details" style={{ marginBottom: '24px' }}>
           <img className="details" src={require('icons/w.svg').default} alt="" />
-          무엇이 들어가야 합니까?
+          <div dangerouslySetInnerHTML={{__html:Ditem.usefee}}></div>
         </article>
 
         <hr />
-
-        <article>무엇이 들어가야 합니까?</article>
+        <div>
+           <LoadScript
+            googleMapsApiKey="AIzaSyCrXhf7dS8MZ1tiCUiy-y-yVfy_GToWCNA"
+      language='en'
+      region="KR"
+    >
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
+        zoom={10}
+      >
+        { /* Child components, such as markers, info windows, etc. */ }
+        <></>
+      </GoogleMap>
+    </LoadScript>
+    </div>
 
         <hr />
       </section>

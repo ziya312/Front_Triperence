@@ -17,8 +17,8 @@
     line-height: 46px;
     font-family: 'Pretendard';
     font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
+    font-weight: 80;
+    font-size: 20px;
     text-align: center;
     color: #77AEFC;
 
@@ -81,8 +81,8 @@
 
     font-family: 'Pretendard';
     font-style: normal;
-    font-weight: 50;
-    font-size: 20px;
+    font-weight: 30;
+    font-size: 16px;
     line-height: 36px;
 
 
@@ -104,8 +104,7 @@ hr {
     height: 32px;
     font-style: normal;
     font-weight: 20;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 16px;
     display: flex;
     align-items: center;
 
