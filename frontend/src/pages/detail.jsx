@@ -134,23 +134,9 @@ const Detail = () => {
         </article>
 
         <hr />
-        <div>
-           <LoadScript
-            googleMapsApiKey="AIzaSyCrXhf7dS8MZ1tiCUiy-y-yVfy_GToWCNA"
-      language='en'
-      region="KR"
-    >
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-      >
-        { /* Child components, such as markers, info windows, etc. */ }
-        <></>
-      </GoogleMap>
-    </LoadScript>
-    </div>
-
+        <br />
+          <DetailMap Ditem={Ditem} />
+          <br />
         <hr />
       </section>
     </div>

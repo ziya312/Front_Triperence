@@ -47,7 +47,6 @@
     "react-3-carousel": "^1.0.6",
     "react-app-polyfill": "^3.0.0",
     "react-copy-to-clipboard": "^5.1.0",
-    "react-dev-utils": "^12.0.1",
     "react-dom": "^18.2.0",
     "react-i18next": "^11.17.4",
     "react-icons": "^4.4.0",
@@ -161,5 +160,8 @@
     "trailingComma": "all",
     "semi": true,
     "singleQuote": true
+  },
+  "devDependencies": {
+    "react-dev-utils": "^12.0.1"
   }
 }
