@@ -14,7 +14,7 @@ import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '792px',
-  height: '420px'
+  height: '420px',
 };
 
 const center = {
@@ -23,10 +23,11 @@ const center = {
 };
 
 const Detail = () => {
-  const [Ditem, setDItem] = useState(null);
+  const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const [A, setA] = useState(null);
+  var checknull = ""
 
   const id = location.state.contentid;
 
@@ -39,8 +40,8 @@ const Detail = () => {
 
       try {
         const response = await axios.get(`http://localhost:8080/places/detail/${id}`);
-        setDItem(response.data[0]);
-        setA(Ditem.areacode);
+        setPlace(response.data[0]);
+        setA(place.areacode);
       } catch (e) {}
       setLoading(false);
     };
@@ -49,48 +50,48 @@ const Detail = () => {
   if (loading) {
   }
   // 아직 item 값이 설정되지 않았을 때
-  if (!Ditem) {
+  if (!place) {
     return null;
   }
   return (
     <div>
       <section className="section">
         <article className="categorie">
-          {Ditem.areacode === 1
+          {place.areacode === 1
             ? 'Seoul'
-            : Ditem.areacode === 2
+            : place.areacode === 2
             ? 'Incheon'
-            : Ditem.areacode === 3
+            : place.areacode === 3
             ? 'Daejeon'
-            : Ditem.areacode === 4
+            : place.areacode === 4
             ? 'Daegu'
-            : Ditem.areacode === 5
+            : place.areacode === 5
             ? 'Gwangju'
-            : Ditem.areacode === 6
+            : place.areacode === 6
             ? 'Busan'
-            : Ditem.areacode === 7
+            : place.areacode === 7
             ? 'Ulsan'
-            : Ditem.areacode === 8
+            : place.areacode === 8
             ? 'Sejong'
-            : Ditem.areacode === 31
+            : place.areacode === 31
             ? 'Gyeonggi'
-            : Ditem.areacode === 32
+            : place.areacode === 32
             ? 'Gangwon'
-            : Ditem.areacode === 33
+            : place.areacode === 33
             ? 'Chungbuk'
-            : Ditem.areacode === 34
+            : place.areacode === 34
             ? 'Chungnam'
-            : Ditem.areacode === 35
+            : place.areacode === 35
             ? 'Gyeongbuk'
-            : Ditem.areacode === 36
+            : place.areacode === 36
             ? 'GyeongNam'
-            : Ditem.areacodeA === 37
+            : place.areacodeA === 37
             ? 'JeonBuk'
             : 'Jeju'}
         </article>
 
         <article className="title">
-          {Ditem.title}
+          {place.title}
           <Heart />
         </article>
 
@@ -106,14 +107,12 @@ const Detail = () => {
 
         <Box />
 
-        <article className="Information">{Ditem.overview}</article>
-
+        <article className="Information">{place.overview}</article>
         <hr className="l" />
-
         <article className="Details">
           <img className="details" src={require('icons/p.svg').default} alt="" />
-          {Ditem.addr1}
-          <CopyToClipboard text={Ditem.addr1}>
+          {place.addr1}
+          <CopyToClipboard text={place.addr1}>
             <img
               className="d"
               src={require('icons/ss.svg').default}
@@ -125,19 +124,31 @@ const Detail = () => {
 
         <article className="Details">
           <img className="details" src={require('icons/t.svg').default} alt="" />
-          <div classdangerouslySetInnerHTML={{__html:Ditem.usetime}}></div>
+          {place.tel}
+          <CopyToClipboard text={place.tel}>
+            <img
+              className="d"
+              src={require('icons/ss.svg').default}
+              onClick={() => alert('Copy success')}
+              alt=""
+            />
+          </CopyToClipboard>
         </article>
 
         <article className="Details" style={{ marginBottom: '24px' }}>
           <img className="details" src={require('icons/w.svg').default} alt="" />
-          <div dangerouslySetInnerHTML={{__html:Ditem.usefee}}></div>
+          <div dangerouslySetInnerHTML={{ __html: place.usefee }}></div>
         </article>
 
         <hr />
         <br />
-          <DetailMap Ditem={Ditem} />
-          <br />
+        <div className="subtitle">Detailed Location</div>
+        <DetailMap place={place} />
+        <div className="Details" dangerouslySetInnerHTML={{ __html: place.directions }}></div>
+        <br />
         <hr />
+        <div  className="Details">
+        </div>
       </section>
     </div>
   );

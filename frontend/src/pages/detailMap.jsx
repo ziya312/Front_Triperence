@@ -11,7 +11,7 @@ const onLoad = marker => {
   console.log('marker: ', marker)
 }
 
-const DetailMap = ({Ditem}) => {
+const DetailMap = ({place}) => {
   return (
     <div>
       <LoadScript
@@ -20,14 +20,14 @@ const DetailMap = ({Ditem}) => {
         region="KR"
       >
         <GoogleMap mapContainerStyle={containerStyle} 
-        center={{lat: Ditem.mapy, lng: Ditem.mapx}}
+        center={{lat: place.mapy, lng: place.mapx}}
         zoom={20}>
 
         <Marker
           onLoad={onLoad}
           position={
-            {lat: Ditem.mapy,
-            lng: Ditem.mapx}
+            {lat: place.mapy,
+            lng: place.mapx}
           }/>
           {/* <Marker position={lat:37.4692, lng: 126.451}/> */}
           <></>
