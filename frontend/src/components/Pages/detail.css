@@ -125,3 +125,24 @@ hr {
     margin-left: 0.8854166666666667vw;
 
 }
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.homepagebtn {
+    display: inline-block;
+    width:336px;
+  margin-left: 1.25vw;
+  margin-top: 24px;
+  background: #77aefc;
+  border-radius: 30px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 2.604166666666667vw;
+
+  text-align: center;
+}

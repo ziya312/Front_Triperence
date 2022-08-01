@@ -105,7 +105,7 @@ const Detail = () => {
           <img className="img4" src={'/'} alt=" 무엇이 들어가야 합니까?" />
         </article>
 
-        <Box />
+        <Box place={place}/>
 
         <article className="Information">{place.overview}</article>
         <hr className="l" />
@@ -147,8 +147,6 @@ const Detail = () => {
         <div className="Details" dangerouslySetInnerHTML={{ __html: place.directions }}></div>
         <br />
         <hr />
-        <div  className="Details">
-        </div>
       </section>
     </div>
   );

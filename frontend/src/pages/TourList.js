@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TourItem from "./TourItem";
 import axios from "axios";
 import Map from "components/map/map";
-import Tag from "components/common/tag";
+import Categories from "components/categoriescom/Categories";
 import Pagination from "react-js-pagination";
 import Paging from "components/common/Paging";
 import ManageEvents from "components/Container";
@@ -31,7 +31,7 @@ const TourListBlock = styled.div`
     padding-right: 1rem;
   }
 `;
-const TourList = () => {
+const TourList = ({category}) => {
 
   const [item, setItem] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -46,17 +46,19 @@ const TourList = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
+        const query = category === 'all' ? 'all' : `${category}`;
         const response = await axios.get(
-            "http://localhost:8080/places"
+            `http://localhost:8080/places/category=${query}`,
         );
         setItem(response.data);
+        console.log(response.data);
       } catch (e) {
         console.log(e);
       }
       setLoading(false);
     };
     fetchData();
-  }, []);
+  }, [category]);
 
   if (loading) {
   }
@@ -64,18 +66,11 @@ const TourList = () => {
   if (!item) {
     return null;
   }
-
-  if(item) {
-
-  }
-
   // item 값이 유효할 때
   return (
     <>
       <Box>
-         <Tag />
          <CardPlace>
-
          {item.map((item1) => (
           
             <TourItem key={item1.title} item1={item1} />
