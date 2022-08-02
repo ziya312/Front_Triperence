@@ -39,8 +39,8 @@ const categories = [
 const CategoriesBlock = styled.div`
   display:flex;
   padding:1rem;
-  width 768px;
-  margin:0 auto;
+  width : 768px;
+  margin-left:24px;
   @media screen and (max-width: 768px){
     width:100%;
     overflow-x:auto;
@@ -48,24 +48,30 @@ const CategoriesBlock = styled.div`
 `;
 const Category = styled.div`
   font-size: 1rem;
+  font:"pretendard";
+  font-weight:500;
   cursor: pointer;
   white-space: pre;
   text-decoration: none;
-  color: inherit;
-  padding-bottom: 0.25rem;
+  color: #c1c1c1;
+  border: 1px solid #c1c1c1;
+  padding : 0.5rem;
+  padding-left : 0.8rem;
+  padding-right : 0.8rem;
+  border-radius: 50px;
 
   &:hover {
-    color: #77aefc;
+    color: #77AEFC;
   }
 
   ${(props) =>
     props.active &&
     css`
       font-weight: 600;
-      border-bottom: 2px solid #22b8cf;
+      border: 2px solid #77AEFC;
       color: #77aefc;
       &:hover {
-        color: #77aefa;
+        color: #77AEFC;
       }
     `}
   &+& {
