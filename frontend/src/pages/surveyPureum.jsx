@@ -7,25 +7,47 @@ import CustomButton from 'components/common/CustomButton';
 import axios from 'axios';
 
 const SurveyPureum = () => {
-  const [values, setValues] = useState();
+  const [values, setValues] = useState({
+  });
   const [isChecked, setIsChecked] = useState(false);
   const [checkedItems, setCheckeditems] = useState(new Set());
-  const [category1, setcategory1] = useState({ place: [] });
+  const [category1, setcategory1] = useState({ naturePlace: ['null'] });
   const navigate = useNavigate();
   const location = useLocation();    //가져올 때
-  const state = '헤헤';  
+  const result= location.state;
+
   
-  useEffect(() => {
-    console.log('값', location);
-  }, []);
+
+ console.log('뭐야야야야야야야s', result.destination)
+ console.log('뭐야야야야야야야s', location.state)
+ 
+
+ let ty = location.state;
+
+ const eatResult = ty.eat.join();
+ const allergieResult = ty.allergie.join();
+
+ const naturePlaceResult = category1["naturePlace"].join();
+ 
+  
+  // const eatResult = ty.eat.join();
+  // const allergieResult = ty.allergie.join();
+
+  console.log('뭐야'  , ty.destination)
 
 
   const handleApi = () => {
     axios
-      .post('https://jsonplaceholder.typicode.com/posts', {
-        // nature: arr
-        param: category1,  //백에서 param이라는 이름으로
-        param: location,
+      .post('/survey/save', {
+
+        "transportation": ty.transportation,
+        "stay": ty.stay,
+        "destination": ty.destination,
+        "category": ty.category,
+        "eat": eatResult,
+        "allergie" : allergieResult,
+        "naturePlace" : naturePlaceResult,
+
       })
 
       .then((result) => {
@@ -104,9 +126,9 @@ const SurveyPureum = () => {
             </div>
           </div>
           <div className="fsbtn">
-            <Link to="#">
+ 
               <Button onClick={handleApi}>Finish</Button>
-            </Link>
+          
           </div>
         </form>
       </div>

@@ -41,36 +41,44 @@ const SurveyTwo = () => {
     e.preventDefault();
   };
 
-  const handleApi = () => {
-    console.log('value: ', values);
-    axios
-      .post('http://localhost:8080/survey/save', {
-        state,
-      })
+  // const handleApi = () => {
+  //   console.log('value: ', values);
+  //   axios
+  //     .post('http://localhost:8080/survey/save', {
+  //       state,
+  //     })
 
-      .then((result) => {
-        console.log(result.data);
-        alert('success');
-        navigate(show);
-      })
+  //     .then((result) => {
+  //       console.log(result.data);
+  //       alert('success');
+  //       navigate(show);
+  //     })
 
-      .catch((error) => {
-        console.log(error);
-        alert('service error');
-      });
-  };
+  //     .catch((error) => {
+  //       console.log(error);
+  //       alert('service error');
+  //     });
+  // };
 
   const handleClickOne = () => {
+    
     ////////얘가 넘겨주는 아이
     let teee = location.state;
     teee["transportation"] = teee["param1"]["transportation"]  
     teee["stay"]  = teee["param1"]["stay"]  
     teee["destination"]  = teee["param1"]["destination"] 
-    teee["allergy"] = teee["param2"]["allergie"]
+    teee["allergie"] = teee["param2"]["allergie"]
     teee["eat"] = teee["param3"]["eat"]
+    teee["category"] = values["category"]
+    
+
+    console.log(teee.allergie)
+    
     // teee['param4'] = values;
-    navigate(show, { state: teee });
-    console.log(state)
+    navigate(show, { 
+      state: teee , //백에서 param이라는 이름으로
+    });
+    console.log('야야야', teee)
   };
 
   const hahahah = () => {
@@ -147,7 +155,7 @@ const SurveyTwo = () => {
             </div>
           </div>
           <div className="fsbtn">
-            <Button type="button" onClick={handleApi}>
+            <Button type="button" onClick={handleClickOne}>
               Next
             </Button>
           </div>

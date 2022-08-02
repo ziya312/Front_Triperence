@@ -79,13 +79,11 @@ const Cardclass = styled.div`
   color: #595959;
 `;
 
-const TourItem = ({ item1 }) => {
-  const { title, addr1, tel, firstimage, contentid, areacode } = item1;
+const TourItem = ({ place }) => {
+  const { title, addr1, tel, firstimage, contentid, areacode } = place;
   return (
-
     <div className="contents">
       <C>
-      
         <Cardbox>
           <Link to="/detail" state={{contentid}}>
             <H>

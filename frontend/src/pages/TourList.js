@@ -31,7 +31,7 @@ const TourListBlock = styled.div`
   }
 `;
 const TourList = ({ category }) => {
-  const [item, setItem] = useState(null);
+  const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(1);
 
@@ -46,7 +46,7 @@ const TourList = ({ category }) => {
       try {
         const query = category === 'all' ? 'all' : `${category}`;
         const response = await axios.get(`http://localhost:8080/places/category=${query}`);
-        setItem(response.data);
+        setPlace(response.data);
         console.log(response.data);
       } catch (e) {
         console.log(e);
@@ -59,7 +59,7 @@ const TourList = ({ category }) => {
   if (loading) {
   }
   //아직 item 값이 설정되지 않았을 때
-  if (!item) {
+  if (!place) {
     return null;
   }
   // item 값이 유효할 때
@@ -67,12 +67,12 @@ const TourList = ({ category }) => {
     <>
       <Box>
         <CardPlace>
-          {item.map((item1) => (
-            <TourItem key={item1.title} item1={item1} />
+          {place.map((place) => (
+            <TourItem key={place.title} place={place} />
           ))}
         </CardPlace>
       </Box>
-      <Map />
+      <Map place={place} />
     </>
   );
 };

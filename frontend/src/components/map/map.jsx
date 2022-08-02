@@ -1,9 +1,9 @@
 import React from 'react'
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { GoogleMap, InfoWindow, LoadScript, Marker, MarkerClusterer } from '@react-google-maps/api';
 
 const containerStyle = {
-  width: '400px',
-  height: '400px'
+  width: '82rem',
+  height: '856px'
 };
 
 const center = {
@@ -11,7 +11,17 @@ const center = {
   lng: 126.451,
 };
 
-function Map() {
+
+const onLoad = marker => {
+  console.log('marker: ', marker)
+}
+
+const options = {
+  imagePath:
+    'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m', // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
+}
+
+function Map({place}) {
   return (
     <LoadScript
       googleMapsApiKey="AIzaSyCrXhf7dS8MZ1tiCUiy-y-yVfy_GToWCNA"
@@ -23,6 +33,17 @@ function Map() {
         center={center}
         zoom={10}
       >
+        <MarkerClusterer options={options}>
+        {(clusterer) =>
+            place.map((place) => (
+              <Marker 
+              key={place.contentid} 
+              position={{lat: place.mapy, lng: place.mapx}} 
+              clusterer={clusterer} />
+            ))
+          }
+        </MarkerClusterer>
+        
         { /* Child components, such as markers, info windows, etc. */ }
         <></>
       </GoogleMap>
