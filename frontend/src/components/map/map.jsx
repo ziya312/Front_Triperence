@@ -36,7 +36,8 @@ function Map({place}) {
         <MarkerClusterer options={options}>
         {(clusterer) =>
             place.map((place) => (
-              <Marker 
+              <Marker
+              icon={{url:'https://drive.google.com/uc?id=1Mt5tR73ZyY-DCPZx_svJ3EBaeEQG8BBT'}}
               key={place.contentid} 
               position={{lat: place.mapy, lng: place.mapx}} 
               clusterer={clusterer} />

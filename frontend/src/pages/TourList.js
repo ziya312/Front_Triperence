@@ -68,7 +68,7 @@ const TourList = ({ category }) => {
       <Box>
         <CardPlace>
           {place.map((place) => (
-            <TourItem key={place.title} place={place} />
+            <TourItem key={place.contentid} place={place} />
           ))}
         </CardPlace>
       </Box>
