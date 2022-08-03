@@ -48,16 +48,34 @@ const SurveyNori = () => {
   };
 
   useEffect(() => {
-    console.log('값', location);
+    console.log('이게 뭐야', ty);
+    console.log('으에이에엥', values.placeOne);
+    
+
   }, []);
+
+  let ty = location.state;
+
+  const eatResult = ty.eat.join();
+  const allergieResult = ty.allergie.join();
 
   const handleApi = () => {
     console.debug('value: ', values);
 
     axios
-      .post('https://jsonplaceholder.typicode.com/posts', {
-        param1: values,
-        param: location,
+      .post('/survey/save', {
+        
+
+
+        "transportation": ty.transportation,
+        "stay": ty.stay,
+        "destination": ty.destination,
+        "category": ty.category,
+        "eat": eatResult,
+        "allergie": allergieResult,
+        "placeOne" : values.placeOne,
+        "placeTwo" : values.placeTwo
+       
       })
 
       .then((result) => {
@@ -70,7 +88,12 @@ const SurveyNori = () => {
         console.log(error);
         alert('service error');
       });
-  };
+    };
+
+
+
+
+    
 
   const checkHandler = ({ target }) => {
     setIsChecked(!isChecked);
@@ -144,9 +167,8 @@ const SurveyNori = () => {
           </div>
           <span className="boderSpan"></span>
           <div className="fsbtn">
-            <Link to="#">
+  
               <Button onClick={handleApi}>Finish</Button>
-            </Link>
           </div>
         </form>
       </div>

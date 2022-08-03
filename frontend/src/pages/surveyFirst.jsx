@@ -13,51 +13,75 @@ const SurveyFirst = () => {
       destination: '',
     },
   ]);
+
   const [isChecked, setIsChecked] = useState(false);
   const [checkedItems1, setCheckeditems1] = useState(new Set());
   const [checkedItems2, setCheckeditems2] = useState(new Set());
-  const [category1, setcategory1] = useState( ['null'] );
-  const [category2, setcategory2] = useState({ eat: ['null'] });
+  const [category1, setcategory1] = useState({ allergie: ['null'] });
+  const [category2, setcategory2] = useState({ eat: ['null'] });     //eat : ['null']
   const navigate = useNavigate();
 
-
-
-  
-
-  const handleApi = () => {
+  // const handleApi = () => {
     // console.log('transportation: ', values.transportation);
     // console.log('value: ', values.transportation);
     // console.log('value: ', values.transportation);
-    axios
-      .post('https://jsonplaceholder.typicode.com/posts', {
-        //값 전송
-        data: {
-          transportation: values.transportation,
-          stay: values.stay,
-          destination: values.destination,
-          allergy: category1,
-        },
-      })
+    // axios
+    //   .post('http://localhost:8080/survey/save', {
+    //     //값 전송
+    //     data: {
+    //       // transportation: values.transportation,
+    //       // stay: values.stay,
+    //       // destination: values.destination,
+    //       allergie: category1,
+    //     },
+    //   })
 
-      .then((result) => {
-        alert('success');
-        console.log(result.data);
-        // navigate('/surveySecond');
-      })
+      // .then((result) => {
+      //   alert('success');
+      //   console.log(result.data);
+      //   navigate('/surveySecond',);
+      // })
 
-      .catch((error) => {
-        console.log(error);
-        alert('service error');
-      });
-  };
+  //     .catch((error) => {
+  //       console.log(error);
+  //       alert('service error');
+  //     });
+  // };
+
+  // const handleClickOne = () => {
+  //   ////////얘가 넘겨주는 아이
+  //   let teee = values;
+  //   // teee["transportation"] = teee["values"]["transportation"]  
+  //   teee["stay"]  = teee["values"]["stay"]  
+  //   teee["destination"]  = teee["values"]["destination"] 
+  //   teee["allergy"] = teee["values"]["allergie"]
+  //   teee["eat"] = teee["values"]["eat"]
+    
+  //   teee['param4'] = values;
+  //   navigate(show, { state: teee , //백에서 param이라는 이름으로
+  //        category,});
+  //   console.log(state)
+
+  //   console.log(teee)
+  // };
+
+  // let teee = location.state;
+  // teee["transportation"] = teee["param1"]["transportation"]
+  // teee["stay"]  = teee["param1"]["stay"]
+  // teee["destination"]  = teee["param1"]["destination"]
+  // teee["allergie"] = teee["allergie"][]
+  // teee["eat"] = teee["param3"]["eat"]
+
+ 
 
   const handleClick = () => {
     console.debug('퍼스트에서');
     navigate('/surveySecond', {
       state: {
-        param1: values,
+        param1: values, 
         param2: category1, //백에서 param이라는 이름으로
         param3: category2,
+        // papa: [values.transportation, category1, category2]
 
         // data: {
         //   transportation: values.transportation,
@@ -230,13 +254,14 @@ const SurveyFirst = () => {
           </div>
           <span className="boderSpan"></span>
           <div className="fsbtn">
-            {/* <Button type="button" onClick={handleClick}>Next </Button> */}
-            <Button type="button" onClick={handleClick}>
+            <Button type="button" onClick={handleClick}>Next </Button>
+            {/* <Button type="button" onClick={}>
               Next{' '}
-            </Button>
+            </Button> */}
           </div>
         </form>
       </div>
+      <code>{JSON.stringify({ allergie: category1,  category2,   })}</code>
     </div>
   );
 };

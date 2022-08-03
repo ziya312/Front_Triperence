@@ -1,33 +1,52 @@
 import React, { Component, useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation  } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SecondHeader from 'components/Header/secondHeader';
 import 'components/Pages/character.css';
 import Button from 'components/common/Button';
 import axios from 'axios';
 
 const SurveyMir = () => {
-  const [values, setValues] = useState();
+  const [values, setValues] = useState({
+    era : 'null'
+  });
   const [isChecked, setIsChecked] = useState(false);
   const [checkedItems, setCheckeditems] = useState(new Set());
-  const [category1, setcategory1] = useState({ era: [] });
+  const [category1, setcategory1] = useState({ historyPlace: ['null'] });
   const navigate = useNavigate();
-  const location = useLocation(); //가져올 때  
+  const location = useLocation(); //가져올 때
 
-  
   useEffect(() => {
-    console.log('값', location);
+    console.log('값이다....', ty.eat.join());
+    // console.log('값이다....', ty.transportation);
   }, []);
+
+  let ty = location.state;
+
+  const eatResult = ty.eat.join();
+  const allergieResult = ty.allergie.join();
+
+  const historyPlaceResult= category1["historyPlace"].join();
+
 
   const handleApi = () => {
     axios
-      .post('https://jsonplaceholder.typicode.com/posts', {
-        param1: values,
-        param2: category1,
-        param: location,
+      .post('/survey/save', {
+        // param1: values,
+        // param2: category1,
+        // param: location,
+
+        "transportation": ty.transportation,
+        "stay": ty.stay,
+        "destination": ty.destination,
+        "category": ty.category,
+        "eat": eatResult,
+        "allergie": allergieResult,
+        "era": values.era,
+        "historyPlace": historyPlaceResult,
       })
 
       .then((result) => {
-        console.log(result.data);
+        // console.log(result.data);
         alert('다음장');
         navigate('/showResult');
       })
@@ -161,9 +180,9 @@ const SurveyMir = () => {
 
           <span className="boderSpan"></span>
           <div className="fsbtn">
-            <Link to="#">
+        
               <Button onClick={handleApi}>Finish</Button>
-            </Link>
+  
           </div>
         </form>
       </div>

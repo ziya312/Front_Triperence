@@ -17,8 +17,8 @@
     line-height: 46px;
     font-family: 'Pretendard';
     font-style: normal;
-    font-weight: 700;
-    font-size: 24px;
+    font-weight: 80;
+    font-size: 20px;
     text-align: center;
     color: #77AEFC;
 
@@ -35,6 +35,15 @@
     align-items: center;
     color: #222222;
     margin-bottom: 1.458333333333333vw;
+}
+
+.subtitle{
+    font-family: 'Pretendard';
+    font-weight: 700;
+    font-size: 28px;
+    color: #77AEFC;
+    margin-bottom: 24px;
+    margin-top:12px;
 }
 
 .images {
@@ -77,14 +86,11 @@
 .Information {
 
     width: 40vw;
-    min-height: 140px;
-
     font-family: 'Pretendard';
     font-style: normal;
-    font-weight: 50;
-    font-size: 20px;
+    font-weight: 30;
+    font-size: 16px;
     line-height: 36px;
-
 
     word-break:break-word;
     color: #595959;
@@ -100,15 +106,14 @@ hr {
 }
 .Details {
     width: 40vw;
-    margin-top: 38px;
+    margin-top: 36px;
+    margin-bottom: 24px;
     height: 32px;
     font-style: normal;
     font-weight: 20;
-    font-size: 20px;
-    line-height: 24px;
+    font-size: 16px;
     display: flex;
     align-items: center;
-
     color: #595959;
 }
 .details {
@@ -119,4 +124,25 @@ hr {
 .d {
     margin-left: 0.8854166666666667vw;
 
+}
+
+a{
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.homepagebtn {
+    display: inline-block;
+    width:336px;
+  margin-left: 1.25vw;
+  margin-top: 24px;
+  background: #77aefc;
+  border-radius: 30px;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 2.604166666666667vw;
+
+  text-align: center;
 }

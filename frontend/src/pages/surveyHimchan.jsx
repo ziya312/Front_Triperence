@@ -11,27 +11,41 @@ const SurveyHimchan = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [checkedItems1, setCheckeditems1] = useState(new Set());
   const [checkedItems2, setCheckeditems2] = useState(new Set());
-  const [category1, setcategory1] = useState({ shoot: [] });
-  const [category2, setcategory2] = useState({ subject: [] });
+  const [category1, setcategory1] = useState({ shoot: ['null'] });
+  const [category2, setcategory2] = useState({ subject: ['null'] });
   const navigate = useNavigate();
   const location = useLocation(); //가져올 때              //{state}
   const state = '헤헤';                                   // 
 
   useEffect(() => {
-    console.log('값', location);
+    console.log('값', location.state);
   }, []);
 
+  
+  let ty = location.state;
+
+  const eatResult = ty.eat.join();
+  const allergieResult = ty.allergie.join();
+  const shootResult = category1["shoot"].join();
+  const subjectResult = category2["subject"].join();
+
+  console.log(shootResult, '하하하ㅏ');
 
   const handleApi = () => {
-    console.debug(category1, '하하하ㅏ');
+  
     console.debug(category2, '가가가');
 
     axios
-      .post('https://jsonplaceholder.typicode.com/posts', {
-        // nature: arr
-        param1:category1, //백에서 param이라는 이름으로
-        param2: category2,
-        param: 1,
+      .post('/survey/save', {
+      
+        "transportation": ty.transportation,
+        "stay": ty.stay,
+        "destination": ty.destination,
+        "category": ty.category,
+        "eat": eatResult,
+        "allergie" : allergieResult,
+        "shoot": shootResult,
+        "subject": subjectResult,
       })
 
       .then((result) => {
@@ -148,9 +162,9 @@ const SurveyHimchan = () => {
             </div>
           </div>
           <div className="fsbtn">
-            <Link to="#">
+       
               <Button onClick={handleApi}>Finish</Button>
-            </Link>
+    
           </div>
         </form>
       </div>

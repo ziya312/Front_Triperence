@@ -8,12 +8,26 @@ import Y from 'icons/스토리_(5).jpg';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
+import DetailMap from './detailMap';
+
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
+
+const containerStyle = {
+  width: '792px',
+  height: '420px',
+};
+
+const center = {
+  lat: 37.4692,
+  lng: 126.451,
+};
 
 const Detail = () => {
-  const [Ditem, setDItem] = useState(null);
+  const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const [A, setA] = useState(null);
+  var checknull = ""
 
   const id = location.state.contentid;
 
@@ -26,8 +40,8 @@ const Detail = () => {
 
       try {
         const response = await axios.get(`http://localhost:8080/places/detail/${id}`);
-        setDItem(response.data[0]);
-        setA(Ditem.areacode);
+        setPlace(response.data[0]);
+        setA(place.areacode);
       } catch (e) {}
       setLoading(false);
     };
@@ -36,52 +50,48 @@ const Detail = () => {
   if (loading) {
   }
   // 아직 item 값이 설정되지 않았을 때
-  if (!Ditem) {
+  if (!place) {
     return null;
   }
   return (
     <div>
       <section className="section">
         <article className="categorie">
-          {A === 38
-            ? '전남'
-            : A === 1
-            ? '서울'
-            : A === 2
-            ? '인천'
-            : A === 3
-            ? '대전'
-            : A === 4
-            ? '대구'
-            : A === 5
-            ? '광주'
-            : A === 6
-            ? '부산'
-            : A === 7
-            ? '울산'
-            : A === 8
-            ? '세종'
-            : A === 31
-            ? '경기'
-            : A === 32
-            ? '강원'
-            : A === 33
-            ? '충북'
-            : A === 34
-            ? '충남'
-            : A === 35
-            ? '경북'
-            : A === 36
-            ? '경남'
-            : A === 37
-            ? '전북'
-            : A === 38
-            ? '전남'
-            : '제주'}
+          {place.areacode === 1
+            ? 'Seoul'
+            : place.areacode === 2
+            ? 'Incheon'
+            : place.areacode === 3
+            ? 'Daejeon'
+            : place.areacode === 4
+            ? 'Daegu'
+            : place.areacode === 5
+            ? 'Gwangju'
+            : place.areacode === 6
+            ? 'Busan'
+            : place.areacode === 7
+            ? 'Ulsan'
+            : place.areacode === 8
+            ? 'Sejong'
+            : place.areacode === 31
+            ? 'Gyeonggi'
+            : place.areacode === 32
+            ? 'Gangwon'
+            : place.areacode === 33
+            ? 'Chungbuk'
+            : place.areacode === 34
+            ? 'Chungnam'
+            : place.areacode === 35
+            ? 'Gyeongbuk'
+            : place.areacode === 36
+            ? 'GyeongNam'
+            : place.areacodeA === 37
+            ? 'JeonBuk'
+            : 'Jeju'}
         </article>
 
         <article className="title">
-          {Ditem.title}
+          {place.title}
           <Heart />
         </article>
 
@@ -95,16 +105,14 @@ const Detail = () => {
           <img className="img4" src={'/'} alt=" 무엇이 들어가야 합니까?" />
         </article>
 
-        <Box />
+        <Box place={place}/>
 
-        <article className="Information">{Ditem.overview}</article>
-
+        <article className="Information">{place.overview}</article>
         <hr className="l" />
-
         <article className="Details">
           <img className="details" src={require('icons/p.svg').default} alt="" />
-          {Ditem.addr1}
-          <CopyToClipboard text={Ditem.addr1}>
+          {place.addr1}
+          <CopyToClipboard text={place.addr1}>
             <img
               className="d"
               src={require('icons/ss.svg').default}
@@ -116,18 +124,28 @@ const Detail = () => {
 
         <article className="Details">
           <img className="details" src={require('icons/t.svg').default} alt="" />
-          무엇이 들어가야 합니까?
+          {place.tel}
+          <CopyToClipboard text={place.tel}>
+            <img
+              className="d"
+              src={require('icons/ss.svg').default}
+              onClick={() => alert('Copy success')}
+              alt=""
+            />
+          </CopyToClipboard>
         </article>
 
         <article className="Details" style={{ marginBottom: '24px' }}>
           <img className="details" src={require('icons/w.svg').default} alt="" />
-          무엇이 들어가야 합니까?
+          <div dangerouslySetInnerHTML={{ __html: place.usefee }}></div>
         </article>
 
         <hr />
-
-        <article>무엇이 들어가야 합니까?</article>
-
+        <br />
+        <div className="subtitle">Detailed Location</div>
+        <DetailMap place={place} />
+        <div className="Details" dangerouslySetInnerHTML={{ __html: place.directions }}></div>
+        <br />
         <hr />
       </section>
     </div>

@@ -17,29 +17,45 @@ const SurveySodam = () => {
   const location = useLocation(); //가져올 때              //{state}
   const state = '헤헤';        
 
-  const handleApi = () => {
-    console.log('value: ', values);
-    axios
-      .post('https://jsonplaceholder.typicode.com/posts', {
-        param: values,
-        param: location,
-      })
+  console.log('dkdkkdk', location.state)
 
-      .then((result) => {
-        console.log(result.data);
+  let ty = location.state;
+
+  const eatResult = ty.eat.join();
+  const allergieResult = ty.allergie.join();
+ 
+
+
+  const handleApi = () => {
+    axios
+      .post('/survey/save', {
+
+        "transportation": ty.transportation,
+        "stay": ty.stay,
+        "destination": ty.destination,
+        "category": ty.category,
+        "eat": eatResult,
+        "allergie": allergieResult,
+        "foodOne" : values.foodOne,
+        "foodTwo" : values.foodTwo
+      
+  
+        // 함수 하나 만들어서 변수에 배열을 저장해주면 됨
+      })
+      .then(function (response) {
         alert('다음장');
         navigate('/showResult');
+     
       })
 
       .catch((error) => {
         console.log(error);
         alert('service error');
+        console.log(error.data);
       });
   };
   
-  useEffect(() => {
-    console.log('값', location);
-  }, []);// 
+
 
   const formFoodOne = [
     {
@@ -74,12 +90,18 @@ const SurveySodam = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  
+  useEffect(() => {
+    console.log('값', location);
+  }, []);// 
 
-
+ 
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
+
+
 
   const showData = () => {
     console.log('value:', values);
@@ -124,9 +146,7 @@ const SurveySodam = () => {
 
           <span className="boderSpan"></span>
           <div className="fsbtn">
-            <Link to="#">
               <Button onClick={handleApi}>Finish</Button>
-            </Link>
           </div>
         </form>
       </div>

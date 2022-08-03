@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import 'components/Pages/detail.css';
 import palette from '../../lib/styles/palette';
+
 const D = styled.button`
   width: 156px;
   height: 48px;
+  margin-top:24px;
   border: 1px solid #77aefc;
   border-radius: 30px;
   font-family: 'Pretendard';
@@ -20,8 +23,8 @@ const D = styled.button`
     background: #ffffff;
   }
 `;
-const R = styled.button`
-  width: 17.5vw;
+const R = styled.div`
+width: 17.5vw;
   height: 2.5vw;
   margin-left: 1.25vw;
 
@@ -40,11 +43,12 @@ const R = styled.button`
   text-align: center;
 
   color: #ffffff;
-`;
+`
 const L = styled.div`
   float: bottom;
   z-index: 10;
-
+  padding-top:12px;
+  padding-bottom:36px;
   position: sticky;
   box-sizing: border-box;
 
@@ -82,13 +86,11 @@ const B = styled.div`
   ${`top: calc(100vh - 460px);`}
 `;
 
-const Box = () => {
+const Box = ({place}) => {
   return (
     <B>
       <L>
-        <Link to="/">
-          <R>Reservation</R>
-        </Link>
+        <a className="homepagebtn" dangerouslySetInnerHTML={{ __html: place.homepage }}></a>
         <Link to="/">
           <D>Directions</D>
         </Link>
