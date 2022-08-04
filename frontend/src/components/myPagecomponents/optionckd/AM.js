@@ -1,6 +1,8 @@
 import React, {useState} from "react"
 import styled from "styled-components"
 import ModalPerformance from "components/common/ModalPerformance"
+import {useEffect} from "@types/react";
+import AuthService from "../../Header/services/auth.service";
 
 const AT =styled.div`
 width:100px;
@@ -54,6 +56,14 @@ color: #222222;
 const AM = () => {
 const [snsg, setsnsg] = useState("on");
 const [snsf, setsnsf] = useState("on");
+const [currentUser, setCurrentUser] = useState(undefined);
+    useEffect(() => {
+        const user = AuthService.getCurrentUser();
+
+        if (user) {
+            setCurrentUser(user);
+        }
+    })
 const onClickg = () => {
     if (snsg === 'on') {
         setsnsg("off")

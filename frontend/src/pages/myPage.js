@@ -9,15 +9,8 @@ import AuthService from "../components/Header/services/auth.service";
 
 const MyPage = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [currentUser, setCurrentUser] = useState(undefined);
   const [option, setoption] = useState('AM');
-  useEffect(() => {
-    const user = AuthService.getCurrentUser();
 
-    if (user) {
-      setCurrentUser(user);
-    }
-  })
   const onchange = (e) => {
 
       setoption(e.target.value);
