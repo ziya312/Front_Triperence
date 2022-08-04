@@ -6,7 +6,7 @@ const C = styled.div`
   float: left;
   margin-left: 28px;
   width: 222px;
-  margin-top: 22px;
+  margin-bottom:24px;
   font-family: 'Pretendard';
 `;
 const CardImage = styled.img`
@@ -85,9 +85,9 @@ const TourItem = ({ place }) => {
   const { title, addr1, cat1, tel, firstimage, contentid, areacode } = place;
   return (
     <div className="contents">
+      <Link to="/detail" state={{ contentid }}>
       <C>
         <Cardbox>
-          <Link to="/detail" state={{ contentid }}>
             <H>
               <Cardtitle>
                 {areacode === 1
@@ -126,9 +126,7 @@ const TourItem = ({ place }) => {
               </Cardtitle>
             </H>
             <CardImage img src={firstimage} onerror="this.src='images/default.png'"></CardImage>
-          </Link>
-        </Cardbox>
-
+        </Cardbox>            
         <Cardname>{title}</Cardname>
         <Cardclass>
           {cat1 === 'A01'
@@ -140,6 +138,7 @@ const TourItem = ({ place }) => {
             : cat1}
         </Cardclass>
       </C>
+      </Link>
     </div>
   );
 };

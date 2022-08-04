@@ -1,10 +1,12 @@
-import Categories from 'components/categoriescom/Categories';
-import {useState, useCallback} from 'react';
-import 'components/Pages/map.css';
-import TourList from 'pages/TourList';
+import Categories from "components/categoriescom/Categories";
+import { useState, useCallback } from "react";
+import "components/Pages/map.css";
+import TourList from "pages/TourList";
+import styled from "styled-components";
+
 const MapPage = () => {
-  const [category, setCategory] = useState('all');
-  const onSelect = useCallback(category => setCategory(category), []);
+  const [category, setCategory] = useState("all");
+  const onSelect = useCallback((category) => setCategory(category), []);
 
   return (
     <>
