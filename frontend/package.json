@@ -163,10 +163,6 @@
   },
   "devDependencies": {
     "react-dev-utils": "^12.0.1"
-<<<<<<< HEAD
-  }
-=======
   },
   "proxy":"http://localhost:8080"
->>>>>>> 7c7a0cbdf37f019cfc782b7f730e85cd7abf6b5c
 }

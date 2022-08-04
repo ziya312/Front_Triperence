@@ -4,7 +4,7 @@
     position: sticky;
 }
 
-.dlatl {
+.dlatll {
     display: flex!important;
     flex-basis: auto;
 }
@@ -74,7 +74,7 @@
 
     float: right;
 
-    right: 40px;
+    margin-right: 40px;
 
 }
 
@@ -179,10 +179,11 @@
     }
 }
 .wow1 {
-    background-image: url("../../icons/adultcon.svg");
+    background-image: url("icons/adultcon.svg");
     background-repeat: no-repeat;
     background-size: contain;
     position: relative;
+    background-size: ;
     top: 10px;
     height: 30px;
     width: 30px;
@@ -258,4 +259,32 @@
     height: 46px;
     right: 5px;
 
+}
+.login {
+    width: 46px;
+    height: 18px;
+
+
+    font-family: 'Pretendard';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: -0.03em;
+
+    color: #222222;
+
+
+
+background-color: #4E7CD7;
+    float: right;
+
+    margin-right: 40px;
+}
+.logi {
+    margin-right: 6px;
+    float: right;
 }

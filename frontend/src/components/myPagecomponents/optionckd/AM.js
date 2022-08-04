@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import styled from "styled-components"
 import ModalPerformance from "components/common/ModalPerformance"
 
@@ -51,9 +51,17 @@ line-height: 19px;
 color: #222222;
 
 `
-export default class AM extends React.Component {
-
-    render() {
+const AM = () => {
+const [snsg, setsnsg] = useState("on");
+const [snsf, setsnsf] = useState("on");
+const onClickg = () => {
+    if (snsg === 'on') {
+        setsnsg("off")
+}  else {setsnsg("on")}}
+    const onClickf = () => {
+        if (snsf === 'on') {
+            setsnsf("off")
+        }  else {setsnsf("on")}}
         return (
             
             <>
@@ -76,25 +84,60 @@ export default class AM extends React.Component {
                 <ATT > vfvbf
                 </ATT>
                 <input className='snsbtn' type="checkbox"/>
+                <div onClick={onClickg}>
+                {snsg === 'on' ? <img src={require("icons/sns1.svg").default} alt="" className="snsbtnimg"></img> :  <img src={require("icons/sns2.svg").default} alt="" className="snsbtnimg"></img> }
+                </div>
                 <ATT style={{marginTop:"12px",marginLeft:"100px"}}> vfvbf
                 </ATT>
                 <input className='snsbtn' type="checkbox"/>
-                
+                <div onClick={onClickf}>
+                    {snsf === 'on' ? <img src={require("icons/sns1.svg").default} alt="" className="snsbtnimg"></img> :  <img src={require("icons/sns2.svg").default} alt="" className="snsbtnimg"></img> }
+                </div>
             </UU>
             <UU>
                 <AT>Password 
                 </AT>
-                <ATT> ikiouliulyu
-                </ATT>    
-                <ModalPerformance value="gen"/> 
+
+                <ModalPerformance value="Password"/>
             </UU>
-                
+                <UU>
+                    <AT>Name
+                    </AT>
+                    <ATT style={{marginBottom:"24px"}}> ikiouliulyu
+                    </ATT>
+                    <ATT style={{marginLeft:"100px"}}> ikiouliulyu
+                </ATT>
+                    <ModalPerformance value="Name"/>
+
+                </UU>
+                <UU>
+                    <AT>Gender
+                    </AT>
+                    <ATT> ikiouliulyu
+                    </ATT>
+                    <ModalPerformance value="gender"/>
+                </UU>
+                <UU>
+                    <AT>Age
+                    </AT>
+                    <ATT> ikiouliulyu
+                    </ATT>
+                    <ModalPerformance value="age"/>
+                </UU>
+                <UU>
+                    <AT>Nationality
+                    </AT>
+                    <ATT> ikiouliulyu
+                    </ATT>
+                    <ModalPerformance value="gen"/>
+                </UU>
                 
 
 
             </>
             
         )
-    }
+
 
 }
+export default AM;
