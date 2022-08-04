@@ -2,31 +2,36 @@ import 'components/Pages/myPage.css';
 import MyPageoption from 'components/myPagecomponents/myPageoption';
 import React, { useState } from 'react';
 import AM from 'components/myPagecomponents/optionckd/AM';
+import Modal1 from "../components/common/unModal";
+import Modal from "../components/common/Modal";
+import {useEffect} from "react";
+import AuthService from "../components/Header/services/auth.service";
 
 const MyPage = () => {
-
+  const [isOpen, setIsOpen] = useState(false);
   const [option, setoption] = useState('AM');
+
   const onchange = (e) => {
-    if (e.target.value === 'AM') {
+
       setoption(e.target.value);
-      return 'a';
-    } else {
-      if (e.target.value === 'B') {
-        setoption(e.target.value);
-      } else {
-        //탈퇴
-      }
-    }
+
+
+
   };
 
+  const onClickButton = () => {
+    setIsOpen(true);
+  };
   return (
     <section className="mainsection">
+
       <article className="option2">
         <MyPageoption />
 
         <label className="option1">
           <input
             onChange={onchange}
+
             style={{ display: 'none' }}
             value="AM"
             type="radio"
@@ -52,23 +57,31 @@ const MyPage = () => {
           </div>
         </label>
         <label className="option1">
-          <input
-            onChange={onchange}
+          <button
             value="U"
-            style={{ display: 'none' }}
             type="radio"
             name="option"
-          />
-          <div>
+            onClick={onClickButton}
+            style={{marginTop:"0px" }}
+          >
             Unregister &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
             &nbsp; &nbsp; &nbsp;>
-          </div>
+          </button>
+
         </label>
       </article>
 
       <article className="statuis">
-        {option === 'AM' ? <AM /> : option === 'B' ? <div>qeqeqeqqe</div> : <div>vxczvzxcv</div>}
+        {option === 'AM' ? <AM /> :  <div>qeqeqeqqe</div>}
+        {isOpen && (
+            <Modal1
+                open={isOpen}
+                onClose={() => {
+                  setIsOpen(false);
+                }}
+            />
+        )}
       </article>
     </section>
   );
