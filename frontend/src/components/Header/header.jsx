@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import AuthService from "./services/auth.service";
 
 import EventBus from "./common/EventBus";
+import ModalPerformance from "../common/ModalPerformance";
 
 function Header() {
     const [search, setsearch] = useState("out");
@@ -13,7 +14,14 @@ function Header() {
     const [searchbox, setsearchbox] = useState("none");
     const [login, setlogin] = useState("");
     const [currentUser, setCurrentUser] = useState(undefined);
-
+    const [v, setv] = useState(null);
+    const onclick = () => {
+if (v==null) {
+    setv('a')
+} else {
+    setv(null)
+}
+    }
     useEffect(() => {
         const user = AuthService.getCurrentUser();
 
@@ -76,14 +84,27 @@ function Header() {
                 </div>
 
                 {currentUser ?
-                    <Link to="w">
-                        <div className='login'>{currentUser.nickname} ▼</div>
+<>
+                        <div className='login' onClick={onclick}>{currentUser.nickname} ▼</div>
                         <img className="logi"
+                             onClick={onclick}
                              src={require("icons/sns1.svg").default}
                              onerror="this.src='images/default.png'"
                         />
+                        {v ? <div className='kkk'>
+                            <div onClick={logOut}>log out</div>
+                            <Link to='w'>
+                                <div>mypage</div>
+                            </Link>
+                            <div className='login' >{currentUser.nickname} ▼</div>
+                            <img className="logi"
+                                 src={require("icons/sns1.svg").default}
+                                 onError="this.src='images/default.png'"
+                            />
 
-                    </Link>
+                            </div>: null}
+
+                    </>
                     :
                         <Link to="/login"> <div className="loginbox">
                         Login/Sign up

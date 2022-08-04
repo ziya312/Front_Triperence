@@ -4,13 +4,13 @@
     position: sticky;
 }
 
+
 .dlatll {
     display: flex!important;
     flex-basis: auto;
 }
 .logo {
     position: absolute;
-    width: 38px;
     height: 37px;
     left: 40px;
     top: 32px;
@@ -260,9 +260,21 @@
     right: 5px;
 
 }
+.kkk {
+    top:50px;
+
+    right: 50px;
+    position: fixed;
+    left: 1680px;
+    background-color: #4E7CD7;
+
+    width: 200px;
+    z-index: -;
+
+}
 .login {
-    width: 46px;
-    height: 18px;
+
+
 
 
     font-family: 'Pretendard';
@@ -270,16 +282,10 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-    display: flex;
-    align-items: center;
-    text-align: center;
+
     letter-spacing: -0.03em;
 
     color: #222222;
-
-
-
-background-color: #4E7CD7;
     float: right;
 
     margin-right: 40px;
