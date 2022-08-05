@@ -2,7 +2,7 @@ import Header from 'components/Header/header';
 import 'components/Pages/detail.css';
 import Box from 'components/common/ckd';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
-import Heart from 'components/common/heart';
+import HeartButton from 'components/common/HeartButton';
 import I from 'icons/img_19975_1.jpg';
 import Y from 'icons/스토리_(5).jpg';
 import { useState, useEffect } from 'react';
@@ -92,7 +92,7 @@ const Detail = () => {
 
         <article className="title">
           {place.title}
-          <Heart />
+          {/* <HeartButton like={like} onClick={toggleLike}/> */}
         </article>
 
         <article className="images">

@@ -1,20 +1,21 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import Heart from 'components/common/heart';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import HeartButton from 'components/common/HeartButton';
 
 const C = styled.div`
   float: left;
   margin-left: 28px;
   width: 222px;
-  margin-top: 22px;
-  font-family: 'Pretendard';
+  margin-bottom:24px;
+  z-index:-1;
 `;
 const CardImage = styled.img`
   width: 222px;
   height: 222px;
   position: relative;
   border-radius: 20px;
-  z-index: -1;
   top: -200px;
 `;
 const Cardbox = styled.div`
@@ -83,11 +84,12 @@ const Cardclass = styled.div`
 
 const TourItem = ({ place }) => {
   const { title, addr1, cat1, tel, firstimage, contentid, areacode } = place;
+
   return (
     <div className="contents">
+      <Link to="/detail" state={{ contentid }}>
       <C>
         <Cardbox>
-          <Link to="/detail" state={{ contentid }}>
             <H>
               <Cardtitle>
                 {areacode === 1
@@ -126,10 +128,9 @@ const TourItem = ({ place }) => {
               </Cardtitle>
             </H>
             <CardImage img src={firstimage} onerror="this.src='images/default.png'"></CardImage>
-          </Link>
-        </Cardbox>
-
+        </Cardbox>            
         <Cardname>{title}</Cardname>
+        {/* <HeartButton like={like} onClick={toggleLike}/> */}
         <Cardclass>
           {cat1 === 'A01'
             ? 'Nauture'
@@ -140,6 +141,7 @@ const TourItem = ({ place }) => {
             : cat1}
         </Cardclass>
       </C>
+      </Link>
     </div>
   );
 };

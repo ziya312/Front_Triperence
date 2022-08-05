@@ -4,8 +4,6 @@ import TourItem from './TourItem';
 import axios from 'axios';
 import Map from 'components/map/map';
 import Categories from 'components/categoriescom/Categories';
-import Pagination from 'react-js-pagination';
-import Paging from 'components/common/Paging';
 import ManageEvents from 'components/Container';
 
 const Box = styled.div`
@@ -19,7 +17,6 @@ const CardPlace = styled.div`
   float: left;
   padding: 10px;
   width: 28.5vw;
-
   height: 850px;
 `;
 
@@ -33,11 +30,6 @@ const TourListBlock = styled.div`
 const TourList = ({ category }) => {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [page, setPage] = useState(1);
-
-  const handlePageChange = (page) => {
-    setPage(page);
-  };
 
   useEffect(() => {
     //async 를 사용하는 함수 따로 선언

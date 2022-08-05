@@ -4,7 +4,7 @@ import Slider from 'react-slick';
 import './carousel.css';
 import SecondPlace from 'pages/secondPlace';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-import Heart from 'components/common/heart';
+import HeartButton from 'components/common/HeartButton';
 import ReactDOM from 'https://cdn.skypack.dev/react-dom';
 import {
   TiChevronLeftOutline,
@@ -120,7 +120,7 @@ function NewCarou() {
           <div className={idx === imageIndex ? 'slider activeSlide' : 'slide'}>
             <SecondPlace>
               <img src={img} alt={img} />
-              <Heart />
+              <HeartButton />
             </SecondPlace>
           </div>
         ))}

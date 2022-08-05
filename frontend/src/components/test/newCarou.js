@@ -4,7 +4,9 @@ import Slider from 'react-slick';
 import './carousel.css';
 import SecondPlace from 'pages/secondPlace';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-import Heart from 'components/common/heart';
+import HeartImg from 'icons/Heart.svg';
+import EmptyHeartImg from "icons/EmptyHeart.svg";
+// import Heart from 'components/common/heart';
 import ReactDOM from 'https://cdn.skypack.dev/react-dom';
 import {
   TiChevronLeftOutline,
