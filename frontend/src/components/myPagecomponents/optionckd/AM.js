@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
 import React, {useState, useEffect} from "react"
-=======
-import React, {useState,useEffect} from "react"
->>>>>>> Stashed changes
 import styled from "styled-components"
 import ModalPerformance from "components/common/ModalPerformance"
 import AuthService from "../../Header/services/auth.service";

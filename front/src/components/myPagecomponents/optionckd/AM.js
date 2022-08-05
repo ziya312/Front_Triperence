@@ -1,7 +1,6 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import styled from "styled-components"
 import ModalPerformance from "components/common/ModalPerformance"
-import {useEffect} from "@types/react";
 import AuthService from "../../Header/services/auth.service";
 
 const AT =styled.div`

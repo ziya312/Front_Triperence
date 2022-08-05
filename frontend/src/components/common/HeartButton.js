@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from 'styled-components';
-import HeartImg from 'icons/Heart.svg';
+import HeartImg from 'icons/heart.svg';
 import EmptyHeartImg from "icons/EmptyHeart.svg";
 
 const Heart = styled.img`
