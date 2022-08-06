@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './header.css';
 import { Link } from 'react-router-dom';
-
 import AuthService from "./services/auth.service";
-
 import EventBus from "./common/EventBus";
-import ModalPerformance from "../common/ModalPerformance";
 
 function Header() {
     const [search, setsearch] = useState("out");
@@ -92,15 +89,23 @@ if (v==null) {
                              onerror="this.src='images/default.png'"
                         />
                         {v ? <div className='kkk'>
-                            <div onClick={logOut}>log out</div>
-                            <Link to='w'>
-                                <div>mypage</div>
-                            </Link>
-                            <div className='login' >{currentUser.nickname} ▼</div>
-                            <img className="logi"
-                                 src={require("icons/sns1.svg").default}
-                                 onError="this.src='images/default.png'"
+                            <img
+                            src={require("icons/sns1.svg").default}
+                            onError="this.src='images/default.png'"
+                            style={{float:"left"}}
                             />
+                            <div style={{marginLeft:'50px'}}>
+                                <div className='i'>{currentUser.nickname} ▼</div>
+                                <Link to='w'>
+                                <div className='p'>마이페이지 ></div>
+                                </Link>
+                            </div>
+                            <hr style={{width:"200px", marginTop:"20px", marginBottom:"20px"}}/>
+
+                            <div className='l' onClick={logOut}>log out</div>
+
+
+
 
                             </div>: null}
 

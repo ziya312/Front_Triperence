@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import p from 'icons/plus.svg';
-import HeartButton from 'components/common/HeartButton';
+// import Heart from 'components/common/heart';
+
 
 // const C = styled.div`
 //   float: left;
@@ -107,7 +108,7 @@ const Place = () => {
         // // src={firstimage}
         // alt="http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
         ></CardImage>
-        <HeartButton />
+        {/* <HeartButton like={like} onClick={toggleLike}/> */}
       </Cardbox>
       <Cardbox>
         <Cardtitle>ssssssssss</Cardtitle>
@@ -116,7 +117,7 @@ const Place = () => {
         // // src={firstimage}
         // alt="http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
         ></CardImage>
-        <HeartButton />
+        {/* <HeartButton like={like} onClick={toggleLike}/> */}
       </Cardbox>
       <Cardbox>
         <Cardtitle>ssssssssss</Cardtitle>
@@ -125,7 +126,7 @@ const Place = () => {
         // // src={firstimage}
         // alt="http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
         ></CardImage>
-        <HeartButton />
+        {/* <HeartButton like={like} onClick={toggleLike}/> */}
       </Cardbox>
     </>
   );

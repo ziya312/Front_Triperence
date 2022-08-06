@@ -84,22 +84,7 @@ const Cardclass = styled.div`
 
 const TourItem = ({ place }) => {
   const { title, addr1, cat1, tel, firstimage, contentid, areacode } = place;
-  const [like, setLike] = useState(false)
 
-  useEffect(async () => {
-    const fetchData = async() => {
-      const res = await axios.get("")
-      if(res.data.type === 'liked') setLike(true)
-    }
-    fetchData()
-  },[]);
-
-  const toggleLike = async (e) => {
-    const res = await axios.post("") // [POST] 사용자가 좋아요를 누름 -> DB 갱신
-    setLike(!like)
-  }
-
-출처: https://cotak.tistory.com/113 [TaxFree:티스토리]
   return (
     <div className="contents">
       <Link to="/detail" state={{ contentid }}>
@@ -145,7 +130,7 @@ const TourItem = ({ place }) => {
             <CardImage img src={firstimage} onerror="this.src='images/default.png'"></CardImage>
         </Cardbox>            
         <Cardname>{title}</Cardname>
-        <HeartButton like={like} onClick={toggleLike}/>
+        {/* <HeartButton like={like} onClick={toggleLike}/> */}
         <Cardclass>
           {cat1 === 'A01'
             ? 'Nauture'

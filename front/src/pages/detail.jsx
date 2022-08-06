@@ -37,6 +37,7 @@ const Detail = () => {
     //async 를 사용하는 함수 따로 선언
     const fetchData = async () => {
       setLoading(true);
+
       try {
         const response = await axios.get(`http://localhost:8080/places/detail/${id}`);
         setPlace(response.data[0]);
@@ -91,7 +92,7 @@ const Detail = () => {
 
         <article className="title">
           {place.title}
-          <HeartButton />
+          {/* <HeartButton like={like} onClick={toggleLike}/> */}
         </article>
 
         <article className="images">

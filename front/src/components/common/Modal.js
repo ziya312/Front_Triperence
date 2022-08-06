@@ -6,30 +6,27 @@ import lll from "icons/x.svg"
 import Mage from "./modals/Mage";
 import "components/common/Modal.css"
 import Mgen from "./modals/Mgen";
+import Password from "./modals/Password";
+import Mname from "./modals/Mname";
 
 const Modal = ({onClose, value}) => {
 
 
-    const handleClose = () => {
-        onClose?.();
-    };
+
 
     return (
         <Overlay>
             <ModalWrap>
-                <CloseButton onClick={handleClose}>
-
-                </CloseButton>
-                <Contents>
-
-                <div className="Mtitle">{value}  Change</div>
-                {value === 'gen' ? <Mgen /> : value === 'age' ? <Mage/> : <div>vxczvzxcv</div>}
-
-                    <Button onClick={handleClose}>닫혀라 모달!</Button>
 
 
 
-                </Contents>
+                {value === 'gender' ? <Mgen onClose={onClose} value={value}/> : value === 'age' ? <Mage onClose={onClose} value={value}/> :value === 'Password' ? <Password onClose={onClose} value={value}/>:value === 'Name' ? <Mname onClose={onClose} value={value}/>: <div></div>}
+
+
+
+
+
+
             </ModalWrap>
         </Overlay>
     );
@@ -47,7 +44,7 @@ const Overlay = styled.div`
 
 const ModalWrap = styled.div`
 width: 588px;
-height: 278px;
+
 
 background: #FFFFFF;
 border-radius: 20px;
@@ -59,50 +56,7 @@ border-radius: 20px;
   transform: translate(-50%, -50%);
 `;
 
-const CloseButton = styled.div`
-  float: right;
-  width: 21px;
-  height: 22px;
 
-  margin: 20px;
-  cursor: pointer;
-  background-image: url(${lll});
-  background-repeat: no-repeat;
-    background-size: contain;
 
-`;
-
-const Contents = styled.div`
-  margin: 50px 30px;
-
-  h1 {
-    font-size: 30px;
-    font-weight: 600;
-    matgin-bottom: 60px;
-  }
-`;
-
-const Button = styled.div`
-  font-size: 14px;
-  border: none;
-  background-color: #ababab;
-  border-radiusc: 10px;
-  color: white;
-  cursor: pointer;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 45px;
-
-  color: #FFFFFF;
-margin 40px auto;
-width: 384px;
-height: 48px;
-
-background: #77AEFC;
-border-radius: 30px;
-
-`;
 
 export default Modal;

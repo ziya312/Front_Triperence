@@ -4,7 +4,7 @@ import lll from "../../../icons/x.svg";
 import React from "react";
 
 
-const Mname = (props) => {
+const Password = (props) => {
     const handleClose = () => {
         props.onClose?.();
     };
@@ -17,7 +17,7 @@ const Mname = (props) => {
             <Contents>
                 <div className="Mtitle">{props.value}  Change</div>
                 <div className="gender">
-                    <Input type="text" placeholder = "Current Password"/>
+<Input type="text" placeholder = "Current Password"/>
                     <Input  type="text" placeholder = "Set Password"/>
                     <Input type="text" placeholder = "Confirm Password"/>
 
@@ -92,4 +92,4 @@ background: #77AEFC;
 border-radius: 30px;
 
 `;
-export default Mname;
+export default Password;

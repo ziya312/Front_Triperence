@@ -3,7 +3,7 @@ import styled from "styled-components"
 import ModalPerformance from "components/common/ModalPerformance"
 import AuthService from "../../Header/services/auth.service";
 
-const AT =styled.div`
+const AT = styled.div`
 width:100px;
 
 font-family: 'Pretendard';
@@ -36,7 +36,7 @@ margin-bottom: 24px;
 width: 744px;
 float:left;
 `
-const ATT =styled.div`
+const ATT = styled.div`
 width: 500px;
 height: 18px;
 float:left;
@@ -53,99 +53,113 @@ color: #222222;
 
 `
 const AM = () => {
-const [snsg, setsnsg] = useState("on");
-const [snsf, setsnsf] = useState("on");
-const [currentUser, setCurrentUser] = useState(undefined);
-    useEffect(() => {
-        const user = AuthService.getCurrentUser();
+    const [snsg, setsnsg] = useState("on");
+    const [snsf, setsnsf] = useState("on");
+    const [user, settUser] = useState(undefined);
 
+    const currentUser = AuthService.getCurrentUser();
+
+    useEffect(() => {
         if (user) {
-            setCurrentUser(user);
+            settUser(user);
         }
     })
-const onClickg = () => {
-    if (snsg === 'on') {
-        setsnsg("off")
-}  else {setsnsg("on")}}
+    const onClickg = () => {
+        if (snsg === 'on') {
+            setsnsg("off")
+        } else {
+            setsnsg("on")
+        }
+    }
     const onClickf = () => {
         if (snsf === 'on') {
             setsnsf("off")
-        }  else {setsnsf("on")}}
-        return (
-            
-            <>
-                <SS>
+        } else {
+            setsnsf("on")
+        }
+    }
+    return (
+
+        <>
+            <SS>
                 Account Management
-                </SS>
-                <hr style={{margin:"30px 0px"}}></hr>
+            </SS>
+            <hr style={{margin: "30px 0px"}}></hr>
             <UU>
-                
-                <AT>ID(Email) 
+
+                <AT>ID(Email)
                 </AT>
-                <ATT style={{width:"584px"}}> vfvbf
-                </ATT>    
-                
+                <ATT style={{width: "584px"}}> {currentUser.email}
+                </ATT>
+
             </UU>
             <UU>
-                
-                <AT>Link to SNS 
+
+                <AT>Link to SNS
                 </AT>
-                <ATT > vfvbf
+                <ATT>
                 </ATT>
                 <input className='snsbtn' type="checkbox"/>
                 <div onClick={onClickg}>
-                {snsg === 'on' ? <img src={require("icons/sns1.svg").default} alt="" className="snsbtnimg"></img> :  <img src={require("icons/sns2.svg").default} alt="" className="snsbtnimg"></img> }
+                    {snsg === 'on' ? <img src={require("icons/sns1.svg").default} alt="" className="snsbtnimg"></img> :
+                        <img src={require("icons/sns2.svg").default} alt="" className="snsbtnimg"></img>}
                 </div>
-                <ATT style={{marginTop:"12px",marginLeft:"100px"}}> vfvbf
-                </ATT>
-                <input className='snsbtn' type="checkbox"/>
                 <div onClick={onClickf}>
-                    {snsf === 'on' ? <img src={require("icons/sns1.svg").default} alt="" className="snsbtnimg"></img> :  <img src={require("icons/sns2.svg").default} alt="" className="snsbtnimg"></img> }
+                    {snsf === 'on' ? <img src={require("icons/sns1.svg").default} alt="" className="snsbtnimg"></img> :
+                        <img src={require("icons/sns2.svg").default} alt="" className="snsbtnimg"></img>}
                 </div>
             </UU>
             <UU>
-                <AT>Password 
+                <AT>Password
                 </AT>
 
                 <ModalPerformance value="Password"/>
             </UU>
-                <UU>
-                    <AT>Name
-                    </AT>
-                    <ATT style={{marginBottom:"24px"}}> ikiouliulyu
-                    </ATT>
-                    <ATT style={{marginLeft:"100px"}}> ikiouliulyu
+            <UU>
+                <AT>Name
+                </AT>
+                <ATT style={{marginBottom: "24px"}}>
+                    {currentUser.givenname}
                 </ATT>
-                    <ModalPerformance value="Name"/>
+                <ATT style={{marginLeft: "100px"}}>
+                    {currentUser.familyname}
+                </ATT>
+                <ModalPerformance value="Name"/>
 
-                </UU>
-                <UU>
-                    <AT>Gender
-                    </AT>
-                    <ATT> ikiouliulyu
-                    </ATT>
-                    <ModalPerformance value="gender"/>
-                </UU>
-                <UU>
-                    <AT>Age
-                    </AT>
-                    <ATT> ikiouliulyu
-                    </ATT>
-                    <ModalPerformance value="age"/>
-                </UU>
-                <UU>
-                    <AT>Nationality
-                    </AT>
-                    <ATT> ikiouliulyu
-                    </ATT>
-                    <ModalPerformance value="gen"/>
-                </UU>
-                
+            </UU>
+            <UU>
+                <AT>Nickname
+                </AT>
+                <ATT>{currentUser.nickname}
+                </ATT>
+                <ModalPerformance value="gender"/>
+            </UU>
+            <UU>
+                <AT>Gender
+                </AT>
+                <ATT> {currentUser.gender}
+                </ATT>
+                <ModalPerformance value="gender"/>
+            </UU>
+            <UU>
+                <AT>Age
+                </AT>
+                <ATT> {currentUser.age}
+                </ATT>
+                <ModalPerformance value="age"/>
+            </UU>
+            <UU>
+                <AT>Nationality
+                </AT>
+                <ATT> {currentUser.nationality}
+                </ATT>
+                <ModalPerformance value="gen"/>
+            </UU>
 
 
-            </>
-            
-        )
+        </>
+
+    )
 
 
 }
