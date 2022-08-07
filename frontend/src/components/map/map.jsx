@@ -123,7 +123,7 @@ function Map({ place }) {
               <CardImage img src={selected.firstimage} onerror="this.src='images/default.png'" />
 
               <TextDiv>
-                <Cardtitle> {selected.contentid}</Cardtitle>
+                <Cardtitle> {selected.title}</Cardtitle>
                 <Cardname> {selected.addr1}</Cardname>
               </TextDiv>
             </InfoCard>
