@@ -3,19 +3,19 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import HeartButton from 'components/common/HeartButton';
-
 const C = styled.div`
   float: left;
   margin-left: 28px;
   width: 222px;
-  margin-bottom:24px;
-  z-index:-1;
+  margin-bottom: 24px;
+  position: relative;
 `;
 const CardImage = styled.img`
   width: 222px;
   height: 222px;
   position: relative;
   border-radius: 20px;
+  z-index: -1;
   top: -200px;
 `;
 const Cardbox = styled.div`
@@ -26,6 +26,7 @@ const Cardbox = styled.div`
   border-radius: 20px;
   margin-bottom: 4px;
   background-color: transparent;
+  z-index: 5;
 `;
 const H = styled.div`
   float: left;
@@ -35,6 +36,7 @@ const H = styled.div`
 `;
 const Cardtitle = styled.div`
   float: left;
+  z-index=-1;
   margin-left: 10px;
   margin-right: 80px;
   margin-top: 12px;
@@ -77,9 +79,9 @@ const Cardclass = styled.div`
   float: left;
   width: 222px;
   font-family: 'Pretendard';
-  font-weight: 10;
+  font-weight: 50;
   font-size: 16px;
-  color: #3f4756;
+  color: #999999;
 `;
 
 const TourItem = ({ place }) => {
@@ -88,8 +90,8 @@ const TourItem = ({ place }) => {
   return (
     <div className="contents">
       <Link to="/detail" state={{ contentid }}>
-      <C>
-        <Cardbox>
+        <C>
+          <Cardbox>
             <H>
               <Cardtitle>
                 {areacode === 1
@@ -128,19 +130,19 @@ const TourItem = ({ place }) => {
               </Cardtitle>
             </H>
             <CardImage img src={firstimage} onerror="this.src='images/default.png'"></CardImage>
-        </Cardbox>            
-        <Cardname>{title}</Cardname>
-        {/* <HeartButton like={like} onClick={toggleLike}/> */}
-        <Cardclass>
-          {cat1 === 'A01'
-            ? 'Nauture'
-            : cat1 === 'A02'
-            ? 'Culture/Art/History'
-            : cat1 === 'A03'
-            ? 'Leisure/Sports'
-            : cat1}
-        </Cardclass>
-      </C>
+          </Cardbox>
+          <Cardname>{title}</Cardname>
+          {/* <HeartButton like={like} onClick={toggleLike}/> */}
+          <Cardclass>
+            {cat1 === 'A01'
+              ? 'Nauture'
+              : cat1 === 'A02'
+              ? 'Culture/Art/History'
+              : cat1 === 'A03'
+              ? 'Leisure/Sports'
+              : cat1}
+          </Cardclass>
+        </C>
       </Link>
     </div>
   );

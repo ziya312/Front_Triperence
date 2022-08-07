@@ -48,6 +48,7 @@
     "react-app-polyfill": "^3.0.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "^18.2.0",
+    "react-geocode": "^0.2.3",
     "react-i18next": "^11.17.4",
     "react-icons": "^4.4.0",
     "react-js-pagination": "^3.0.3",

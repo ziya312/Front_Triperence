@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import { GoogleMap, InfoWindow, LoadScript, Marker, MarkerClusterer } from '@react-google-maps/api';
+import styled from 'styled-components';
 
 const containerStyle = {
   width: '82rem',
@@ -20,8 +21,80 @@ const options = {
     'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m', // so you must have m1.png, m2.png, m3.png, m4.png, m5.png and m6.png in that folder
 };
 
+const InfoCard = styled.div`
+  float: left;
+  border-radius: 20px;
+  width: 350px;
+  height: 150px;
+  border-radius: 20px;
+  margin-bottom: 4px;
+  background-color: transparent;
+`;
+
+const CardImage = styled.img`
+  width: 120px;
+  height: 120px;
+  margin: 12px;
+  border-radius: 20px;
+`;
+
+const TextDiv = styled.div`
+  float: right;
+  width: 200px;
+  margin-top: 12px;
+`;
+
+const Cardtitle = styled.div`
+  line-height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  margin-bottom: 4px;
+  line-height: 1.2;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  text-align: left;
+  color: #77aefc;
+  word-break: break-all;
+`;
+
+const Cardname = styled.div`
+  float: left;
+  font-family: 'Pretendard';
+  font-weight: 40;
+  font-size: 16px;
+  color: #222222;
+  margin-top: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.2;
+  text-align: left;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;
+
+const Cardbox = styled.div`
+  float: left;
+  border-radius: 20px;
+  width: 222px;
+  height: 222px;
+  border-radius: 20px;
+  margin-bottom: 4px;
+  background-color: transparent;
+`;
+
 function Map({ place }) {
-  const [selectedCenter, setSelectedCenter] = useState(null);
+  const [selected, setSelected] = useState(null);
+
   return (
     <LoadScript
       googleMapsApiKey="AIzaSyCrXhf7dS8MZ1tiCUiy-y-yVfy_GToWCNA"
@@ -37,29 +110,25 @@ function Map({ place }) {
                 key={place.contentid}
                 position={{ lat: place.mapy, lng: place.mapx }}
                 onClick={() => {
-                  setSelectedCenter(center);
+                  setSelected(place);
                 }}
                 clusterer={clusterer}
               />
             ))
           }
         </MarkerClusterer>
-        {selectedCenter && (
-          <InfoWindow
-            onCloseClick={() => {
-              setSelectedCenter(null);
-            }}
-            position={{
-              lat: selectedCenter.latitude,
-              lng: selectedCenter.longitude,
-            }}
-          >
-            <div>
-              <h3>{selectedCenter.title}</h3>
-            </div>
+        {selected && (
+          <InfoWindow position={{ lat: selected.mapy + 0.06, lng: selected.mapx }}>
+            <InfoCard>
+              <CardImage img src={selected.firstimage} onerror="this.src='images/default.png'" />
+
+              <TextDiv>
+                <Cardtitle> {selected.contentid}</Cardtitle>
+                <Cardname> {selected.addr1}</Cardname>
+              </TextDiv>
+            </InfoCard>
           </InfoWindow>
         )}
-
         {/* Child components, such as markers, info windows, etc. */}
         <></>
       </GoogleMap>
