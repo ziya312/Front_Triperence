@@ -27,10 +27,9 @@ const Detail = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const [A, setA] = useState(null);
-  var checknull = ""
-
+  var checknull = '';
   const id = location.state.contentid;
-
+  console.log(id);
   useEffect(() => {}, [location]);
 
   useEffect(() => {
@@ -40,7 +39,8 @@ const Detail = () => {
 
       try {
         const response = await axios.get(`http://localhost:8080/places/detail/${id}`);
-        setPlace(response.data[0]);
+        console.debug(response.data);
+        setPlace(response.data);
         setA(place.areacode);
       } catch (e) {}
       setLoading(false);
@@ -96,19 +96,15 @@ const Detail = () => {
         </article>
 
         <article className="images">
-          <img className="img1" src={'/'} alt=" 무엇이 들어가야 합니까?" />
-
-          <img className="img2" src={'/'} alt=" 무엇이 들어가야 합니까?" />
-
-          <img className="img3" src={'/'} alt=" 무엇이 들어가야 합니까?" />
-
-          <img className="img4" src={'/'} alt=" 무엇이 들어가야 합니까?" />
+          {place.originimgurl.map((img, idx) => {
+            return <img className={`img${idx + 1}`} src={img} alt=" 무엇이 들어가야 합니까?" />;
+          })}
         </article>
 
-        <Box place={place}/>
+        <Box place={place} />
 
         <article className="Information">{place.overview}</article>
-        <hr className="l" />
+        <hr />
         <article className="Details">
           <img className="details" src={require('icons/p.svg').default} alt="" />
           {place.addr1}
@@ -123,7 +119,7 @@ const Detail = () => {
         </article>
 
         <article className="Details">
-          <img className="details" src={require('icons/t.svg').default} alt="" />
+          <img className="details" src={require('icons/tel.svg').default} alt="" />
           {place.tel}
           <CopyToClipboard text={place.tel}>
             <img
@@ -139,12 +135,16 @@ const Detail = () => {
           <img className="details" src={require('icons/w.svg').default} alt="" />
           <div dangerouslySetInnerHTML={{ __html: place.usefee }}></div>
         </article>
-
         <hr />
         <br />
         <div className="subtitle">Detailed Location</div>
         <DetailMap place={place} />
-        <div className="Details" dangerouslySetInnerHTML={{ __html: place.directions }}></div>
+
+        {place.directions === null ? (
+          ''
+        ) : (
+          <div className="Details" dangerouslySetInnerHTML={{ __html: place.directions }}></div>
+        )}
         <br />
         <hr />
       </section>
