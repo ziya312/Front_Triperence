@@ -88,6 +88,7 @@ function ShowResult() {
       />
     );
   };
+  // ----------------------------------------
   useEffect(() => {
     fetch('/api/getMyType')
       .then((res) => {
@@ -101,6 +102,10 @@ function ShowResult() {
         setType(1);
       });
   }, []);
+
+//-----------------------------------------------
+
+
   return (
     <div>
       <div className="app-container">
