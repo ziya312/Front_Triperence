@@ -28,9 +28,8 @@ const Detail = () => {
   const location = useLocation();
   const [A, setA] = useState(null);
   var checknull = '';
-
   const id = location.state.contentid;
-  console.log(typeof location.state.contentid);
+  console.log(id);
   useEffect(() => {}, [location]);
 
   useEffect(() => {
@@ -40,7 +39,8 @@ const Detail = () => {
 
       try {
         const response = await axios.get(`http://localhost:8080/places/detail/${id}`);
-        setPlace(response.data[0]);
+        console.debug(response.data);
+        setPlace(response.data);
         setA(place.areacode);
       } catch (e) {}
       setLoading(false);
@@ -96,13 +96,9 @@ const Detail = () => {
         </article>
 
         <article className="images">
-          <img className="img1" src={'/'} alt=" 무엇이 들어가야 합니까?" />
-
-          <img className="img2" src={'/'} alt=" 무엇이 들어가야 합니까?" />
-
-          <img className="img3" src={'/'} alt=" 무엇이 들어가야 합니까?" />
-
-          <img className="img4" src={'/'} alt=" 무엇이 들어가야 합니까?" />
+          {place.originimgurl.map((img, idx) => {
+            return <img className={`img${idx + 1}`} src={img} alt=" 무엇이 들어가야 합니까?" />;
+          })}
         </article>
 
         <Box place={place} />

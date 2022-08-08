@@ -129,7 +129,7 @@ const TourItem = ({ place }) => {
                   : 'Jeju'}
               </Cardtitle>
             </H>
-            <CardImage img src={firstimage} onerror="this.src='images/default.png'"></CardImage>
+            <CardImage img src={firstimage} onerror="this.src='images/default.jpg'"></CardImage>
           </Cardbox>
           <Cardname>{title}</Cardname>
           {/* <HeartButton like={like} onClick={toggleLike}/> */}

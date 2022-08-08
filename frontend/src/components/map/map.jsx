@@ -1,7 +1,7 @@
 import { React, useState } from 'react';
 import { GoogleMap, InfoWindow, LoadScript, Marker, MarkerClusterer } from '@react-google-maps/api';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const containerStyle = {
   width: '82rem',
@@ -101,7 +101,13 @@ const Cardname = styled.div`
 
 function Map({ place }) {
   const [selected, setSelected] = useState(null);
+  const navigate = useNavigate();
+  let contentid = useState();
 
+  const onClick = () => {
+    contentid = parseInt(selected.contentid);
+    navigate('/detail', { state: { contentid } });
+  };
   return (
     <LoadScript
       googleMapsApiKey="AIzaSyCrXhf7dS8MZ1tiCUiy-y-yVfy_GToWCNA"
@@ -126,16 +132,16 @@ function Map({ place }) {
         </MarkerClusterer>
         {selected && (
           <InfoWindow position={{ lat: selected.mapy + 0.06, lng: selected.mapx }}>
-            <Link to={{ pathname: '/detail', state: selected.contentid }}>
-              <InfoCard>
-                <CardImage img src={selected.firstimage} onerror="this.src='images/default.png'" />
-                <TextDiv>
-                  <Cardtitle> {selected.title}</Cardtitle>
-                  <Cardname> {selected.addr1} </Cardname>
-                  <Cardtel> {selected.tel}</Cardtel>
-                </TextDiv>
-              </InfoCard>
-            </Link>
+            {/* <Link to={{ pathname: '/detail', state: selected.contentid }}> */}
+            <InfoCard onClick={onClick}>
+              <CardImage img src={selected.firstimage} />
+              <TextDiv>
+                <Cardtitle> {selected.title}</Cardtitle>
+                <Cardname> {selected.addr1} </Cardname>
+                <Cardtel> {selected.tel}</Cardtel>
+              </TextDiv>
+            </InfoCard>
+            {/* </Link> */}
           </InfoWindow>
         )}
 
