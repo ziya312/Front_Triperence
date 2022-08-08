@@ -1,6 +1,7 @@
 import { React, useState } from 'react';
 import { GoogleMap, InfoWindow, LoadScript, Marker, MarkerClusterer } from '@react-google-maps/api';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const containerStyle = {
   width: '82rem',
@@ -63,7 +64,23 @@ const Cardtitle = styled.div`
   color: #77aefc;
   word-break: break-all;
 `;
-
+const Cardtel = styled.div`
+  float: left;
+  font-family: 'Pretendard';
+  font-weight: 10;
+  font-size: 16px;
+  color: #999999;
+  margin-top: 8px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.2;
+  text-align: left;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+`;
 const Cardname = styled.div`
   float: left;
   font-family: 'Pretendard';
@@ -80,16 +97,6 @@ const Cardname = styled.div`
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-`;
-
-const Cardbox = styled.div`
-  float: left;
-  border-radius: 20px;
-  width: 222px;
-  height: 222px;
-  border-radius: 20px;
-  margin-bottom: 4px;
-  background-color: transparent;
 `;
 
 function Map({ place }) {
@@ -119,16 +126,19 @@ function Map({ place }) {
         </MarkerClusterer>
         {selected && (
           <InfoWindow position={{ lat: selected.mapy + 0.06, lng: selected.mapx }}>
-            <InfoCard>
-              <CardImage img src={selected.firstimage} onerror="this.src='images/default.png'" />
-
-              <TextDiv>
-                <Cardtitle> {selected.title}</Cardtitle>
-                <Cardname> {selected.addr1}</Cardname>
-              </TextDiv>
-            </InfoCard>
+            <Link to={{ pathname: '/detail', state: selected.contentid }}>
+              <InfoCard>
+                <CardImage img src={selected.firstimage} onerror="this.src='images/default.png'" />
+                <TextDiv>
+                  <Cardtitle> {selected.title}</Cardtitle>
+                  <Cardname> {selected.addr1} </Cardname>
+                  <Cardtel> {selected.tel}</Cardtel>
+                </TextDiv>
+              </InfoCard>
+            </Link>
           </InfoWindow>
         )}
+
         {/* Child components, such as markers, info windows, etc. */}
         <></>
       </GoogleMap>

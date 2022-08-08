@@ -27,10 +27,10 @@ const Detail = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const [A, setA] = useState(null);
-  var checknull = ""
+  var checknull = '';
 
   const id = location.state.contentid;
-
+  console.log(typeof location.state.contentid);
   useEffect(() => {}, [location]);
 
   useEffect(() => {
@@ -105,7 +105,7 @@ const Detail = () => {
           <img className="img4" src={'/'} alt=" 무엇이 들어가야 합니까?" />
         </article>
 
-        <Box place={place}/>
+        <Box place={place} />
 
         <article className="Information">{place.overview}</article>
         <hr className="l" />
