@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import HeartButton from 'components/common/HeartButton';
+
 const C = styled.div`
   float: left;
   margin-left: 28px;
@@ -129,10 +130,10 @@ const TourItem = ({ place }) => {
                   : 'Jeju'}
               </Cardtitle>
             </H>
-            <CardImage img src={firstimage} onerror="this.src='images/default.jpg'"></CardImage>
+            <CardImage img src={firstimage} d></CardImage>
           </Cardbox>
           <Cardname>{title}</Cardname>
-          {/* <HeartButton like={like} onClick={toggleLike}/> */}
+          {/* <HeartButton like={like} onClick={toggleLike} /> */}
           <Cardclass>
             {cat1 === 'A01'
               ? 'Nauture'

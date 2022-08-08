@@ -1,7 +1,9 @@
 import Header from 'components/Header/header';
 import 'components/Pages/detail.css';
 import Box from 'components/common/ckd';
+import defaultImg from 'images/default.jpg';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import styled from 'styled-components';
 import HeartButton from 'components/common/HeartButton';
 import I from 'icons/img_19975_1.jpg';
 import Y from 'icons/스토리_(5).jpg';
@@ -97,13 +99,16 @@ const Detail = () => {
 
         <article className="images">
           {place.originimgurl.map((img, idx) => {
-            return <img className={`img${idx + 1}`} src={img} alt=" 무엇이 들어가야 합니까?" />;
+            return <img className={`img${idx + 1}`} src={img} />;
           })}
         </article>
 
         <Box place={place} />
 
-        <article className="Information">{place.overview}</article>
+        <article
+          className="Information"
+          dangerouslySetInnerHTML={{ __html: place.overview }}
+        ></article>
         <hr />
         <article className="Details">
           <img className="details" src={require('icons/p.svg').default} alt="" />
@@ -118,28 +123,38 @@ const Detail = () => {
           </CopyToClipboard>
         </article>
 
-        <article className="Details">
-          <img className="details" src={require('icons/tel.svg').default} alt="" />
-          {place.tel}
-          <CopyToClipboard text={place.tel}>
-            <img
-              className="d"
-              src={require('icons/ss.svg').default}
-              onClick={() => alert('Copy success')}
-              alt=""
-            />
-          </CopyToClipboard>
-        </article>
+        {place.tel === null ? (
+          ''
+        ) : (
+          <article className="Details">
+            <img className="details" src={require('icons/tel.svg').default} alt="" />
+            {place.tel}
+            <CopyToClipboard text={place.tel}>
+              <img
+                className="d"
+                src={require('icons/ss.svg').default}
+                onClick={() => alert('Copy success')}
+                alt=""
+              />
+            </CopyToClipboard>
+          </article>
+        )}
 
-        <article className="Details" style={{ marginBottom: '24px' }}>
-          <img className="details" src={require('icons/w.svg').default} alt="" />
-          <div dangerouslySetInnerHTML={{ __html: place.usefee }}></div>
-        </article>
+        {place.usefee === null ? (
+          ''
+        ) : (
+          <article className="Details" style={{ marginBottom: '24px' }}>
+            <img className="details" src={require('icons/w.svg').default} alt="" />
+            <div dangerouslySetInnerHTML={{ __html: place.usefee }}></div>
+          </article>
+        )}
+
         <hr />
         <br />
         <div className="subtitle">Detailed Location</div>
         <DetailMap place={place} />
 
+        <br />
         {place.directions === null ? (
           ''
         ) : (

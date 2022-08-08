@@ -83,20 +83,18 @@
     border-radius: 30px;
 }
 .Information {
-
     width: 40vw;
     font-family: 'Pretendard';
     font-style: normal;
-    font-weight: 30;
     font-size: 20px;
-    line-height: 36px;
+    line-height: 1.25;
 
     word-break:break-word;
     color: #595959;
     margin-bottom: 24px;
 }
 hr {
-
+    color: #595959;
     width : 40vw;
     float: left;
     height: 0px;
