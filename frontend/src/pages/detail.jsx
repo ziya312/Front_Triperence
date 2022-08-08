@@ -104,7 +104,7 @@ const Detail = () => {
         <Box place={place} />
 
         <article className="Information">{place.overview}</article>
-        <hr className="l" />
+        <hr />
         <article className="Details">
           <img className="details" src={require('icons/p.svg').default} alt="" />
           {place.addr1}
@@ -119,7 +119,7 @@ const Detail = () => {
         </article>
 
         <article className="Details">
-          <img className="details" src={require('icons/t.svg').default} alt="" />
+          <img className="details" src={require('icons/tel.svg').default} alt="" />
           {place.tel}
           <CopyToClipboard text={place.tel}>
             <img
@@ -135,12 +135,16 @@ const Detail = () => {
           <img className="details" src={require('icons/w.svg').default} alt="" />
           <div dangerouslySetInnerHTML={{ __html: place.usefee }}></div>
         </article>
-
         <hr />
         <br />
         <div className="subtitle">Detailed Location</div>
         <DetailMap place={place} />
-        <div className="Details" dangerouslySetInnerHTML={{ __html: place.directions }}></div>
+
+        {place.directions === null ? (
+          ''
+        ) : (
+          <div className="Details" dangerouslySetInnerHTML={{ __html: place.directions }}></div>
+        )}
         <br />
         <hr />
       </section>
