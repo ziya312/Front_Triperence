@@ -10,6 +10,7 @@ import axios from 'axios';
 import Form from 'react-validation/build/form';
 import Input from 'react-validation/build/input';
 import CheckButton from 'react-validation/build/button';
+import { isEmail } from "validator";
 
 import AuthService from '../services/auth.service';
 
@@ -18,6 +19,16 @@ const required = (value) => {
     return (
       <div className="alert alert-danger" role="alert">
         This field is required!
+      </div>
+    );
+  }
+};
+
+const validEmail = value => {
+  if (!isEmail(value)) {
+    return (
+      <div className="alert alert-danger" role="alert">
+        This is not a valid email.
       </div>
     );
   }
@@ -130,7 +141,7 @@ const Login = () => {
           <CheckButton style={{ display: "none" }} ref={checkBtn} />
         </Form>
         <p className="loginp">Don't have an account yet?</p>
-        <Link className="logina" to="/signup">
+        <Link className="llogin" to="/signup">
           sign up
         </Link>
         <div className="spanDiv">

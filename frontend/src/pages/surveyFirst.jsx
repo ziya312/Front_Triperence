@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import SecondHeader from 'components/Header/secondHeader';
 import 'components/Pages/surveyFirst.css';
 import Button from 'components/common/Button';
+import AuthService from "../components/Header/services/auth.service";
 import axios from 'axios';
 
 const SurveyFirst = () => {
@@ -13,6 +14,8 @@ const SurveyFirst = () => {
       destination: '',
     },
   ]);
+
+  
 
   const [isChecked, setIsChecked] = useState(false);
   const [checkedItems1, setCheckeditems1] = useState(new Set());
@@ -124,6 +127,9 @@ const SurveyFirst = () => {
     { id: 3, name: 'eat', value: 'No Pork' },
     { id: 4, name: 'eat', value: 'No Beef' },
   ];
+
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -261,7 +267,7 @@ const SurveyFirst = () => {
           </div>
         </form>
       </div>
-      <code>{JSON.stringify({ allergie: category1,  category2,   })}</code>
+      {/* <code>{JSON.stringify({ user: currentUser})}</code> */}
     </div>
   );
 };

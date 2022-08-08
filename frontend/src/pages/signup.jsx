@@ -1,7 +1,8 @@
 import { Component, useState, useRef  } from 'react';
-import 'components/Pages/signup.css';
+// import 'components/Pages/signup.css';
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
+import Select from 'react-validation/build/select';
 import CheckButton from "react-validation/build/button";
 import FormInput from 'components/FormInput/FormInput';
 import logo from 'icons/logo.svg';
@@ -44,17 +45,17 @@ const vpassword = value => {
 };
 
 const vnickname = value => {
-  if (value.length < 3 || value.length > 40) {
+  if (value.length < 2 || value.length > 40) {
     return (
       <div className="alert alert-danger" role="alert">
-        The password must be between 6 and 40 characters.
+        Please enter a nickname of at least two characters
       </div>
     );
   }
 };
 
 const vfamilyname = value => {
-  if (value.length < 3 || value.length > 40) {
+  if (value.length < 1 || value.length > 40) {
     return (
       <div className="alert alert-danger" role="alert">
         The password must be between 6 and 40 characters.
@@ -127,6 +128,7 @@ const Sign = () => {
 
   const onChangeGender = e => {
     const gender = e.target.value;
+    console.log(gender);
     setGender(gender);
   };
 
@@ -224,7 +226,7 @@ const Sign = () => {
                   placeholder="Givename"
                   value={givenname}
                   onChange={onChangeGivenname}
-                  validations={[required, vgivenname]}
+                  validations={[required, ]}
                 />
               </div>
 
@@ -237,11 +239,122 @@ const Sign = () => {
                   placeholder="Familyname"
                   value={familyname}
                   onChange={onChangeFamilyname}
-                  validations={[required, vfamilyname]}
+                  validations={[required]}
                 />
               </div>
 
-              <div className="form-group"> 
+              {/* =============================================================== */}
+              <label className='radio-label'>Gender</label>
+              {/* <div className="radio-group1"> */}
+                <label className="BtnGen1" htmlFor="BtnGen1">
+                  <input
+                    id="BtnGen1"
+                    type="radio"
+                    className="radio-control"
+                    name="gender"
+                    value={'Male'}
+                    checked={gender === "Male"}
+                    onChange={onChangeGender}
+                  />
+                   <div>Male</div>
+                </label>
+
+                <label className="BtnGen2"  htmlFor="BtnGen2">
+                  <input
+                    type="radio"
+                    id="BtnGen2"
+                    className="radio-control"
+                    name="gender"
+                    value={'Female'}
+                    checked={gender === "Female"}
+                    onChange={onChangeGender}
+                  />
+                  <div>Female</div>
+                </label>
+
+                <label className="BtnGen3"  htmlFor="BtnGen3">
+                  <input
+                    id="BtnGen3"
+                    type="radio"
+                    className="radio-control"
+                    name="gender"
+                    value={'Other'}
+                    checked={gender === "Other"}
+                    onChange={onChangeGender}
+                  />
+                  <div>Other</div>
+                </label>
+              {/* </div> */}
+
+              {/* ==================================================================== */}
+
+              <label className='radio-label'>Age</label>
+              {/* <div className="radio-group2"> */}
+                <label className="BtnAge1" htmlFor="BtnAge1">
+                  <input
+                    id="BtnAge1"
+                    type="radio"
+                    className="radio-control"
+                    name="age"
+                    value={'~20s'}
+                    checked={age === "~20s"}
+                    onChange={onChangeAge}
+                  />
+                  <div>~20s</div>
+                </label>
+
+                <label className="BtnAge2" htmlFor="BtnAge2">
+                  <input
+                    id="BtnAge2"
+                    type="radio"
+                    className="radio-control"
+                    name="age"
+                    value={'30s'}
+                    checked={age === "30s"}
+                    onChange={onChangeAge}
+                  />
+                  <div>30s</div>
+                </label>
+
+                <label className="BtnAge3" htmlFor="BtnAge3">
+                  <input
+                    id="BtnAge3"
+                    type="radio"
+                    className="radio-control"
+                    name="age"
+                    value={'40s'}
+                    checked={age === "40s"}
+                    onChange={onChangeAge}
+                  />
+                  <div>40s</div>
+                </label>
+
+                <label className="BtnAge4" htmlFor="BtnAge4">
+                  <input
+                    id="BtnAge4"
+                    type="radio"
+                    className="radio-control"
+                    name="gender"
+                    value={'50s~'}
+                    checked={age === "50s~"}
+                    onChange={onChangeAge}
+                  />
+                  <div>50s~</div>
+                </label>
+              {/* </div> */}
+
+              <div className="form-group">
+              <label>Nationality</label>
+                <Select className="select-custom" name="nationality" value={nationality} onChange={onChangeNationality} validations={[required]}>
+                  <option value="">Nationality</option>
+                  <option value={'USA'}>USA</option>
+                  <option value={'UK'}>UK</option>
+                  <option value={'JAPAN'}>JAPAN</option>
+                  <option value={'CHINA'}>CHINA</option>
+                </Select>
+              </div>
+
+              {/* <div className="form-group"> 
                 <label htmlFor="age">Age</label>
                 <Input
                   type="text"
@@ -273,7 +386,7 @@ const Sign = () => {
                   value={gender}
                   onChange={onChangeGender}
                 />
-              </div>
+              </div> */}
 
               <div className="form-group">
                 <button className="btn btn-primary btn-block">Sign Up</button>

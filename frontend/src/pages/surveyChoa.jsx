@@ -4,6 +4,7 @@ import SecondHeader from 'components/Header/secondHeader';
 import 'components/Pages/surveyFirst.css';
 import Button from 'components/common/Button';
 import CustomButton from 'components/common/CustomButton';
+import AuthService from "../components/Header/services/auth.service";
 import axios from 'axios';
 
 const SurveyChoa = () => {
@@ -37,12 +38,13 @@ const SurveyChoa = () => {
 
   const eatResult = ty.eat.join();
   const allergieResult = ty.allergie.join();
-
-
   const k_popResult = category1["k_pop"].join();
   const k_movieResult = category2["k_movie_drama"].join();
 
-  console.log('한번 볼거야ㅑ', k_popResult);
+  const currentUser = AuthService.getCurrentUser();
+  console.log(currentUser.email, currentUser.id );
+
+  // console.log('한번 볼거야ㅑ', k_popResult);
   // console.log('두번 볼거야ㅑ', category2["k_movie_drama"]);
 
   const handleApi = () => {
@@ -95,6 +97,9 @@ const SurveyChoa = () => {
         "allergie": allergieResult,
         "k_pop": k_popResult,
         "k_movie_drama": k_movieResult,
+        "user_id":  currentUser.id,
+        "user_email": currentUser.email,
+        
 
         // paramk: submitValues,
         // 함수 하나 만들어서 변수에 배열을 저장해주면 됨
@@ -188,7 +193,7 @@ const SurveyChoa = () => {
     {
       id: 9,
       name: 'k_movie_drama',
-      value: 'ALL OF US OUR DEAD',
+      value: 'ALL OF US ARE DEAD',
       imageSrc: require('../images/all_of_Us.jpg'),
     },
   ];
@@ -298,7 +303,7 @@ const SurveyChoa = () => {
           </div>
         </form>
       </div>
-      <code>{JSON.stringify({ data: aaa.state.transportation })}</code>
+      {/* <code>{JSON.stringify({ data: aaa.state.transportation })}</code> */}
     </div>
   );
 };
