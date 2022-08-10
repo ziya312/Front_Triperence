@@ -27,6 +27,10 @@ const TourListBlock = styled.div`
     padding-right: 1rem;
   }
 `;
+
+const DIV = styled.div`
+  z-index:100;
+`
 const TourList = ({ category }) => {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -57,6 +61,7 @@ const TourList = ({ category }) => {
   // item 값이 유효할 때
   return (
     <>
+      <DIV>
       <Box>
         <CardPlace>
           {place.map((place) => (
@@ -65,6 +70,7 @@ const TourList = ({ category }) => {
         </CardPlace>
       </Box>
       <Map place={place} />
+      </DIV>
     </>
   );
 };
