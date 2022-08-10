@@ -68,4 +68,11 @@ const HeartButton = () => {
   return <Heart name="heart" src={isLikes ? HeartImg : EmptyHeartImg} onClick={isLikesHandler}></Heart>;
 };
 
+// const Heart = styled.img`
+//   float: right;
+//   margin-right: 12px;
+// `;
+
+// const HeartButton = () => {};
+
 export default HeartButton;
