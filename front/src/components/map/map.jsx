@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import { GoogleMap, InfoWindow, LoadScript, Marker, MarkerClusterer } from '@react-google-maps/api';
+import Mapmodalper from "components/common/mapmodalper";
 
 const containerStyle = {
   width: '82rem',
@@ -28,6 +29,7 @@ function Map({ place }) {
       language="en"
       region="KR"
     >
+      <Mapmodalper />
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
         <MarkerClusterer options={options}>
           {(clusterer) =>
