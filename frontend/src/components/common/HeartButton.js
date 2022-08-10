@@ -57,7 +57,7 @@ const HeartButton = ( {contentid} ) => {
       setLikesCount(LikesCount - 1);
       axios({
         url: '/places/likes',
-        method: 'delete',
+        method: 'post',
         data: {
           "user_id": currentUser.id,
           "like_cno" : contentid,
