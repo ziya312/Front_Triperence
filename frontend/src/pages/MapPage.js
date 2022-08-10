@@ -3,7 +3,7 @@ import { useState, useCallback } from 'react';
 import 'components/Pages/map.css';
 import TourList from 'pages/TourList';
 import Button from 'components/common/Button';
-import Mapmodalper from "../components/common/mapmodalper";
+
 const MapPage = () => {
   const [category, setCategory] = useState('all');
   const onSelect = useCallback((category) => setCategory(category), []);
@@ -11,9 +11,7 @@ const MapPage = () => {
   return (
     <>
       <div>
-
         <Categories category={category} onSelect={onSelect} />
-          <Mapmodalper />
         <TourList category={category} />
       </div>
     </>

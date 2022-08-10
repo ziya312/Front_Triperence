@@ -21,7 +21,6 @@ const StyledButton = styled.button`
   &hover {
     background: ${palette.main[0]};
   }
-  
 `;
 
 const Button = (props) => <StyledButton {...props} />;

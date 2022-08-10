@@ -2,6 +2,7 @@ import { React, useState } from 'react';
 import { GoogleMap, InfoWindow, LoadScript, Marker, MarkerClusterer } from '@react-google-maps/api';
 import styled from 'styled-components';
 import { Link, useNavigate } from 'react-router-dom';
+import Mapmodalper from 'components/common/mapmodalper';
 
 const containerStyle = {
   width: '82rem',
@@ -108,6 +109,7 @@ function Map({ place }) {
     contentid = parseInt(selected.contentid);
     navigate('/detail', { state: { contentid } });
   };
+
   return (
     <LoadScript
       googleMapsApiKey="AIzaSyCrXhf7dS8MZ1tiCUiy-y-yVfy_GToWCNA"
@@ -115,6 +117,7 @@ function Map({ place }) {
       region="KR"
     >
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={10}>
+        <Mapmodalper />
         <MarkerClusterer options={options}>
           {(clusterer) =>
             place.map((place) => (
