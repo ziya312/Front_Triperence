@@ -1,16 +1,22 @@
 import Header from 'components/Header/header';
+import styled from 'styled-components';
 import 'components/Pages/detail.css';
 import Box from 'components/common/ckd';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import HeartButton from 'components/common/HeartButton';
-import I from 'icons/img_19975_1.jpg';
-import Y from 'icons/스토리_(5).jpg';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import DetailMap from './detailMap';
 
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+
+const Heart = styled.div`
+    width:100px;
+    position: absolute;
+    top: -165px;
+    right: 10px;
+`;
 
 const containerStyle = {
   width: '792px',
@@ -56,6 +62,9 @@ const Detail = () => {
   return (
     <div>
       <section className="section">
+        <Heart>
+          <HeartButton />
+        </Heart>
         <article className="categorie">
           {place.areacode === 1
             ? 'Seoul'
@@ -89,9 +98,9 @@ const Detail = () => {
             ? 'JeonBuk'
             : 'Jeju'}
         </article>
-
         <article className="title">
           {place.title}
+
           {/* <HeartButton like={like} onClick={toggleLike}/> */}
         </article>
 
