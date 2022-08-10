@@ -3,6 +3,7 @@
     margin-bottom: 100px;
     max-width: 62.5vw;
     z-index: 1;
+    position: relative;
 
 }
 .categorie {
