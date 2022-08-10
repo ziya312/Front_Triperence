@@ -1,4 +1,4 @@
-input:checked + div {
+/* input:checked + div {
 
     font-family: 'Inter';
     font-style: normal;
@@ -12,7 +12,7 @@ input:checked + div {
 
 
     width: 180px;
-    height: 48px;
+    height: 48px; 
     margin-left: 24px;
 
     background: #FFFFFF;
@@ -42,4 +42,4 @@ margin-left: 24px;
 background: #FFFFFF;
 border: 1px solid #D1D1D1;
 border-radius: 30px;
-}
+} */
