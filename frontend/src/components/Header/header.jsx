@@ -85,12 +85,12 @@ if (v==null) {
                         <div className='login' onClick={onclick}>{currentUser.nickname} ▼</div>
                         <img className="logi"
                              onClick={onclick}
-                             src={require("icons/sns1.svg").default}
+                             src={require("../icons/defaultprofile.svg").default}
                              onerror="this.src='images/default.png'"
                         />
                         {v ? <div className='kkk'>
                             <img
-                            src={require("icons/sns1.svg").default}
+                            src={require("../icons/defaultprofile.svg").default}
                             onError="this.src='images/default.png'"
                             style={{float:"left"}}
                             />
