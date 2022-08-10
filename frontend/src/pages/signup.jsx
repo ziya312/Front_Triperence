@@ -167,6 +167,7 @@ const Sign = () => {
           setMessage(resMessage);
           setSuccessful(false);
         }
+        
       );
     }
  
@@ -388,8 +389,11 @@ const Sign = () => {
                 />
               </div> */}
 
+              
               <div className="form-group">
+          
                 <button className="btn btn-primary btn-block">Sign Up</button>
+ 
               </div>
             </div>
           )}

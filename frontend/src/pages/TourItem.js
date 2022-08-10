@@ -4,22 +4,23 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import HeartButton from 'components/common/HeartButton';
 const C = styled.div`
-  float: left;
+  float:left;
   margin-left: 28px;
   width: 222px;
   margin-bottom: 24px;
   position: relative;
 `;
 const CardImage = styled.img`
+position: relative;
   width: 222px;
   height: 222px;
-  position: relative;
   border-radius: 20px;
   z-index: -1;
   top: -200px;
 `;
 const Cardbox = styled.div`
   float: left;
+  position: relative;
   border-radius: 20px;
   width: 222px;
   height: 222px;
@@ -89,8 +90,9 @@ const TourItem = ({ place }) => {
 
   return (
     <div className="contents">
-      <Link to="/detail" state={{ contentid }}>
         <C>
+        <HeartButton/>
+        <Link to="/detail" state={{ contentid }}>
           <Cardbox>
             <H>
               <Cardtitle>
@@ -132,6 +134,7 @@ const TourItem = ({ place }) => {
             <CardImage img src={firstimage} onerror="this.src='images/default.jpg'"></CardImage>
           </Cardbox>
           <Cardname>{title}</Cardname>
+
           {/* <HeartButton like={like} onClick={toggleLike}/> */}
           <Cardclass>
             {cat1 === 'A01'
@@ -142,8 +145,8 @@ const TourItem = ({ place }) => {
               ? 'Leisure/Sports'
               : cat1}
           </Cardclass>
-        </C>
       </Link>
+      </C>
     </div>
   );
 };

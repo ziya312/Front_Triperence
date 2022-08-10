@@ -35,6 +35,9 @@ const validEmail = value => {
 };
 
 const Login = () => {
+
+const currentUser = AuthService.getCurrentUser();
+
   let navigate = useNavigate();
 
   const form = useRef();
@@ -64,9 +67,9 @@ const Login = () => {
     form.current.validateAll();
 
     if (checkBtn.current.context._errors.length === 0) {
-      AuthService.login(email, password).then(
+      AuthService.login(email, password, ).then(
         () => {
-          navigate("/profile");
+          navigate("/");
           window.location.reload();
         },
         (error) => {
