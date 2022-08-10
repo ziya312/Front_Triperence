@@ -21,8 +21,8 @@ const CardPlace = styled.div`
 `;
 
 const TourListBlock = styled.div`
-  @media screen and (max-width: 768px) {
-    width: 100%;
+  @media screen and (max-width: 1920px) {
+    width: 30%;
     padding-left: 1rem;
     padding-right: 1rem;
   }

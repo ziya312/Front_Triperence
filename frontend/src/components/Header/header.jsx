@@ -57,8 +57,8 @@ if (v==null) {
                           style={{marginRight: '24px'}}
                           onMouseOver={() => setsearch("on")}
                           onMouseOut={() => setsearch("out")}>
-                        {search === "out" ? (<div>SEARCH</div>)
-                            : (<div style={{color:"#77AEFC"}}>SEARCH</div>)}
+                        {search === "out" ? (<div>MAP</div>)
+                            : (<div style={{color:"#77AEFC"}}>MAP</div>)}
                     </Link>
 
                     <Link className="menu" to="/place"
@@ -70,13 +70,13 @@ if (v==null) {
                             : (<div style={{color:"#77AEFC"}}>PLACE</div>)}
                     </Link>
 
-                    <Link className="menu" to="/meet"
+                    <Link className="menu" to="/surveyFirst"
                           style={{marginLeft: '0px'}}
                           onMouseOver={() => setMEET("on")}
                           onMouseOut={() => setMEET("out")}>
 
-                        {MEET === "out" ? (<div>MEET</div>)
-                            : (<div style={{color:"#77AEFC"}}>MEET</div>)}
+                        {MEET === "out" ? (<div>TEST</div>)
+                            : (<div style={{color:"#77AEFC"}}>TEST</div>)}
                     </Link>
                 </div>
 
@@ -85,12 +85,12 @@ if (v==null) {
                         <div className='login' onClick={onclick}>{currentUser.nickname} ▼</div>
                         <img className="logi"
                              onClick={onclick}
-                             src={require("../icons/defaultprofile.svg").default}
+                             src={require("icons/defaultprofile.svg").default}
                              onerror="this.src='images/default.png'"
                         />
                         {v ? <div className='kkk'>
-                            <img
-                            src={require("../icons/defaultprofile.svg").default}
+                            <img className='logi'
+                            src={require("icons/defaultprofile.svg").default}
                             onError="this.src='images/default.png'"
                             style={{float:"left"}}
                             />

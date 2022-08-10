@@ -6,7 +6,7 @@ import Mapmodalper from "components/common/mapmodalper";
 
 
 const containerStyle = {
-  width: '82rem',
+  width: '70%',
   height: '856px',
 };
 
