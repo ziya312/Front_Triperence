@@ -32,7 +32,7 @@ const Heart = styled.img`
   background-size: contain; */
 `;
 
-const HeartButton = () => {
+const HeartButton = ( {contentid} ) => {
   const [isLikes, setIsLikes] = useState(false);
   const [LikesCount, setLikesCount] = useState(100);
 
@@ -45,19 +45,22 @@ const HeartButton = () => {
         method: 'post',
         data: {
           "user_id": currentUser.id,
+          "like_cno" : contentid,
         },
         baseURL: 'http://localhost:8080',
       })
+      console.log(currentUser.id);
+      console.log(contentid);
       console.log('찜기능');
 
     } else if(isLikes) {
       setLikesCount(LikesCount - 1);
       axios({
         url: '/places/likes',
-        method: 'post',
+        method: 'delete',
         data: {
           "user_id": currentUser.id,
-          "like_cno" : 2,
+          "like_cno" : contentid,
         },
         baseURL: 'http://localhost:8080',
       })

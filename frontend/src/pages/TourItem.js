@@ -91,7 +91,7 @@ const TourItem = ({ place }) => {
   return (
     <div className="contents">
         <C>
-        <HeartButton/>
+        <HeartButton contentid = { contentid }/>
         <Link to="/detail" state={{ contentid }}>
           <Cardbox>
             <H>
