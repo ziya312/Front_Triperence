@@ -1,5 +1,102 @@
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import Cross from 'icons/Cross.svg';
 
+const MapModal = ({ onClose }) => {
+  const [values, setValues] = useState({});
 
+  const formstay = [
+    { cat3: 'B02010100', value: 'Hotel' },
+    { cat3: 'B02010500', value: 'Condominiums' },
+    { cat3: 'B02010300', value: 'Hanok Stays' },
+    { cat3: 'B02011200', value: 'Home Stay' },
+    { cat3: 'B02010900', value: 'Motel' },
+    { cat3: 'B02010700', value: 'Pension' },
+    { cat3: 'B02010600', value: 'Hostel' },
+    { cat3: 'B02011100', value: 'Guest House' },
+];
+
+  const handleClose = () => {
+    onClose?.();
+  };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const onChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const showData = () => {
+    console.log('value:', values);
+  };
+
+  return (
+    <Overlay>
+      <ModalWrap>
+        <Title>Filter</Title>
+        <CloseButton onClick={handleClose}>
+          <img src={Cross} />
+        </CloseButton>
+        <hr />
+        <div>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <div>
+                <label className="bd-s"> Where do you like to stay?</label>
+                <label className="bd-m">*Hanouk: Traditional korean styled house</label>
+                {formstay.map((item) => (
+                  <label key={item.id} className="fi-map">
+                    <input
+                      type="radio"
+                      name={item.name}
+                      value={item.value}
+                      onChange={onChange}
+                    ></input>
+                    <div>{item.value}</div>
+                  </label>
+                ))}
+              </div>
+            </div>
+          </form>
+        </div>
+      </ModalWrap>
+    </Overlay>
+  );
+};
+
+const Overlay = styled.div`
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+`;
+
+const Title = styled.div`
+  font-size: 28pt;
+  font-family: 'Pretendard';
+`;
+const ModalWrap = styled.div`
+  width: 43.75vw;
+  height: 46.875vw;
+  border-radius: 20px;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const CloseButton = styled.div`
+  float: right;
+  height: 40px;
+  margin: 12px;
+  cursor: pointer;
+`;
+export default MapModal;
 // // import React from "react";
 // // import styled from "styled-components";
 // // import {Link} from "react-router-dom";
@@ -14,22 +111,22 @@
 
 // const MapModal = ({ onClose }) => {
 //     const [values, setValues] = useState({});
-  
+
 //     const handleClose = () => {
 //       onClose?.();
 //     };
 //     const handleSubmit = (e) => {
 //       e.preventDefault();
 //     };
-  
+
 //     const onChange = (e) => {
 //       setValues({ ...values, [e.target.name]: e.target.value });
 //     };
-  
+
 //     const showData = () => {
 //       console.log('value:', values);
 //     };
-  
+
 //     return (
 //       <Overlay>
 //         <ModalWrap>
@@ -236,8 +333,6 @@
 // //                     <input type="radio" name="Accommodations" style={{display:"none"}}/>
 // //                     <div></div>
 
-
-
 // //                 </label>
 // //             </div>
 
@@ -248,7 +343,6 @@
 // //                         <input type="radio" name="Restaurants" style={{display:"none"}}/>
 // //                         <div></div>
 
-
 // //                     </label>
 // //                 </div>
 
@@ -258,7 +352,6 @@
 // //                     <label className="B">
 // //                         <input type="radio" name="Landmark" style={{display:"none"}}/>
 // //                         <div></div>
-
 
 // //                     </label>
 // //                 </div>
@@ -361,7 +454,6 @@
 // // align-items: center;
 // // text-align: center;
 // // color: #fff;
-
 
 // // `
 // // export default MapModal;

@@ -84,7 +84,7 @@ const AM = () => {
             <SS>
                 Account Management
             </SS>
-            <hr style={{margin: "30px 0px"}}></hr>
+            <hr style={{width :"680px", margin: "32px 0px"}}></hr>
             <UU>
 
                 <AT>ID(Email)
@@ -93,7 +93,7 @@ const AM = () => {
                 </ATT>
 
             </UU>
-            <UU>
+            {/* <UU>
 
                 <AT>Link to SNS
                 </AT>
@@ -108,16 +108,16 @@ const AM = () => {
                     {snsf === 'on' ? <img src={require("icons/sns1.svg").default} alt="" className="snsbtnimg"></img> :
                         <img src={require("icons/sns2.svg").default} alt="" className="snsbtnimg"></img>}
                 </div>
-            </UU>
+            </UU> */}
             <UU>
-                <AT>Password
-                </AT>
-
+                <AT>Password</AT>
+                <ATT style={{marginBottom: "24px"}}>
+                    {currentUser.password}
+                </ATT>
                 <ModalPerformance value="Password"/>
             </UU>
             <UU>
-                <AT>Name
-                </AT>
+                <AT>Name</AT>
                 <ATT style={{marginBottom: "24px"}}>
                     {currentUser.givenname}
                 </ATT>

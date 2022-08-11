@@ -11,7 +11,7 @@ const ModalPerformance = (props) => {
   };
   return (
     <>
-      <Button onClick={onClickButton}>Change</Button>
+      <Change onClick={onClickButton}>Change</Change>
       {isOpen && (
         <Modal
           open={isOpen}
@@ -25,7 +25,7 @@ const ModalPerformance = (props) => {
   );
 };
 
-const Button = styled.button`
+const Change = styled.div`
   border: 0;
   outline: 0;
   background-color: transparent;

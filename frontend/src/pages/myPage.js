@@ -38,8 +38,7 @@ const MyPage = () => {
             name="option"
           />
           <div>
-            Account Management &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp;>
+            Account Management
           </div>
         </label>
         <label className="option1">
@@ -51,23 +50,19 @@ const MyPage = () => {
             name="option"
           />
           <div>
-            Bookmark &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; >
+            Bookmark
           </div>
         </label>
         <label className="option1">
-          <button
+          <div
             value="U"
             type="radio"
             name="option"
             onClick={onClickButton}
             style={{marginTop:"0px" }}
           >
-            Unregister &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-            &nbsp; &nbsp; &nbsp;>
-          </button>
+            Unregister
+          </div>
 
         </label>
       </article>
