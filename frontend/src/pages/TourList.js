@@ -18,7 +18,7 @@ const CardPlace = styled.div`
   padding: 10px;
   width: 28.5vw;
   height: 850px;
-`;
+`;  //리스트 틀
 
 const TourListBlock = styled.div`
   @media screen and (max-width: 1920px) {
