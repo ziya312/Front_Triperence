@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import 'components/Pages/test.css';
 import Img from 'components/test/Img';
-import Place from 'components/test/place';
+import Place from 'components/test/placeOne';
 import NewCarou from 'components/test/newCarou';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
+import axios from 'axios';
 
 const StyledButton = styled.button`
   display: iflex;
@@ -75,6 +76,7 @@ const character = [
 
 function ShowResult() {
   const [type, setType] = useState(0);
+  const [like, setLike] = useState(false);
 
   const hahahaha = (idx) => {
     console.debug(idx, '모양ㅇ모양');
@@ -88,35 +90,49 @@ function ShowResult() {
       />
     );
   };
-  // ----------------------------------------
+
+
+  // const toggleLike = async (e) => {
+  //   const res = await axios.post(...)
+  // }
+
+
+
+
   useEffect(() => {
-    fetch('/api/getMyType')
-      .then((res) => {
-        return res.json();
-      })
+    // axios({
+    //   url: '/survey/result/type=choa',
+    //   method: 'get',
+    //   data: {
+    //     "user_id": currentUser.id,
+    //     "like_cno" : 21,
+    //   },
+    //   baseURL: 'http://localhost:8080',
+    // })
 
 
-      .then((data) => {
-        //1 , 2 , 3
-        //setType(data.~~~);
-        setType(1);
-      });
+    // fetch('/api/getMyType')
+    //   .then((res) => {
+    //     return res.json();
+    //   })
+
+    //   .then((data) => {
+    //     //1 , 2 , 3
+    //     //setType(data.~~~);
+    //     setType(1);
+    //   });
   }, []);
-
-//-----------------------------------------------
-
-
   return (
     <div>
       <div className="app-container">
         {hahahaha(type)}
-        <Img
+        {/* <Img
           name={character[type].name} // 
           value={character[type].value}
           imageSrc={character[type].imageSrc}
           type={character[type].type}
           id={character[type].id}
-        />
+        /> */}
         {/* {character.map((item) => {
           return (
             <Img name={item.name} value={item.value} imageSrc={item.imageSrc} type={item.type} />
@@ -129,16 +145,20 @@ function ShowResult() {
           <h2>K-POP PLACE</h2>
           {/* <Carousel /> */}
           <NewCarou />
-          <H>
-            <h2>K-DRAMA PLACE</h2>
-          </H>
-          {/* <Place /> */}
-          <div className="wrap-b">
-            <Link to="/">
-              <StyledButton>Recommended Trip Place</StyledButton>
-            </Link>
-          </div>
         </div>
+      </div>
+      <div className="wrap-t">
+        <H>
+          <h2>K-DRAMA PLACE</h2>
+          <Place />
+        </H>
+      </div>
+      <div className="wrap-t">
+        <H>
+          <Link to="/">
+            <StyledButton>Recommended Trip Place</StyledButton>
+          </Link>
+        </H>
       </div>
     </div>
   );

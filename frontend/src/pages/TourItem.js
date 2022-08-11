@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import HeartButton from 'components/common/HeartButton';
+
 const C = styled.div`
   float:left;
   margin-left: 28px;

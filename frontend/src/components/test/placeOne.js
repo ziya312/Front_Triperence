@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import p from 'icons/plus.svg';
-// import Heart from 'components/common/heart';
-
+import HeartButton from "components/common/HeartButton"
+import { useState,useEffect } from 'react';
+import axios from 'axios';
 
 // const C = styled.div`
 //   float: left;
@@ -25,7 +26,7 @@ const Cardbox = styled.div`
   width: 384px;
   height: 384 px;
   border-radius: 20px;
-  margin-bottom: 4px;
+  margin-bottom: 60px;
   background-color: green;
   border: 1px solid #77aefc;
   margin-left: 10px;
@@ -44,7 +45,7 @@ const Cardtitle = styled.div`
   margin-left: 10px;
   margin-right: 80px;
   margin-top: 12px;
-  width: 80px;
+  width: 190px;
   height: 26px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 4px;
@@ -97,19 +98,85 @@ const Cardclass = styled.div`
   color: #595959;
 `;
 
-const Place = () => {
+
+
+
+const PlaceOne = () => {
+  const [place, setPlace] = useState(null);
+  const [areacode, setAreacode] = useState(null);
+  const [tmp, setTmp] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    //async 를 사용하는 함수 따로 선언
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await axios.get(`http://localhost:8080/survey/result/type=choa`);
+        console.log(response.data[0]);
+        setPlace(response.data[0].title);
+        setAreacode(response.data[0].areacode);
+      } catch (e) {
+        console.log(e);
+      }
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
+
+
  
   return (
     <>
       <Cardbox>
-        <Cardtitle>ssssssssss</Cardtitle>
+      <Cardtitle>
+              {areacode === 1
+            ? 'Seoul'
+            : areacode === 2
+            ? 'Incheon'
+            : areacode === 3
+            ? 'Daejeon'
+            : areacode === 4
+            ? 'Daegu'
+            : areacode === 5
+            ? 'Gwangju'
+            : areacode === 6
+            ? 'Busan'
+            : areacode === 7
+            ? 'Ulsan'
+            : areacode === 8
+            ? 'Sejong'
+            : areacode === 31
+            ? 'Gyeonggi'
+            : areacode === 32
+            ? 'Gangwon'
+            : areacode === 33
+            ? 'Chungbuk'
+            : areacode === 34
+            ? 'Chungnam'
+            : areacode === 35
+            ? 'Gyeongbuk'
+            : areacode === 36
+            ? 'GyeongNam'
+            : areacode === 37
+            ? 'JeonBuk'
+            : areacode === 38
+            ? 'Jeonnam'
+            : 'Jeju'}
+              </Cardtitle>
         <CardImage
+    
         // img
         // // src={firstimage}
         // alt="http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
-        ></CardImage>
-        {/* <HeartButton like={like} onClick={toggleLike}/> */}
+        >
+       
+        </CardImage>
+        {place}
+        <HeartButton />
+        
       </Cardbox>
+
       <Cardbox>
         <Cardtitle>ssssssssss</Cardtitle>
         <CardImage
@@ -117,19 +184,20 @@ const Place = () => {
         // // src={firstimage}
         // alt="http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
         ></CardImage>
-        {/* <HeartButton like={like} onClick={toggleLike}/> */}
-      </Cardbox>
-      <Cardbox>
+        <HeartButton /> 
+      </Cardbox> 
+      
+       <Cardbox>
         <Cardtitle>ssssssssss</Cardtitle>
         <CardImage
         // img
         // // src={firstimage}
         // alt="http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
         ></CardImage>
-        {/* <HeartButton like={like} onClick={toggleLike}/> */}
+        <HeartButton /> 
       </Cardbox>
     </>
   );
 };
 
-export default Place;
+export default PlaceOne;
