@@ -3,6 +3,7 @@ import MyPageoption from 'components/myPagecomponents/myPageoption';
 import React, { useState } from 'react';
 import AM from 'components/myPagecomponents/optionckd/AM';
 import Modal1 from "../components/common/unModal";
+import WishList from 'components/WishList/WishList';
 import Modal from "../components/common/Modal";
 import {useEffect} from "react";
 import AuthService from "../components/Header/services/auth.service";
@@ -68,7 +69,7 @@ const MyPage = () => {
       </article>
 
       <article className="statuis">
-        {option === 'AM' ? <AM /> :  <div>qeqeqeqqe</div>}
+        {option === 'AM' ? <AM /> :  <div><WishList /></div>}
         {isOpen && (
             <Modal1
                 open={isOpen}
