@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './header.css';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import AuthService from "./services/auth.service";
 import EventBus from "./common/EventBus";
 
 function Header() {
+    let navigate = useNavigate();
     const [search, setsearch] = useState("out");
     const [COURSE, setCOURSE] = useState("out");
     const [MEET, setMEET] = useState("out");
@@ -38,6 +39,8 @@ if (v==null) {
     const logOut = () => {
         AuthService.logout();
         setCurrentUser(undefined);
+        navigate("/login");
+        window.location.reload();
     };
 
 

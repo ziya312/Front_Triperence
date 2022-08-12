@@ -1,19 +1,28 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { useState } from 'react';
 import lll from 'icons/x.svg';
 import Mage from './modals/Mage';
 import 'components/common/Modal.css';
 import Mgen from './modals/Mgen';
 import AuthService from '../services/auth.service';
-
+import EventBus from "../Header/common/EventBus";
 const currentUser = AuthService.getCurrentUser();
 
 const Modal1 = ({ onClose }) => {
+  const [currentUser, setCurrentUser] = useState(undefined);
+
+  let navigate = useNavigate();
   const handleClose = () => {
     onClose?.();
+  };
+  const logOut = () => {
+    AuthService.logout();
+    setCurrentUser(undefined);
+    navigate("/login");
+    window.location.reload();
   };
 
   const UnregisterHandle = () => {
@@ -24,6 +33,8 @@ const Modal1 = ({ onClose }) => {
     });
     console.log(currentUser.id);
     console.log('회원삭제 완료');
+    handleClose()
+    logOut()
   };
 
   return (
@@ -33,7 +44,9 @@ const Modal1 = ({ onClose }) => {
         <Contents>
           <div className="Mtitle">Would you like to apply to cancel your membership?</div>
           <Button onClick={handleClose}>No</Button>
-          <Button1 onClick={UnregisterHandle}>Yes[unregister]</Button1>
+          <Link to="/">
+            <Button1 onClick={UnregisterHandle}>Yes[unregister]</Button1>
+          </Link>
         </Contents>
       </ModalWrap>
     </Overlay>
