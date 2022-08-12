@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import TourItem from '../../pages/TourItem'
+import WishItem from './WishItem';
 import axios from 'axios';
 import AuthService from '../services/auth.service';
 
@@ -19,8 +19,8 @@ const CardPlace = styled.div`
 `;
 
 const DIV = styled.div`
-  z-index:100;
-`
+  z-index: 100;
+`;
 const currentUser = AuthService.getCurrentUser();
 
 const WishList = () => {
@@ -32,7 +32,9 @@ const WishList = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:8080/places/likes/list/${currentUser.id}`);
+        const response = await axios.get(
+          `http://localhost:8080/places/likes/list/${currentUser.id}`,
+        );
         setPlace(response.data);
         console.log(response.data);
         console.log(currentUser.id);
@@ -42,7 +44,7 @@ const WishList = () => {
       setLoading(false);
     };
     fetchData();
-  },[]);
+  }, []);
 
   if (loading) {
   }
@@ -54,13 +56,13 @@ const WishList = () => {
   return (
     <>
       <DIV>
-      <Box>
-        <CardPlace>
-          {place.map((place) => (
-            <TourItem key={place.contentid} place={place} />
-          ))}
-        </CardPlace>
-      </Box>
+        <Box>
+          <CardPlace>
+            {place.map((place) => (
+              <WishItem key={place.contentid} place={place} />
+            ))}
+          </CardPlace>
+        </Box>
       </DIV>
     </>
   );

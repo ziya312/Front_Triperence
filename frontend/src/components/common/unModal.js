@@ -1,40 +1,43 @@
-import React from "react";
-import styled from "styled-components";
-import {Link} from "react-router-dom";
-import {useState} from "react";
-import lll from "icons/x.svg"
-import Mage from "./modals/Mage";
-import "components/common/Modal.css"
-import Mgen from "./modals/Mgen";
+import React, { useEffect } from 'react';
+import styled from 'styled-components';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
+import lll from 'icons/x.svg';
+import Mage from './modals/Mage';
+import 'components/common/Modal.css';
+import Mgen from './modals/Mgen';
+import AuthService from '../services/auth.service';
 
-const Modal1 = ({onClose}) => {
+const currentUser = AuthService.getCurrentUser();
 
+const Modal1 = ({ onClose }) => {
+  const handleClose = () => {
+    onClose?.();
+  };
 
-    const handleClose = () => {
-        onClose?.();
-    };
+  const UnregisterHandle = () => {
+    axios({
+      url: `/api/auth/delete/${currentUser.id}`,
+      method: 'delete',
+      baseURL: 'http://localhost:8080',
+    });
+    console.log(currentUser.id);
+    console.log('회원삭제 완료');
+  };
 
-    return (
-        <Overlay>
-            <ModalWrap>
-                <CloseButton onClick={handleClose}>
-
-                </CloseButton>
-                <Contents>
-
-                    <div className="Mtitle">Would you like to
-                        apply to cancel your membership?</div>
-
-
-                    <Button onClick={handleClose}>No</Button>
-                    <Button1 onClick={handleClose}>Yes[unregister]</Button1>
-
-
-
-                </Contents>
-            </ModalWrap>
-        </Overlay>
-    );
+  return (
+    <Overlay>
+      <ModalWrap>
+        <CloseButton onClick={handleClose}></CloseButton>
+        <Contents>
+          <div className="Mtitle">Would you like to apply to cancel your membership?</div>
+          <Button onClick={handleClose}>No</Button>
+          <Button1 onClick={UnregisterHandle}>Yes[unregister]</Button1>
+        </Contents>
+      </ModalWrap>
+    </Overlay>
+  );
 };
 
 const Overlay = styled.div`
@@ -48,11 +51,11 @@ const Overlay = styled.div`
 `;
 
 const ModalWrap = styled.div`
-width: 588px;
-height: 278px;
+  width: 588px;
+  height: 278px;
 
-background: #FFFFFF;
-border-radius: 20px;
+  background: #ffffff;
+  border-radius: 20px;
   border-radius: 20px;
   background-color: #fff;
   position: absolute;
@@ -70,8 +73,7 @@ const CloseButton = styled.div`
   cursor: pointer;
   background-image: url(${lll});
   background-repeat: no-repeat;
-    background-size: contain;
-
+  background-size: contain;
 `;
 
 const Contents = styled.div`
@@ -85,38 +87,39 @@ const Contents = styled.div`
 `;
 
 const Button = styled.div`
-width: 180px;
-height: 48px;
-float:left;
-margin-left:78px;
-margin-top:70px;
-background: #FFFFFF;
-border: 1px solid #D1D1D1;
-border-radius: 30px;
- text-align : center;font-family: 'Pretendard';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 50px;
-color: #D1D1D1;
-
+  width: 180px;
+  height: 48px;
+  float: left;
+  margin-left: 78px;
+  margin-top: 70px;
+  background: #ffffff;
+  border: 1px solid #d1d1d1;
+  border-radius: 30px;
+  text-align: center;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 50px;
+  color: #d1d1d1;
 `;
 const Button1 = styled.div`
-width: 180px;
-height: 48px;
- text-align : center;
-float:left;
-margin-left:24px;
-margin-top:70px;
-background: #FFFFFF;
-border: 1px solid #D1D1D1;font-family: 'Pretendard';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 50px;
+  width: 180px;
+  height: 48px;
+  text-align: center;
+  float: left;
+  margin-left: 24px;
+  margin-top: 70px;
+  background: #ffffff;
+  border: 1px solid #d1d1d1;
+  font-family: 'Pretendard';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 50px;
 
-border-radius: 30px;
-color: #D1D1D1;
+  border-radius: 30px;
+  color: #d1d1d1;
 `;
 
 export default Modal1;
