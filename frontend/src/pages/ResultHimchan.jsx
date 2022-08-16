@@ -12,10 +12,6 @@ import Button from 'components/common/Button';
 import axios from 'axios';
 import AuthService from '../services/auth.service';
 
-const title = styled.div`
-display : iflex;
-`
-
 const StyledButton = styled.button`
   display: iflex;
   outline: none;
@@ -46,7 +42,7 @@ const Box = styled.div`
 
 const Cardtitle = styled.div`
   float: left;
-  /* margin-left: 10px; */
+  margin-left: 10px;
   margin-right: 80px;
   margin-top: 12px;
   width: 132px;
@@ -130,7 +126,7 @@ const character = [
   },
 ];
 
-const ShowResult = () => {
+const ResultHimchan = () => {
   const [type, setType] = useState(0);
   const [like, setLike] = useState(false);
   const [place, setPlace] = useState(null);
@@ -144,7 +140,7 @@ const ShowResult = () => {
       setLoading(true);
 
       try {
-        const response = await axios.get(`http://localhost:8080/survey/result/type=choa`);
+        const response = await axios.get(`http://localhost:8080/survey/result/type=himchan`);
         console.debug(response.data);
         setPlace(response.data);
         console.log('야야야야ㅑ양', place.cat2);
@@ -166,72 +162,29 @@ const ShowResult = () => {
     console.debug(idx, '모양ㅇ모양');
     return (
       <Img
-        name={character[idx].name}
-        value={character[idx].value}
-        imageSrc={character[idx].imageSrc}
-        type={character[idx].type}
-        id={character[idx].id}
+        name={character[2].name}
+        value={character[2].value}
+        imageSrc={character[2].imageSrc}
+        type={character[2].type}
+        id={character[2].id}
       />
     );
   };
-
-  // const toggleLike = async (e) => {
-  //   const res = await axios.post(...)
-  // }
-
-  // item 값이 유효할 때
-
-  // useEffect(() => {
-  //   // axios({
-  //   //   url: '/survey/result/type=choa',
-  //   //   method: 'get',
-  //   //   data: {
-  //   //     "user_id": currentUser.id,
-  //   //     "like_cno" : 21,
-  //   //   },
-  //   //   baseURL: 'http://localhost:8080',
-  //   // })
-
-  //   // fetch('/api/getMyType')
-  //   //   .then((res) => {
-  //   //     return res.json();
-  //   //   })
-
-  //   //   .then((data) => {
-  //   //     //1 , 2 , 3
-  //   //     //setType(data.~~~);
-  //   //     setType(1);
-  //   //   });
-  // }, []);
 
   return (
     <div>
       <div className="app-container">
         {hahahaha(type)}
-        {/* <Img
-          name={character[type].name} // 
-          value={character[type].value}
-          imageSrc={character[type].imageSrc}
-          type={character[type].type}
-          id={character[type].id}
-        /> */}
-        {/* {character.map((item) => {
-          return (
-            <Img name={item.name} value={item.value} imageSrc={item.imageSrc} type={item.type} />
-          );
-        })} */}
       </div>
-
       <div className="wrap-t">
         <div className="carousel">
-          <h2>K-POP PLACE</h2>
-
+          <h2>SELFIE PLACE</h2>
           <NewCarou key={place.contentid} place={place} />
         </div>
       </div>
       <div className="wrap-t">
         <H>
-          <h2>K-DRAMA PLACE</h2>
+          <h2>FOOD PLACE</h2>
           <Box>
             <CardPlace>
               {place.map((place) => (
@@ -251,4 +204,19 @@ const ShowResult = () => {
     </div>
   );
 };
-export default ShowResult;
+export default ResultHimchan;
+
+
+{/* <hahaha아래> --------------------------------------------------------------*/}
+   {/* <Img
+          name={character[type].name} // 
+          value={character[type].value}
+          imageSrc={character[type].imageSrc}
+          type={character[type].type}
+          id={character[type].id}
+        /> */}
+        {/* {character.map((item) => {
+          return (
+            <Img name={item.name} value={item.value} imageSrc={item.imageSrc} type={item.type} />
+          );
+        })} */}

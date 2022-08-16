@@ -17,9 +17,11 @@ import SurveySodam from 'pages/surveySodam';
 import SurveyNori from 'pages/surveyNori';
 import ShowChoa from 'pages/surveyChoa';
 import ShowResult from 'pages/showResult';
-import MapPage from "./pages/MapPage";
-import Tag from "components/common/tag";
-import MyPage from "pages/myPage";
+import MapPage from './pages/MapPage';
+import Tag from 'components/common/tag';
+import MyPage from 'pages/myPage';
+import PlaceShow from 'pages/placeShow';
+import ResultHimchan from 'pages/ResultHimchan';
 
 function App() {
   return (
@@ -35,8 +37,8 @@ function App() {
           <Route path="/surveySecond" element={<SurveySecond />}></Route>
           {/* <Route path="/checkLayout" element={<CheckLayout />}></Route> */}
           <Route path="/detail" element={<Detail />}></Route>
-          <Route path="/search" element={<MapPage/>}></Route>
-          <Route path="/w" element={<MyPage/>}></Route>
+          <Route path="/search" element={<MapPage />}></Route>
+          <Route path="/w" element={<MyPage />}></Route>
 
           <Route path="/surveyMir" element={<SurveyMir />}></Route>
           <Route path="/surveyHimchan" element={<SurveyHimchan />}></Route>
@@ -46,6 +48,9 @@ function App() {
           <Route path="/surveyChoa" element={<ShowChoa />}></Route>
 
           <Route path="/showResult" element={<ShowResult />}></Route>
+          <Route path="/resultHimchan" element={<ResultHimchan />}></Route>
+
+          <Route path="/placeShow" element={<PlaceShow />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>

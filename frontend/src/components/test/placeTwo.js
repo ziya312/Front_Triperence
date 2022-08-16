@@ -1,144 +1,154 @@
 import styled from 'styled-components';
 import p from 'icons/plus.svg';
+import { Link } from 'react-router-dom';
 import HeartButton from 'components/common/HeartButton';
+import { useState, useEffect } from 'react';
 
-// const C = styled.div`
-//   float: left;
-//   margin-left: 28px;
-//   width: 222px;
-//   height: 254px;
-//   margin-top: 22px;
-//   background: blue;
-// `;
-const CardImage = styled.img`
-  width: 282px;
-  height: 180px;
-  position: relative;
-  border-radius: 20px;
-  z-index: -1;
-  background: red;
+const Heart = styled.div`
+  width: 100px;
+  position: absolute;
+  top: 50px;
+  right: -45px;
 `;
-const Cardbox = styled.div`
-  float: left;
-  border-radius: 20px;
+
+const C = styled.div`
+  //전체 큰 틀
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 65px;
+  width: 222px;
+  margin-bottom: 24px;
+  position: relative;
+  /* display: flex; */
+`;
+const CardImage = styled.img`
+  position: relative;
   width: 282px;
   height: 282px;
   border-radius: 20px;
-  margin-bottom: 60px;
-  background-color: green;
-  border: 1px solid #77aefc;
-  margin-left: 10px;
-
-  //transparent 투명
+  z-index: -1;
+  top: -200px;
+`;
+const Cardbox = styled.div`
+  float: left;
+  position: relative;
+  border-radius: 20px;
+  width: 265px;
+  height: 265px;
+  border-radius: 20px;
+  margin-bottom: 4px;
+  background-color: transparent;
+  background-color: black;
+  z-index: 5;
 `;
 const H = styled.div`
   float: left;
   border-radius: 20px;
-  width: 222px;
+  width: 240px;
   height: 197px;
-  margin-bottom: 20px;
 `;
 const Cardtitle = styled.div`
   float: left;
+  z-index: -1;
   margin-left: 10px;
   margin-right: 80px;
   margin-top: 12px;
-  width: 80px;
+  width: 10px;
   height: 26px;
   background: rgba(255, 255, 255, 0.8);
   border-radius: 4px;
   text-align: center;
   line-height: 25px;
-
-  font-family: 'Roboto';
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
-  color: #161616;
+  color: #222222;
+  word-break: break-all;
 `;
-const PP = styled.input`
-  background-image: url(${p});
-  border-radius: 20px;
-  border: 0px none;
-  clear: none;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  float: right;
-  margin-right: 10px;
-  margin-top: 8px;
-  width: 0px;
-  height: 0px;
-`;
+
 const Cardname = styled.div`
   float: left;
-  width: 222px;
-  height: 18px;
-  font-family: 'Roboto';
+  width: 240px;
+  font-family: 'Pretendard';
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: 15px;
   color: #222222;
+  margin-top: 8px;
   margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.2;
+  text-align: left;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 const Cardclass = styled.div`
   float: left;
   width: 222px;
-  height: 14px;
-  font-family: 'Roboto';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 14px;
-  align-items: center;
-  color: #595959;
+  font-family: 'Pretendard';
+  font-weight: 50;
+  font-size: 16px;
+  color: #999999;
 `;
 
-const PlaceTwo = () => {
- 
+const PlaceTwo = ({ place }) => {
+  const { title, addr1, cat1, tel, firstimage, contentid, areacode } = place;
+
   return (
-    <>
-      <Cardbox>
-        <Cardtitle>ssssssssss</Cardtitle>
-        <CardImage
-        // img
-        // // src={firstimage}
-        // alt="http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
-        >
-        </CardImage>
-        
-        <HeartButton />
-      </Cardbox>
-      <Cardbox>
-        <Cardtitle>ssssssssss</Cardtitle>
-        <CardImage
-        // img
-        // // src={firstimage}
-        // alt="http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
-        ></CardImage>
-        <HeartButton />
-      </Cardbox> 
-       <Cardbox>
-        <Cardtitle>ssssssssss</Cardtitle>
-        <CardImage
-        // img
-        // // src={firstimage}
-        // alt="http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
-        ></CardImage>
-        <HeartButton />
-      </Cardbox>
-      <Cardbox>
-        <Cardtitle>ssssssssss</Cardtitle>
-        <CardImage
-        // img
-        // // src={firstimage}
-        // alt="http://api.visitkorea.or.kr/openapi/service/rest/EngService/areaBasedList?ServiceKey=F1LcZ87c0l9gGNr9E%2BajujQ00xwYZ59b%2FQx5pgzcWJQIrKyyiAII7gOSAJsz99GhLsCTGLUQ2xpdoqxEC3FY7g%3D%3D&numOfRows=10&pageNo=1&MobileOS=ETC&MobileApp=TestApp&_type=json"
-        ></CardImage>
-        <HeartButton />
-      </Cardbox>
-    </>
+    <C>
+      <Heart>
+        <HeartButton contentid={contentid} />
+      </Heart>
+      <Link to="/detail" state={{ contentid }}>
+        <Cardbox>
+          <H>
+            <Cardtitle>
+              {areacode === 1
+                ? 'Seoul'
+                : areacode === 2
+                ? 'Incheon'
+                : areacode === 3
+                ? 'Daejeon'
+                : areacode === 4
+                ? 'Daegu'
+                : areacode === 5
+                ? 'Gwangju'
+                : areacode === 6
+                ? 'Busan'
+                : areacode === 7
+                ? 'Ulsan'
+                : areacode === 8
+                ? 'Sejong'
+                : areacode === 31
+                ? 'Gyeonggi'
+                : areacode === 32
+                ? 'Gangwon'
+                : areacode === 33
+                ? 'Chungbuk'
+                : areacode === 34
+                ? 'Chungnam'
+                : areacode === 35
+                ? 'Gyeongbuk'
+                : areacode === 36
+                ? 'GyeongNam'
+                : areacode === 37
+                ? 'JeonBuk'
+                : areacode === 38
+                ? 'Jeonnam'
+                : 'Jeju'}
+            </Cardtitle>
+          </H>
+          <CardImage img src={firstimage} onerror="this.src='images/default.jpg'"></CardImage>
+        </Cardbox>
+        <Cardname>{title}</Cardname>
+      </Link>
+    </C>
   );
 };
 

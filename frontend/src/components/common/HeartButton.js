@@ -21,7 +21,7 @@ const currentUser = AuthService.getCurrentUser();
 // `;
 
 const Heart = styled.img`
-    height: 31px;
+    height: 35px;
     position: absolute;
     top: 178px;
     z-index: 6;
