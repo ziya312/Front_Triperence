@@ -9,9 +9,12 @@ function Home() {
                 <h1>We'll recommend a perfect travel destination for you!</h1>
 
                 <Link to="./surveyFirst">
-                <button> Let's Test
-                    <img src={require("../icons/next.svg")}></img>
-                </button>
+                    <button className="lets">
+                    <div className='oo'>
+                        LET’S TEST
+                        <img className="go" src={require("icons/next.svg").default} alt=""/>
+                    </div>
+                    </button>
                 </Link>
             </div>
             <div className="lb-image">

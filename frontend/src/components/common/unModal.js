@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom';
-import { useState } from 'react';
 import lll from 'icons/x.svg';
 import Mage from './modals/Mage';
 import 'components/common/Modal.css';
@@ -18,6 +17,21 @@ const Modal1 = ({ onClose }) => {
   const handleClose = () => {
     onClose?.();
   };
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+
+    if (user) {
+      setCurrentUser(user);
+    }
+
+    EventBus.on("logout", () => {
+      logOut();
+    });
+
+    return () => {
+      EventBus.remove("logout");
+    };
+  }, []);
   const logOut = () => {
     AuthService.logout();
     setCurrentUser(undefined);
