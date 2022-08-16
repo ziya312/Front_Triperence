@@ -1,63 +1,51 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import PlaceTwo from 'components/test/placeTwo';
 import TourItem from './TourItem';
 import axios from 'axios';
 import Map from 'components/map/map';
-import Mapmodalper from 'components/common/mapmodalper';
 import Categories from 'components/categoriescom/Categories';
 import ManageEvents from 'components/Container';
-import MapModal from 'components/common/mapmodal';
 
 const Box = styled.div`
-  float: left;
   padding: 0px;
-  width: 28.95vw;
-  height: 675px;
+  width: 63vw;
+  height: 350px;
+  /* background-color: pink; */
+
 `;
 const CardPlace = styled.div`
-  overflow: auto;
+  /* overflow: auto; */
   float: left;
   padding: 10px;
-  width: 28.5vw;
-  height: 850px;
-`;
-
-
+  width: 60vw;
+  height: 0px;
+  /* background-color: wheat; */
+  display: flex;
+  text-align: center;     //안에 글씨 센터
+`; //리스트 틀
 
 const TourListBlock = styled.div`
-  @media screen and (max-width: 768px) {
-    width: 100%;
+  @media screen and (max-width: 1920px) {
+    width: 30%;
     padding-left: 1rem;
     padding-right: 1rem;
   }
 `;
 
-
-
 const DIV = styled.div`
   z-index: 100;
 `;
-
-const TourList = ({ category }) => {
+const PlaceListTwo = () => {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [accom, setAccom] = useState('');
-  const [restaur, setRestaur] = useState('');
-  
+
   useEffect(() => {
     //async 를 사용하는 함수 따로 선언
     const fetchData = async () => {
       setLoading(true);
       try {
-        const query = category === 'all' ? 'all' : `${category}`;
-        const response = await axios.get(`http://localhost:8080/places/category=${query}`,{
-          params:{
-            accom : "B02011200",
-            restaur : "A05020800",
-            cat2 : "A0101"
-          }
-        });
-        console.log(accom);
+        const response = await axios.get(`http://localhost:8080/survey/result/type=choa`);
         setPlace(response.data);
         console.log(response.data);
       } catch (e) {
@@ -66,7 +54,7 @@ const TourList = ({ category }) => {
       setLoading(false);
     };
     fetchData();
-  }, [category]);
+  }, []);
 
   if (loading) {
   }
@@ -77,30 +65,18 @@ const TourList = ({ category }) => {
   // item 값이 유효할 때
   return (
     <>
-
       <DIV>
         <Box>
           <CardPlace>
             {place.map((place) => (
-              <TourItem key={place.contentid} place={place} />
+              <PlaceTwo key={place.contentid} place={place}  />
             ))}
           </CardPlace>
         </Box>
-        <Map place={place} />
       </DIV>
-
-    <Mapmodalper />
-      <Box>
-        <CardPlace>
-          {place.map((place) => (
-            <TourItem key={place.contentid} place={place} />
-          ))}
-        </CardPlace>
-      </Box>
-      <Map place={place} />
-
+      
     </>
   );
 };
 
-export default TourList;
+export default PlaceListTwo;

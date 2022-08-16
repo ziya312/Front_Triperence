@@ -10,13 +10,13 @@
   justify-content: center;
 }
 
-.slider img {
+.slider-img{
   width: 100%;
   height: 98%;
   /* margin: -20 auto; */
   height: 100%;
   object-fit: cover;
-  background-color: black;
+
 }
 
 .slide {

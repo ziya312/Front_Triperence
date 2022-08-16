@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SecondHeader from 'components/Header/secondHeader';
 import 'components/Pages/character.css';
 import Button from 'components/common/Button';
+import AuthService from "../components/Header/services/auth.service";
 import CustomButton from 'components/common/CustomButton';
 import axios from 'axios';
 
@@ -29,7 +30,9 @@ const SurveyHimchan = () => {
   const shootResult = category1["shoot"].join();
   const subjectResult = category2["subject"].join();
 
-  console.log(shootResult, '하하하ㅏ');
+  const currentUser = AuthService.getCurrentUser();
+  console.log(currentUser.email, currentUser.id );
+
 
   const handleApi = () => {
   
@@ -46,12 +49,14 @@ const SurveyHimchan = () => {
         "allergie" : allergieResult,
         "shoot": shootResult,
         "subject": subjectResult,
+        "user_id":  currentUser.id,
+        "user_email": currentUser.email,
       })
 
       .then((result) => {
         console.log(result.data);
         alert('다음장');
-        navigate('/showResult');
+        navigate('/resultHimchan');
       })
 
       .catch((error) => {
