@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import 'components/Pages/detail.css';
 import palette from '../../lib/styles/palette';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const D = styled.button`
   width: 156px;
@@ -91,9 +92,11 @@ const Box = ({place}) => {
     <B>
       <L>
         <a className="homepagebtn" dangerouslySetInnerHTML={{ __html: place.homepage }}></a>
-        <Link to="/">
-          <D>Directions</D>
-        </Link>
+        <CopyToClipboard text={place.title}>
+          <a href="https://www.google.co.kr/maps" target="_blank">
+            <D>Directions</D>
+          </a>
+        </CopyToClipboard>
         <Link to="/">
           <D>Call</D>
         </Link>

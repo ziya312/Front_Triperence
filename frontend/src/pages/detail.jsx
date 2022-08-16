@@ -63,7 +63,6 @@ const Detail = () => {
   return (
     <div>
       <section className="section">
-        {place.cat2}
         <Heart>
           <HeartButton />
         </Heart>

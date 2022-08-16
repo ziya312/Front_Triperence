@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import HeartButton from 'components/common/HeartButton';
+import ReverseHeartButton from 'components/common/ReverseHeartButton';
 
 const C = styled.div`
   float: left;
@@ -92,7 +92,7 @@ const WishItem = ({ place }) => {
   return (
     <div className="contents">
       <C>
-        <HeartButton contentid={contentid} />
+        <ReverseHeartButton contentid={contentid} />
         <Link to="/detail" state={{ contentid }}>
           <Cardbox>
             <H>

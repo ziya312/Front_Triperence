@@ -36,19 +36,11 @@
 .go {
     height: 13px;
     object-fit: fill;
-
     margin-left: 10px;
-
-    width: 20px;
 }
 
 .oo {
-    float: left;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 700;
+    font-family: 'Pretendard';
     font-size: 16px;
-    line-height: 19px;
     color: #FFFFFF;
-    width: 384px;
 }

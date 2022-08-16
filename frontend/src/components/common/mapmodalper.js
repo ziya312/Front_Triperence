@@ -30,10 +30,13 @@ const Filter = styled.div`
   width: 48px;
   border: none;
   background-image: url(${op});
-  border-radius: 10px;
   background-color: transparent;
   float: right;
+  position:absolute;
+  right:0;
+  top:-60px;
   background-size: contain;
+  z-index:100;
 `;
 
 const ModalPerformanceWrap = styled.div`

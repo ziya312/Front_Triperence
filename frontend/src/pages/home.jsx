@@ -10,9 +10,9 @@ function Home() {
 
                 <Link to="./surveyFirst">
                     <button className="lets">
-                    <div className='oo'>
-                        LET’S TEST
-                        <img className="go" src={require("icons/next.svg").default} alt=""/>
+                    <div>
+                        <div className='oo'>LET’S TEST
+                        <img className="go" src={require("icons/next.svg").default} alt=""/></div>
                     </div>
                     </button>
                 </Link>
