@@ -3,8 +3,10 @@ import styled from 'styled-components';
 import TourItem from './TourItem';
 import axios from 'axios';
 import Map from 'components/map/map';
+import Mapmodalper from 'components/common/mapmodalper';
 import Categories from 'components/categoriescom/Categories';
 import ManageEvents from 'components/Container';
+import MapModal from 'components/common/mapmodal';
 
 const Box = styled.div`
   float: left;
@@ -18,22 +20,20 @@ const CardPlace = styled.div`
   padding: 10px;
   width: 28.5vw;
   height: 850px;
-`;  //리스트 틀
+`;
 
 const TourListBlock = styled.div`
-  @media screen and (max-width: 1920px) {
-    width: 30%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
   }
 `;
 
-const DIV = styled.div`
-  z-index:100;
-`
 const TourList = ({ category }) => {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [accom, setAccom] = useState('B02010300');
 
   useEffect(() => {
     //async 를 사용하는 함수 따로 선언
@@ -41,7 +41,12 @@ const TourList = ({ category }) => {
       setLoading(true);
       try {
         const query = category === 'all' ? 'all' : `${category}`;
-        const response = await axios.get(`http://localhost:8080/places/category=${query}`);
+        const response = await axios.get(`http://localhost:8080/places/category=${query}`, {
+          params: {
+            accom: accom,
+          },
+        });
+        console.log(accom);
         setPlace(response.data);
         console.log(response.data);
       } catch (e) {
@@ -61,7 +66,6 @@ const TourList = ({ category }) => {
   // item 값이 유효할 때
   return (
     <>
-      <DIV>
       <Box>
         <CardPlace>
           {place.map((place) => (
@@ -70,7 +74,6 @@ const TourList = ({ category }) => {
         </CardPlace>
       </Box>
       <Map place={place} />
-      </DIV>
     </>
   );
 };

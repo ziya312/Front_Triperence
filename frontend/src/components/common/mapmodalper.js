@@ -1,54 +1,45 @@
-import MapModal from "./mapmodal";
-import styled from "styled-components";
-import {useState} from "react";
-import op from "icons/filter.svg"
+import MapModal from './mapmodal';
+import styled from 'styled-components';
+import { useState } from 'react';
+import op from 'icons/filter.svg';
 
 const Mapmodalper = () => {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
-    const onClickButton = () => {
-        setIsOpen(true);
-    };
-    return (
-        <ModalPerformanceWrap>
-            <Filter onClick={onClickButton}></Filter>
-            {isOpen && (
-                <MapModal
-                    open={isOpen}
-                    onClose={() => {
-                        setIsOpen(false);
-                    }}
-                />
-            )}
-        </ModalPerformanceWrap>
-    );
+  const onClickButton = () => {
+    setIsOpen(true);
+  };
+  return (
+    <ModalPerformanceWrap>
+      <Filter onClick={onClickButton}></Filter>
+      {isOpen && (
+        <MapModal
+          open={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+          }}
+        />
+      )}
+    </ModalPerformanceWrap>
+  );
 };
 
 const Filter = styled.div`
-
-
   height: 48px;
   width: 48px;
   border: none;
-  background-repeat: no-repeat;
-
   background-image: url(${op});
   border-radius: 10px;
-
-
   background-color: transparent;
-  background-repeat: no-repeat;
+  float: right;
   background-size: contain;
-
 `;
 
 const ModalPerformanceWrap = styled.div`
-
-  margin: 10px 200px;
+  margin: 10px 40px;
   border: 0px none;
   clear: none;
   background-color: transparent;
-  background-repeat: no-repeat;
   background-size: contain;
   position: relative;
 `;
