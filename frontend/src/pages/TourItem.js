@@ -4,23 +4,17 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import HeartButton from 'components/common/HeartButton';
 
-<<<<<<< Updated upstream
+
+
 const C = styled.div`
   float: left;
-=======
-<<<<<<< HEAD
-const C = styled.div`    //전체 큰 틀
-  float:left;
-=======
-const C = styled.div`
-  float: left;
->>>>>>> e15c79cdb0bcf30b54a22c70d4bb466c136f3b58
->>>>>>> Stashed changes
+
   margin-left: 28px;
   width: 222px;
   margin-bottom: 24px;
   position: relative;
 `;
+
 const CardImage = styled.img`
   position: relative;
   width: 222px;

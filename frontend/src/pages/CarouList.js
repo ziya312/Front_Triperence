@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import PlaceOne from 'components/test/PlaceOne';
-import NewCarou from 'components/test/NewCarou';
+import PlaceOne from 'components/test/placeOne';
+import NewCarou from 'components/test/newCarou';
 import axios from 'axios';
 import Map from 'components/map/map';
 import Categories from 'components/categoriescom/Categories';

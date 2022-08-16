@@ -4,7 +4,7 @@ import 'components/Pages/test.css';
 import SecondHeader from 'components/Header/secondHeader';
 import Img from 'components/test/Img';
 import PlaceListTwo from './PlaceListTwo';
-import NewCarou from 'components/test/NewCarou';
+import NewCarou from 'components/test/newCarou';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from 'components/common/Button';
@@ -53,26 +53,26 @@ const Cardtitle = styled.div`
 `;
 
 const CardPlace = styled.div`
-overflow: auto;
+  overflow: auto;
   float: left;
   padding: 10px;
   width: 63vw;
   height: 300px;
-  overflow-x: scroll;   
+  overflow-x: scroll;
   overflow-y: hidden;
   display: flex;
-  text-align: center;  
+  text-align: center;
   &::-webkit-scrollbar {
-     width: 0px;
-     height: 10px;
-     border-radius: 6px;
-     background: #d1d1d1;
-   }
-   &::-webkit-scrollbar-thumb {
-     width: 10px;
-     background: #77aefc;
-     border-radius: 6px;
-   }
+    width: 0px;
+    height: 10px;
+    border-radius: 6px;
+    background: #d1d1d1;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 10px;
+    background: #77aefc;
+    border-radius: 6px;
+  }
 `;
 
 {
@@ -111,8 +111,6 @@ function PlaceShow() {
   if (!place) {
     return null;
   }
-
-
 
   return (
     <div>

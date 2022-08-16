@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import PlaceTwo from 'components/test/PlaceTwo';
+import PlaceTwo from 'components/test/placeTwo';
 import TourItem from './TourItem';
 import axios from 'axios';
 import Map from 'components/map/map';
