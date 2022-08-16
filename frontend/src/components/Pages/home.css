@@ -5,10 +5,11 @@
     justify-content : center;
     align-items : center;
 }
-.lb-image {
-    height: 89.7vh;
-    float: left;
+
+.lb-wrap img {
+    width: 100%;
     vertical-align: middle;
+
 }
 
 .lb-text button{
