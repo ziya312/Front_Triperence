@@ -33,18 +33,21 @@ const TourListBlock = styled.div`
 const TourList = ({ category }) => {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [accom, setAccom] = useState('B02010300');
-
+  const [accom, setAccom] = useState('');
+  const [restaur, setRestaur] = useState('');
+  
   useEffect(() => {
     //async 를 사용하는 함수 따로 선언
     const fetchData = async () => {
       setLoading(true);
       try {
         const query = category === 'all' ? 'all' : `${category}`;
-        const response = await axios.get(`http://localhost:8080/places/category=${query}`, {
-          params: {
-            accom: accom,
-          },
+        const response = await axios.get(`http://localhost:8080/places/category=${query}`,{
+          params:{
+            accom : "B02011200",
+            restaur : "A05020800",
+            cat2 : "A0101"
+          }
         });
         console.log(accom);
         setPlace(response.data);
@@ -66,6 +69,7 @@ const TourList = ({ category }) => {
   // item 값이 유효할 때
   return (
     <>
+    <Mapmodalper />
       <Box>
         <CardPlace>
           {place.map((place) => (

@@ -8,6 +8,7 @@ const Mapmodalper = () => {
 
   const onClickButton = () => {
     setIsOpen(true);
+    document.body.style.overflow = "hidden";
   };
   return (
     <ModalPerformanceWrap>

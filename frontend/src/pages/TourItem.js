@@ -5,14 +5,14 @@ import axios from 'axios';
 import HeartButton from 'components/common/HeartButton';
 
 const C = styled.div`
-  float:left;
+  float: left;
   margin-left: 28px;
   width: 222px;
   margin-bottom: 24px;
   position: relative;
 `;
 const CardImage = styled.img`
-position: relative;
+  position: relative;
   width: 222px;
   height: 222px;
   border-radius: 20px;
@@ -91,8 +91,8 @@ const TourItem = ({ place }) => {
 
   return (
     <div className="contents">
-        <C>
-        <HeartButton contentid = { contentid }/>
+      <C>
+        <HeartButton contentid={contentid} />
         <Link to="/detail" state={{ contentid }}>
           <Cardbox>
             <H>
@@ -144,9 +144,13 @@ const TourItem = ({ place }) => {
               ? 'Culture/Art/History'
               : cat1 === 'A03'
               ? 'Leisure/Sports'
-              : cat1}
+              : cat1 === 'A05'
+              ? 'Cuisine'
+              : cat1 === 'B02'
+              ? 'Accommodation'
+            :cat1}
           </Cardclass>
-      </Link>
+        </Link>
       </C>
     </div>
   );

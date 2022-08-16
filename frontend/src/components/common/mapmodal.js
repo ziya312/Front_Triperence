@@ -4,7 +4,13 @@ import Cross from 'icons/Cross.svg';
 
 const MapModal = ({ onClose }) => {
   const [values, setValues] = useState({});
-
+  // const [values, setValues] = useState([
+  //   {
+  //     accom : '',
+  //     restaur : '',
+  //     cat2 : '',
+  //   }
+  // ]);
   const tours = [
     { cat2: 'A0101', value: 'Nature' },
     { cat2: 'A0201', value: 'History' },
@@ -54,8 +60,53 @@ const MapModal = ({ onClose }) => {
   return (
     <OverlayBackground>
       <ModalWrap>
+      <CloseButton onClick={handleClose}><img src={Cross} />
+        </CloseButton>
         <div>
           <Title>Filter</Title>
+          <Line />
+
+          <form>
+          <div>
+            <SubTitle>Type</SubTitle>
+              {tours.map((item) => (
+                <label key={item.cat2}>
+                  <input type="radio" name="cat2" value={item.cat2} onChange={onChange}>
+                  </input>
+                  <div>
+                      {item.value}
+                    </div>
+                </label>
+              ))}
+          </div>
+          <div>
+            <SubTitle>Accommodations Type</SubTitle>
+            {accom.map((item) => (
+                <label key={item.cat3}>
+                  <input type="radio" name="accom" value={item.cat3} onChange={onChange}>
+                  </input>
+                  <div>
+                      {item.value}
+                    </div>
+                </label>
+              ))}
+          </div>
+          <div>
+            <SubTitle>Dining Type</SubTitle>
+            {restaur.map((item) => (
+                <label key={item.cat3}>
+                  <input type="radio" name="restaur" value={item.cat3} onChange={onChange}>
+                  </input>
+                  <div>
+                      {item.value}
+                    </div>
+                </label>
+              ))}
+          </div>
+          <button type="button" onClick={handleClose}>Cancel</button>
+          <button type="submit">Check</button>
+          </form>
+
         </div>
       </ModalWrap>
     </OverlayBackground>
@@ -74,8 +125,28 @@ const OverlayBackground = styled.div`
 
 const Title = styled.div`
   font-size: 28pt;
+  margin-bottom:12px;
+  width:100%;
+  float: left;
   font-family: 'Pretendard';
+  text-align : center;
 `;
+
+
+const SubTitle = styled.div`
+  font-size: 20pt;
+  margin-top: 48px;
+  margin-bottom:28px;
+  width:100%;
+  float: left;
+  font-family: 'Pretendard';
+  text-align : left;
+`;
+
+const Line = styled.hr`
+  width:100%;
+  border: 1px solid #c9c9c9;
+`
 const ModalWrap = styled.div`
   width: 800px;
   height: 900px;
@@ -87,14 +158,16 @@ const ModalWrap = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
+  overflow-y: auto;
 `;
 
 const CloseButton = styled.div`
-  float: right;
   height: 40px;
-  margin: 12px;
+  position: absolute;
+  right: 16px;
   cursor: pointer;
 `;
+
 export default MapModal;
 // // import React from "react";
 // // import styled from "styled-components";

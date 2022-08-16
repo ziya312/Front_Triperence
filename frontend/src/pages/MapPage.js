@@ -12,7 +12,6 @@ const MapPage = () => {
     <>
       <div>
         <Categories category={category} onSelect={onSelect} />
-        <Mapmodalper />
         <TourList category={category} />
       </div>
     </>
