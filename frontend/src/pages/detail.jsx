@@ -149,14 +149,42 @@ const Detail = () => {
         <br />
         <div className="subtitle">Detailed Location</div>
         <DetailMap place={place} />
-
+        <div className="locationdetail">
         {place.directions === null ? (
           ''
         ) : (
-          <div className="Details" dangerouslySetInnerHTML={{ __html: place.directions }}></div>
+          <div className="locationdetail" dangerouslySetInnerHTML={{ __html: place.directions }}></div>
         )}
+        </div>
         <br />
         <hr />
+        <div className="subtitle">Detailed Information</div>
+        <div className='DetailEntire'>
+          {
+            place.parking === null?('')
+            :(<div className="detailbox">
+            <img className="detailicon" src={require('icons/detail/parking.svg').default} alt="" />
+            <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.parking }}/></div>)
+          }
+          {
+            place.usetime === null?('')
+            :(<div className="detailbox">
+            <img className="detailicon" src={require('icons/detail/usetime.svg').default} alt="" />
+            <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.usetime }}/></div>)
+          }
+          {
+            place.parking === null?('')
+            :(<div className="detailbox">
+            <img className="detailicon" src={require('icons/detail/parking.svg').default} alt="" />
+            <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.parking }}/></div>)
+          }
+          {
+            place.restdate === null?('')
+            :(<div className="detailbox">
+            <img className="detailicon" src={require('icons/detail/restdate.svg').default} alt="" />
+            <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.restdate }}/></div>)
+          }
+        </div>
       </section>
     </div>
   );
