@@ -12,10 +12,6 @@ import Button from 'components/common/Button';
 import axios from 'axios';
 import AuthService from '../services/auth.service';
 
-const title = styled.div`
-display : iflex;
-`
-
 const StyledButton = styled.button`
   display: iflex;
   outline: none;
@@ -59,7 +55,7 @@ const Cardtitle = styled.div`
 `;
 
 const CardPlace = styled.div`
-overflow: auto;
+  overflow: auto;
   float: left;
   padding: 10px;
   width: 63vw;
@@ -67,18 +63,18 @@ overflow: auto;
   overflow-x: scroll;
   overflow-y: hidden;
   display: flex;
-  text-align: center;  
+  text-align: center;
   &::-webkit-scrollbar {
-     width: 0px;
-     height: 10px;
-     border-radius: 6px;
-     background: #d1d1d1;
-   }
-   &::-webkit-scrollbar-thumb {
-     width: 10px;
-     background: #77aefc;
-     border-radius: 6px;
-   }
+    width: 0px;
+    height: 10px;
+    border-radius: 6px;
+    background: #d1d1d1;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 10px;
+    background: #77aefc;
+    border-radius: 6px;
+  }
 `;
 
 {
@@ -136,7 +132,7 @@ const ShowResult = () => {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const currentUser = AuthService.getCurrentUser();
+  console.log('아이디', place);
 
   useEffect(() => {
     //async 를 사용하는 함수 따로 선언
@@ -163,10 +159,10 @@ const ShowResult = () => {
 
   const hahahaha = (idx) => {
     const currentUser = AuthService.getCurrentUser();
-    console.debug(idx, '모양ㅇ모양');
+  
     return (
       <Img
-        name={character[idx].name}
+        name={currentUser.nickname}
         value={character[idx].value}
         imageSrc={character[idx].imageSrc}
         type={character[idx].type}
@@ -175,57 +171,12 @@ const ShowResult = () => {
     );
   };
 
-  // const toggleLike = async (e) => {
-  //   const res = await axios.post(...)
-  // }
-
-  // item 값이 유효할 때
-
-  // useEffect(() => {
-  //   // axios({
-  //   //   url: '/survey/result/type=choa',
-  //   //   method: 'get',
-  //   //   data: {
-  //   //     "user_id": currentUser.id,
-  //   //     "like_cno" : 21,
-  //   //   },
-  //   //   baseURL: 'http://localhost:8080',
-  //   // })
-
-  //   // fetch('/api/getMyType')
-  //   //   .then((res) => {
-  //   //     return res.json();
-  //   //   })
-
-  //   //   .then((data) => {
-  //   //     //1 , 2 , 3
-  //   //     //setType(data.~~~);
-  //   //     setType(1);
-  //   //   });
-  // }, []);
-
   return (
     <div>
-      <div className="app-container">
-        {hahahaha(type)}
-        {/* <Img
-          name={character[type].name} // 
-          value={character[type].value}
-          imageSrc={character[type].imageSrc}
-          type={character[type].type}
-          id={character[type].id}
-        /> */}
-        {/* {character.map((item) => {
-          return (
-            <Img name={item.name} value={item.value} imageSrc={item.imageSrc} type={item.type} />
-          );
-        })} */}
-      </div>
-
+      <div className="app-container">{hahahaha(type)}</div>
       <div className="wrap-t">
         <div className="carousel">
           <h2>K-POP PLACE</h2>
-
           <NewCarou key={place.contentid} place={place} />
         </div>
       </div>

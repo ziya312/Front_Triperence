@@ -9,10 +9,16 @@ import logo from 'icons/logo.svg';
 import { isEmail } from "validator";
 import "components/Pages/login.css";
 import { Link, useNavigate } from 'react-router-dom';
-
+import styled from 'styled-components';
+import AuthService from '../services/auth.service';
 import axios from 'axios';
 
-import AuthService from '../services/auth.service';
+const Join = styled.div`
+text-align:center;
+
+`;
+
+
 
 const required = value => {
   if (!value) {
@@ -174,8 +180,10 @@ const Sign = () => {
   return (
     <div className="app">
       <div className="form-container">
+        <div >
         <img src={logo}
         />
+        </div>
         <Form onSubmit={handleRegister} ref={form}>
           {!successful && (
             <div>
