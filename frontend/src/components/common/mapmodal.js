@@ -5,7 +5,16 @@ import Cross from 'icons/Cross.svg';
 const MapModal = ({ onClose }) => {
   const [values, setValues] = useState({});
 
-  const formstay = [
+  const tours = [
+    { cat2: 'A0101', value: 'Nature' },
+    { cat2: 'A0201', value: 'History' },
+    { cat2: 'A0202', value: 'Recreational' },
+    { cat2: 'A0203', value: 'Experience' },
+    { cat2: 'A0204', value: 'Industrial Site' },
+    { cat2: 'A0205', value: 'Architectural' },
+    { cat2: 'A0206', value: 'Cultural Facilities' },
+  ];
+  const accom = [
     { cat3: 'B02010100', value: 'Hotel' },
     { cat3: 'B02010500', value: 'Condominiums' },
     { cat3: 'B02010300', value: 'Hanok Stays' },
@@ -14,8 +23,19 @@ const MapModal = ({ onClose }) => {
     { cat3: 'B02010700', value: 'Pension' },
     { cat3: 'B02010600', value: 'Hostel' },
     { cat3: 'B02011100', value: 'Guest House' },
-];
+  ];
 
+  const restaur = [
+    { cat3: 'A05020100', value: 'Korean' },
+    { cat3: 'A05020200', value: 'Western' },
+    { cat3: 'A05020300', value: 'Japanese' },
+    { cat3: 'A05020400', value: 'Asian' },
+    { cat3: 'A05020500', value: 'Family' },
+    { cat3: 'A05020600', value: 'Unique' },
+    { cat3: 'A05020700', value: 'Vegetarian' },
+    { cat3: 'A05020800', value: 'Bars/Cafes' },
+    { cat3: 'A05020900', value: 'Clubs' },
+  ];
   const handleClose = () => {
     onClose?.();
   };
@@ -32,40 +52,17 @@ const MapModal = ({ onClose }) => {
   };
 
   return (
-    <Overlay>
+    <OverlayBackground>
       <ModalWrap>
-        <Title>Filter</Title>
-        <CloseButton onClick={handleClose}>
-          <img src={Cross} />
-        </CloseButton>
-        <hr />
         <div>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <div>
-                <label className="bd-s"> Where do you like to stay?</label>
-                <label className="bd-m">*Hanouk: Traditional korean styled house</label>
-                {formstay.map((item) => (
-                  <label key={item.id} className="fi-map">
-                    <input
-                      type="radio"
-                      name={item.name}
-                      value={item.value}
-                      onChange={onChange}
-                    ></input>
-                    <div>{item.value}</div>
-                  </label>
-                ))}
-              </div>
-            </div>
-          </form>
+          <Title>Filter</Title>
         </div>
       </ModalWrap>
-    </Overlay>
+    </OverlayBackground>
   );
 };
 
-const Overlay = styled.div`
+const OverlayBackground = styled.div`
   position: fixed;
   width: 100%;
   height: 100%;
@@ -80,14 +77,16 @@ const Title = styled.div`
   font-family: 'Pretendard';
 `;
 const ModalWrap = styled.div`
-  width: 43.75vw;
-  height: 46.875vw;
+  width: 800px;
+  height: 900px;
   border-radius: 20px;
   background-color: #fff;
   position: absolute;
+  align-items: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 20px;
 `;
 
 const CloseButton = styled.div`

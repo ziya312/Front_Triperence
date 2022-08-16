@@ -12,10 +12,10 @@ import DetailMap from './detailMap';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
 const Heart = styled.div`
-    width:100px;
-    position: absolute;
-    top: -165px;
-    right: 10px;
+  width: 100px;
+  position: absolute;
+  top: -165px;
+  right: 10px;
 `;
 
 const containerStyle = {
@@ -47,6 +47,7 @@ const Detail = () => {
         const response = await axios.get(`http://localhost:8080/places/detail/${id}`);
         console.debug(response.data);
         setPlace(response.data);
+        console.log(place.cat2);
         setA(place.areacode);
       } catch (e) {}
       setLoading(false);
@@ -62,6 +63,7 @@ const Detail = () => {
   return (
     <div>
       <section className="section">
+        {place.cat2}
         <Heart>
           <HeartButton />
         </Heart>
