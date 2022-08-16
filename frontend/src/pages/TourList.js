@@ -22,20 +22,12 @@ const CardPlace = styled.div`
   height: 850px;
 `;
 
-
-
 const TourListBlock = styled.div`
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-left: 1rem;
     padding-right: 1rem;
   }
-`;
-
-
-
-const DIV = styled.div`
-  z-index: 100;
 `;
 
 const TourList = ({ category }) => {
@@ -77,18 +69,6 @@ const TourList = ({ category }) => {
   // item 값이 유효할 때
   return (
     <>
-
-      <DIV>
-        <Box>
-          <CardPlace>
-            {place.map((place) => (
-              <TourItem key={place.contentid} place={place} />
-            ))}
-          </CardPlace>
-        </Box>
-        <Map place={place} />
-      </DIV>
-
     <Mapmodalper />
       <Box>
         <CardPlace>
@@ -98,7 +78,6 @@ const TourList = ({ category }) => {
         </CardPlace>
       </Box>
       <Map place={place} />
-
     </>
   );
 };
