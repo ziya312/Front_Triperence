@@ -16,7 +16,7 @@ import {
 const Heart = styled.div`
   width: 100px;
   top: -165px;
-  right: 18px;
+  right: 5px;
   position: absolute;
 `;
 
@@ -127,9 +127,9 @@ function NewCarou({ place }) {
     return (
       <div className="carousel-a">
         {active > 0 && (
-          <button className="nav left slid-btn" onClick={() => setActive((i) => i - 1)}>
+          <div className="nav left slid-btn" onClick={() => setActive((i) => i - 1)}>
             <TiChevronLeftOutline />
-          </button>
+          </div>
         )}
         {React.Children.map(children, (child, i) => (
           <div
@@ -148,9 +148,9 @@ function NewCarou({ place }) {
           </div>
         ))}
         {active < count - 1 && (
-          <button className="nav right slid-btn" onClick={() => setActive((i) => i + 1)}>
+          <div className="nav right slid-btn" onClick={() => setActive((i) => i + 1)}>
             <TiChevronRightOutline />
-          </button>
+          </div>
         )}
       </div>
     );

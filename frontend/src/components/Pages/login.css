@@ -89,13 +89,15 @@
     border-radius: 30px;
     width: 27%;
     line-height: 48px;
-    margin-right: 18px;
     margin-top: 10px;
     cursor: pointer;
     background: none;
     text-align: center;
   }
-  
+  .BtnGen1,
+  .BtnGen2{
+    margin-right: 36px;
+  }
   .BtnAge1, 
   .BtnAge2, 
   .BtnAge3, 
@@ -106,13 +108,16 @@
     border-radius: 30px;
     width: 20%;
     line-height: 48px;
-    margin-right: 19px;
     margin-top: 10px;
     cursor: pointer;
     background: none;
     text-align: center;
   }
-  
+  .BtnAge1, 
+  .BtnAge2, 
+  .BtnAge3{
+    margin-right: 25px;
+  }
   
   /* input:checked + .BtnGen1,
   input:checked + .BtnGen2,

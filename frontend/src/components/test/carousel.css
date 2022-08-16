@@ -42,11 +42,10 @@
 .card h2 {
   transition: all 0.3s ease-out;
   /* opacity: var(--active); */
-  
 }
 
 .nav {
-  color: gray;
+  color: #77aefc;
   font-size: 2rem;
   position: absolute;
   display: flex;
@@ -60,12 +59,13 @@
   border: unset;
 }
 .nav.left {
-  transform: translateX(0px) translatey(-10%);
+  transform: translateX(40px) translatey(-10%);
 }
 .nav.right {
   right: 0;
-  transform: translateX(0px) translatey(-10%);
+  transform: translateX(-20px) translatey(-10%);
 }
 .slid-btn {
-  width: 12%;
+  width: 40%;
+
 }

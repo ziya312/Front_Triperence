@@ -14,12 +14,31 @@ const Box = styled.div`
   width: 28.95vw;
   height: 675px;
 `;
+// const CardPlace = styled.div`
+//   overflow-y: auto;
+//   float: left;
+//   padding: 10px;
+//   width: 28.5vw;
+//   height: 850px;
+// `;
+
 const CardPlace = styled.div`
-  overflow: auto;
+  overflow-y: auto;
   float: left;
   padding: 10px;
   width: 28.5vw;
   height: 850px;
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 10px;
+    border-radius: 6px;
+    background: #d1d1d1;
+  }
+  &::-webkit-scrollbar-thumb {
+    width: 10px;
+    background: #77aefc;
+    border-radius: 6px;
+  }
 `;
 
 const TourListBlock = styled.div`
@@ -35,19 +54,19 @@ const TourList = ({ category }) => {
   const [loading, setLoading] = useState(false);
   const [accom, setAccom] = useState('');
   const [restaur, setRestaur] = useState('');
-  
+
   useEffect(() => {
     //async 를 사용하는 함수 따로 선언
     const fetchData = async () => {
       setLoading(true);
       try {
         const query = category === 'all' ? 'all' : `${category}`;
-        const response = await axios.get(`http://localhost:8080/places/category=${query}`,{
-          params:{
-            accom : "B02011200",
-            restaur : "A05020800",
-            cat2 : "A0101"
-          }
+        const response = await axios.get(`http://localhost:8080/places/category=${query}`, {
+          params: {
+            accom: 'B02011200',
+            restaur: 'A05020800',
+            cat2: 'A0101',
+          },
         });
         console.log(accom);
         setPlace(response.data);
@@ -69,7 +88,7 @@ const TourList = ({ category }) => {
   // item 값이 유효할 때
   return (
     <>
-    <Mapmodalper />
+      <Mapmodalper />
       <Box>
         <CardPlace>
           {place.map((place) => (
