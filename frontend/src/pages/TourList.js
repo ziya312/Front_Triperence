@@ -64,6 +64,9 @@ const TourList = ({ category }) => {
         const query = category === 'all' ? 'all' : `${category}`;
         const response = await axios.get(`http://localhost:8080/places/category=${query}`, {
           params: {
+            accom: '',
+            restaur: '',
+            cat2: '',
           },
         });
         console.log(accom);

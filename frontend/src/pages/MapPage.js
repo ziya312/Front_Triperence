@@ -6,6 +6,9 @@ import Mapmodalper from 'components/common/mapmodalper';
 import Button from 'components/common/Button';
 const MapPage = () => {
   const [category, setCategory] = useState('all');
+  const [accom, setAccom] = useState('');
+  const [restaur, setRestaur] = useState('');
+  const [tours, setTours] = useState('');
   const onSelect = useCallback((category) => setCategory(category), []);
 
   return (

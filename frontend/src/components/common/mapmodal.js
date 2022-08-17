@@ -59,6 +59,10 @@ const MapModal = ({ onClose }) => {
     console.log('value:', values);
   };
 
+  // const handleClick = () => {
+  //   state: {
+  //   }
+  // };
   return (
     <OverlayBackground>
       <ModalWrap>
@@ -74,7 +78,13 @@ const MapModal = ({ onClose }) => {
               <SubTitle>Type</SubTitle>
               {tours.map((item) => (
                 <label className="MapModalT1" key={item.id}>
-                  <input id="MapModalT1" type="radio" name={item.cat2} onChange={onChange}></input>
+                  <input
+                    id="MapModalT1"
+                    type="radio"
+                    name="cat2"
+                    value={item.cat2}
+                    onChange={onChange}
+                  ></input>
                   <div htmlFor="MapModalT1">{item.value}</div>
                 </label>
               ))}
@@ -109,13 +119,13 @@ const MapModal = ({ onClose }) => {
                 </label>
               ))}
             </div>
-    
 
-            <button className='btn1' type="button" onClick={handleClose}>
+            <button className="btn1" type="button" onClick={handleClose}>
               Cancel
             </button>
-            <button className='btn2' type="submit">Check</button>
-          
+            <button className="btn2" type="submit">
+              Check
+            </button>
           </form>
         </div>
       </ModalWrap>
@@ -178,12 +188,11 @@ const CloseButton = styled.div`
 `;
 
 const Btn = styled.div`
-height: 48px;
-margin-top: 10px;
+  height: 48px;
+  margin-top: 10px;
 
-
-display: inline;
-`
+  display: inline;
+`;
 
 export default MapModal;
 // // import React from "react";
