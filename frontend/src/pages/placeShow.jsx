@@ -123,6 +123,7 @@ function PlaceShow() {
         </div>
       </div>
       <div className="wrap-t">
+        
         <H>
           <h2>K-DRAMA PLACE</h2>
           <Box>

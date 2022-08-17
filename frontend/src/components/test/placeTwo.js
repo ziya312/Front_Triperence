@@ -98,9 +98,12 @@ const Cardclass = styled.div`
 `;
 
 const PlaceTwo = ({ place }) => {
-  const { title, addr1, cat1, tel, firstimage, contentid, areacode } = place;
+  const { title, addr1, cat3 ,cat1, tel, firstimage, contentid, areacode } = place;
 
+  console.log('캣쓰리', cat3);
   return (
+    <div className="contents">
+    
     <C>
       <Heart>
         <HeartButton contentid={contentid} />
@@ -149,6 +152,7 @@ const PlaceTwo = ({ place }) => {
         <Cardname>{title}</Cardname>
       </Link>
     </C>
+    </div>
   );
 };
 
