@@ -6,7 +6,7 @@ import ReverseHeartButton from 'components/common/ReverseHeartButton';
 
 const C = styled.div`
   float: left;
-  margin-left: 28px;
+  margin-left: 20px;
   width: 222px;
   margin-bottom: 24px;
   position: relative;

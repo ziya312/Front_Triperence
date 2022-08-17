@@ -13,9 +13,11 @@ const Box = styled.div`
 const CardPlace = styled.div`
   overflow: auto;
   float: left;
+  margin-top: -15px;
   padding: 10px;
-  width: 28.5vw;
-  height: 850px;
+  width: 39.8vw;
+  height: 470px;
+  margin-left: -56px;
 `;
 
 const DIV = styled.div`

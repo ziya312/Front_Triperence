@@ -45,8 +45,8 @@
 }
 
 .nav {
-  color: #77aefc;
-  font-size: 2rem;
+  color: #98a2aa;
+  font-size: 2.3rem;
   position: absolute;
   display: flex;
   align-items: center;
@@ -59,13 +59,13 @@
   border: unset;
 }
 .nav.left {
-  transform: translateX(40px) translatey(-10%);
+  transform: translateX(30px) translatey(20%);
 }
 .nav.right {
   right: 0;
-  transform: translateX(-20px) translatey(-10%);
+  transform: translateX(-10px) translatey(20%);
 }
-.slid-btn {
-  width: 40%;
+.slid-btn:hover{
+  color: #77aefc;
 
 }
