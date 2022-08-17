@@ -21,7 +21,7 @@ const DetailMap = ({place}) => {
       >
         <GoogleMap mapContainerStyle={containerStyle} 
         center={{lat: place.mapy, lng: place.mapx}}
-        zoom={20}>
+        zoom={18}>
 
         <Marker
           onLoad={onLoad}

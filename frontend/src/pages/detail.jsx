@@ -148,6 +148,7 @@ const Detail = () => {
           <hr />
           <br />
           <div className="subtitle">Detailed Location</div>
+          {/* 지도 */}
           <DetailMap place={place} />
           <div className="locationdetail">
             {place.directions === null ? (
@@ -159,10 +160,39 @@ const Detail = () => {
               ></div>
             )}
           </div>
+          <div className="locationdetail">
+            {place.placeinfo === null ? (
+              ''
+            ) : (
+              <div
+                className="locationdetail"
+                dangerouslySetInnerHTML={{ __html: place.placeinfo }}
+              ></div>
+            )}
+          </div>
           <br />
           <hr />
           <div className="subtitle">Detailed Information</div>
           <div className="DetailEntire">
+            {/* 연령 여부 */}
+            {place.eventstartdate === null ? (
+              ''
+            ) : (
+              <div className="detailbox">
+                <img
+                  className="detailicon"
+                  src={require('icons/detail/eventstartdate.svg').default}
+                  alt=""
+                />
+                <div className="detailtitle">Festival Date</div>
+                <div className="detailindex">
+                  Start : {place.eventstartdate}
+                  <br />                
+                  End : {place.eventenddate}
+                  </div>
+              </div>
+            )}
+
             {place.parking === null ? (
               ''
             ) : (
@@ -277,6 +307,21 @@ const Detail = () => {
                 />
                 <div className="detailtitle">Foodplace</div>
                 <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.foodplace }} />
+              </div>
+            )}
+
+            {/* 연령 여부 */}
+            {place.expagerange === null ? (
+              ''
+            ) : (
+              <div className="detailbox">
+                <img
+                  className="detailicon"
+                  src={require('icons/detail/expagerange.svg').default}
+                  alt=""
+                />
+                <div className="detailtitle">Age Limit</div>
+                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.expagerange }} />
               </div>
             )}
           </div>
