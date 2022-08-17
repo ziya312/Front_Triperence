@@ -188,7 +188,11 @@ const SurveyFirst = () => {
               <label className="bd">What kind of transportation do you prefer?</label>
               {formtrans.map((item) => (
                 <label key={item.id} className="fi-map">
-                  <input type="radio" name={item.name} value={item.value} onChange={onChange} />
+                  <input
+                   type="radio" 
+                  name={item.name} 
+                  value={item.value}
+                   onChange={onChange} />
                   <div>{item.value}</div>
                 </label>
               ))}

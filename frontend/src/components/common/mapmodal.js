@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Cross from 'icons/Cross.svg';
+import 'components/common/mapModal.css';
 
 const MapModal = ({ onClose }) => {
   const [values, setValues] = useState({});
@@ -12,35 +13,35 @@ const MapModal = ({ onClose }) => {
   //   }
   // ]);
   const tours = [
-    { cat2: 'A0101', value: 'Nature' },
-    { cat2: 'A0201', value: 'History' },
-    { cat2: 'A0202', value: 'Recreational' },
-    { cat2: 'A0203', value: 'Experience' },
-    { cat2: 'A0204', value: 'Industrial Site' },
-    { cat2: 'A0205', value: 'Architectural' },
-    { cat2: 'A0206', value: 'Cultural Facilities' },
+    { id: 1, cat2: 'A0101', value: 'Nature' },
+    { id: 2, cat2: 'A0101', value: 'History' },
+    { id: 3, cat2: 'A0101', value: 'Recreational' },
+    { id: 4, cat2: 'A0101', value: 'Experience' },
+    { id: 5, cat2: 'A0101', value: 'Industrial Site' },
+    { id: 6, cat2: 'A0101', value: 'Architectural' },
+    { id: 7, cat2: 'A0101', value: 'Cultural Facilities' },
   ];
   const accom = [
-    { cat3: 'B02010100', value: 'Hotel' },
-    { cat3: 'B02010500', value: 'Condominiums' },
-    { cat3: 'B02010300', value: 'Hanok Stays' },
-    { cat3: 'B02011200', value: 'Home Stay' },
-    { cat3: 'B02010900', value: 'Motel' },
-    { cat3: 'B02010700', value: 'Pension' },
-    { cat3: 'B02010600', value: 'Hostel' },
-    { cat3: 'B02011100', value: 'Guest House' },
+    { id: 1, cat3: 'B02010100', value: 'Hotel' },
+    { id: 2, cat3: 'B02010500', value: 'Condominiums' },
+    { id: 3, cat3: 'B02010300', value: 'Hanok Stays' },
+    { id: 4, cat3: 'B02011200', value: 'Home Stay' },
+    { id: 5, cat3: 'B02010900', value: 'Motel' },
+    { id: 6, cat3: 'B02010700', value: 'Pension' },
+    { id: 7, cat3: 'B02010600', value: 'Hostel' },
+    { id: 8, cat3: 'B02011100', value: 'Guest House' },
   ];
 
   const restaur = [
-    { cat3: 'A05020100', value: 'Korean' },
-    { cat3: 'A05020200', value: 'Western' },
-    { cat3: 'A05020300', value: 'Japanese' },
-    { cat3: 'A05020400', value: 'Asian' },
-    { cat3: 'A05020500', value: 'Family' },
-    { cat3: 'A05020600', value: 'Unique' },
-    { cat3: 'A05020700', value: 'Vegetarian' },
-    { cat3: 'A05020800', value: 'Bars/Cafes' },
-    { cat3: 'A05020900', value: 'Clubs' },
+    { id: 1, cat3: 'A05020100', value: 'Korean' },
+    { id: 2, cat3: 'A05020200', value: 'Western' },
+    { id: 3, cat3: 'A05020300', value: 'Japanese' },
+    { id: 4, cat3: 'A05020400', value: 'Asian' },
+    { id: 5, cat3: 'A05020500', value: 'Family' },
+    { id: 6, cat3: 'A05020600', value: 'Unique' },
+    { id: 7, cat3: 'A05020700', value: 'Vegetarian' },
+    { id: 8, cat3: 'A05020800', value: 'Bars/Cafes' },
+    { id: 9, cat3: 'A05020900', value: 'Clubs' },
   ];
   const handleClose = () => {
     onClose?.();
@@ -51,6 +52,7 @@ const MapModal = ({ onClose }) => {
 
   const onChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
+    console.log('sss', values);
   };
 
   const showData = () => {
@@ -60,53 +62,58 @@ const MapModal = ({ onClose }) => {
   return (
     <OverlayBackground>
       <ModalWrap>
-      <CloseButton onClick={handleClose}><img src={Cross} />
+        <CloseButton onClick={handleClose}>
+          <img src={Cross} />
         </CloseButton>
         <div>
           <Title>Filter</Title>
           <Line />
 
-          <form>
-          <div>
-            <SubTitle>Type</SubTitle>
+          <form className="mapForm">
+            <div>
+              <SubTitle>Type</SubTitle>
               {tours.map((item) => (
-                <label key={item.cat2}>
-                  <input type="radio" name="cat2" value={item.cat2} onChange={onChange}>
-                  </input>
-                  <div>
-                      {item.value}
-                    </div>
+                <label className="MapModalT1" htmlFor="MapModalT1" key={item.id}>
+                  <input id="MapModalT1" type="radio" name={item.cat2} onChange={onChange}></input>
+                  <div>{item.value}</div>
                 </label>
               ))}
-          </div>
-          <div>
-            <SubTitle>Accommodations Type</SubTitle>
-            {accom.map((item) => (
-                <label key={item.cat3}>
-                  <input type="radio" name="accom" value={item.cat3} onChange={onChange}>
-                  </input>
-                  <div>
-                      {item.value}
-                    </div>
+            </div>
+            <div>
+              <SubTitle>Accommodations Type</SubTitle>
+              {accom.map((item) => (
+                <label className="MapModalT2" htmlFor="MapModalT2" key={item.id}>
+                  <input
+                    id="MapModalT2"
+                    type="radio"
+                    name="accom"
+                    value={item.cat3}
+                    onChange={onChange}
+                  ></input>
+                  <div> {item.value}</div>
                 </label>
               ))}
-          </div>
-          <div>
-            <SubTitle>Dining Type</SubTitle>
-            {restaur.map((item) => (
-                <label key={item.cat3}>
-                  <input type="radio" name="restaur" value={item.cat3} onChange={onChange}>
-                  </input>
-                  <div>
-                      {item.value}
-                    </div>
+            </div>
+            <div>
+              <SubTitle>Dining Type</SubTitle>
+              {restaur.map((item) => (
+                <label className="MapModalT3" htmlFor="MapModalT3" key={item.id}>
+                  <input
+                    id="MapModalT3"
+                    type="radio"
+                    name="restaur"
+                    value={item.cat3}
+                    onChange={onChange}
+                  ></input>
+                  <div>{item.value}</div>
                 </label>
               ))}
-          </div>
-          <button type="button" onClick={handleClose}>Cancel</button>
-          <button type="submit">Check</button>
+            </div>
+            <button type="button" onClick={handleClose}>
+              Cancel
+            </button>
+            <button type="submit">Check</button>
           </form>
-
         </div>
       </ModalWrap>
     </OverlayBackground>
@@ -125,28 +132,27 @@ const OverlayBackground = styled.div`
 
 const Title = styled.div`
   font-size: 28pt;
-  margin-bottom:12px;
-  width:100%;
+  margin-bottom: 12px;
+  width: 100%;
   float: left;
   font-family: 'Pretendard';
-  text-align : center;
+  text-align: center;
 `;
-
 
 const SubTitle = styled.div`
   font-size: 20pt;
   margin-top: 48px;
-  margin-bottom:28px;
-  width:100%;
+  margin-bottom: 28px;
+  width: 100%;
   float: left;
   font-family: 'Pretendard';
-  text-align : left;
+  text-align: left;
 `;
 
 const Line = styled.hr`
-  width:100%;
+  width: 100%;
   border: 1px solid #c9c9c9;
-`
+`;
 const ModalWrap = styled.div`
   width: 800px;
   height: 900px;
