@@ -85,6 +85,7 @@ const vgivenname = value => {
 const Sign = () => {
   const form = useRef();
   const checkBtn = useRef();
+  let navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -146,37 +147,41 @@ const Sign = () => {
 
     form.current.validateAll();
 
-    // if (checkBtn.current.context._errors.length === 0) {
-      
-      AuthService.register(
-        email,
-        password,
-        nickname,
-        givenname,
-        familyname,
-        age,
-        nationality,
-        gender
-      ).then(
-        response => {
-          setMessage(response.data.message);
-          setSuccessful(true);
-        },
-        error => {
-          const resMessage =
-            (error.response &&
-              error.response.data &&
-              error.response.data.message) ||
-            error.message ||
-            error.toString();
+    if (checkBtn.current.context._errors.length === 0) {
 
-          setMessage(resMessage);
-          setSuccessful(false);
-        }
-        
+      AuthService.register(
+          email,
+          password,
+          nickname,
+          givenname,
+          familyname,
+          age,
+          nationality,
+          gender
+      ).then(
+          () => {
+            navigate("/login");
+            window.location.reload()
+          },
+          response => {
+            setMessage(response.data.message);
+            setSuccessful(true);
+          },
+          error => {
+            const resMessage =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+
+            setMessage(resMessage);
+            setSuccessful(false);
+          }
       );
     }
- 
+  };
+
   return (
     <div className="app">
       <div className="form-container">
@@ -343,7 +348,7 @@ const Sign = () => {
                     id="BtnAge4"
                     type="radio"
                     className="radio-control"
-                    name="gender"
+                    name="age"
                     value={'50s~'}
                     checked={age === "50s~"}
                     onChange={onChangeAge}
@@ -363,7 +368,7 @@ const Sign = () => {
                 </Select>
               </div>
 
-              {/* <div className="form-group"> 
+              {/* <div className="form-group">
                 <label htmlFor="age">Age</label>
                 <Input
                   type="text"
@@ -397,11 +402,11 @@ const Sign = () => {
                 />
               </div> */}
 
-              
+
               <div className="form-group">
-          
+
                 <button className="btn btn-primary btn-block">Sign Up</button>
- 
+
               </div>
             </div>
           )}
