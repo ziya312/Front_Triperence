@@ -8,6 +8,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import DetailMap from './detailMap';
+import Weather from '../components/Weather/weather'
+import defaultimg from '../images/default.jpg'
 
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
@@ -33,6 +35,7 @@ const Detail = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const [A, setA] = useState(null);
+  const lat = place.max
   var checknull = '';
   const id = location.state.contentid;
   console.log(id);
@@ -63,6 +66,7 @@ const Detail = () => {
   return (
     <div>
       <section className="section">
+        {/* <Weather place={place}/> */}
         <Heart>
           <HeartButton />
         </Heart>
@@ -107,13 +111,14 @@ const Detail = () => {
 
         <article className="images">
           {place.originimgurl.map((img, idx) => {
-            return <img className={`img${idx + 1}`} src={img} alt=" 무엇이 들어가야 합니까?" />;
+            return (<div className='bordera'>
+            <img className={`img${idx + 1}`} src={img} alt="tripimg" /></div>);
           })}
         </article>
 
         <Box place={place} />
         <div className="entire">
-          <article className="Information" dangerouslySetInnerHTML={{ __html: place.overview }}></article>
+          <article className="Information" dangerouslySetInnerHTML={{ __html: place.overview }} />
           <hr />
           <article className="Details">
             <img className="details" src={require('icons/p.svg').default} alt="" />
@@ -128,23 +133,31 @@ const Detail = () => {
             </CopyToClipboard>
           </article>
 
-          <article className="Details">
-            <img className="details" src={require('icons/tel.svg').default} alt="" />
-            {place.tel}
-            <CopyToClipboard text={place.tel}>
-              <img
-                className="d"
-                src={require('icons/ss.svg').default}
-                onClick={() => alert('Copy success')}
-                alt=""
-              />
-            </CopyToClipboard>
-          </article>
+          {place.tel === null ? (
+            ''
+          ) : (
+            <article className="Details">
+              <img className="details" src={require('icons/tel.svg').default} alt="" />
+              {place.tel}
+              <CopyToClipboard text={place.tel}>
+                <img
+                  className="d"
+                  src={require('icons/ss.svg').default}
+                  onClick={() => alert('Copy success')}
+                  alt=""
+                />
+              </CopyToClipboard>
+            </article>
+          )}
 
-          <article className="Details" style={{ marginBottom: '24px' }}>
-            <img className="details" src={require('icons/w.svg').default} alt="" />
-            <div dangerouslySetInnerHTML={{ __html: place.usefee }}></div>
-          </article>
+          {place.usefee === null ? (
+            ''
+          ) : (
+            <article className="Details" style={{ marginBottom: '24px' }}>
+              <img className="details" src={require('icons/w.svg').default} alt="" />
+              <div dangerouslySetInnerHTML={{ __html: place.usefee }}></div>
+            </article>
+          )}
           <hr />
           <br />
           <div className="subtitle">Detailed Location</div>
@@ -187,9 +200,9 @@ const Detail = () => {
                 <div className="detailtitle">Festival Date</div>
                 <div className="detailindex">
                   Start : {place.eventstartdate}
-                  <br />                
+                  <br />
                   End : {place.eventenddate}
-                  </div>
+                </div>
               </div>
             )}
 
@@ -244,7 +257,10 @@ const Detail = () => {
                   alt=""
                 />
                 <div className="detailtitle">Cooking</div>
-                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.chkcooking }} />
+                <div
+                  className="detailindex"
+                  dangerouslySetInnerHTML={{ __html: place.chkcooking }}
+                />
               </div>
             )}
 
@@ -273,7 +289,10 @@ const Detail = () => {
                   alt=""
                 />
                 <div className="detailtitle">Reservation</div>
-                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.reservation }} />
+                <div
+                  className="detailindex"
+                  dangerouslySetInnerHTML={{ __html: place.reservation }}
+                />
               </div>
             )}
 
@@ -289,9 +308,9 @@ const Detail = () => {
                 <div className="detailtitle">Check In/Out</div>
                 <div className="detailindex">
                   Check-In : {place.checkintime}
-                  <br />                
+                  <br />
                   Check-Out : {place.checkouttime}
-                  </div>
+                </div>
               </div>
             )}
 
@@ -306,7 +325,10 @@ const Detail = () => {
                   alt=""
                 />
                 <div className="detailtitle">Foodplace</div>
-                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.foodplace }} />
+                <div
+                  className="detailindex"
+                  dangerouslySetInnerHTML={{ __html: place.foodplace }}
+                />
               </div>
             )}
 
@@ -321,7 +343,10 @@ const Detail = () => {
                   alt=""
                 />
                 <div className="detailtitle">Age Limit</div>
-                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.expagerange }} />
+                <div
+                  className="detailindex"
+                  dangerouslySetInnerHTML={{ __html: place.expagerange }}
+                />
               </div>
             )}
           </div>
