@@ -8,8 +8,9 @@ const Mapmodalper = () => {
 
   const onClickButton = () => {
     setIsOpen(true);
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = 'hidden';
   };
+
   return (
     <ModalPerformanceWrap>
       <Filter onClick={onClickButton}></Filter>
@@ -32,11 +33,11 @@ const Filter = styled.div`
   background-image: url(${op});
   background-color: transparent;
   float: right;
-  position:absolute;
-  right:0;
-  top:-60px;
+  position: absolute;
+  right: 0;
+  top: -60px;
   background-size: contain;
-  z-index:100;
+  z-index: 100;
 `;
 
 const ModalPerformanceWrap = styled.div`

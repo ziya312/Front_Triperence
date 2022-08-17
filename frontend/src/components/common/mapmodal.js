@@ -2,9 +2,26 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Cross from 'icons/Cross.svg';
 import 'components/common/mapModal.css';
+import { useNavigate } from 'react-router-dom';
 
 const MapModal = ({ onClose }) => {
   const [values, setValues] = useState({});
+  const navigate = useNavigate();
+  const [tour, setTour] = useState(' ');
+  const [accom, setAccom] = useState(' ');
+  const [restaur, setRestaur] = useState(' ');
+
+  const handleClick = () => {
+    navigate('/filter', {
+      state: {
+        param1: tour,
+        param2: accom,
+        param3: restaur,
+      },
+    });
+  };
+
+  console.log(tour, accom, restaur);
   // const [values, setValues] = useState([
   //   {
   //     accom : '',
@@ -14,14 +31,14 @@ const MapModal = ({ onClose }) => {
   // ]);
   const tours = [
     { id: 1, cat2: 'A0101', value: 'Nature' },
-    { id: 2, cat2: 'A0101', value: 'History' },
-    { id: 3, cat2: 'A0101', value: 'Recreational' },
-    { id: 4, cat2: 'A0101', value: 'Experience' },
-    { id: 5, cat2: 'A0101', value: 'Industrial Site' },
-    { id: 6, cat2: 'A0101', value: 'Architectural' },
-    { id: 7, cat2: 'A0101', value: 'Cultural Facilities' },
+    { id: 2, cat2: 'A0201', value: 'History' },
+    { id: 3, cat2: 'A0202', value: 'Recreational' },
+    { id: 4, cat2: 'A0203', value: 'Experience' },
+    { id: 5, cat2: 'A0204', value: 'Industrial Site' },
+    { id: 6, cat2: 'A0206', value: 'Architectural' },
+    { id: 7, cat2: 'A0207', value: 'Cultural Facilities' },
   ];
-  const accom = [
+  const accoms = [
     { id: 1, cat3: 'B02010100', value: 'Hotel' },
     { id: 2, cat3: 'B02010500', value: 'Condominiums' },
     { id: 3, cat3: 'B02010300', value: 'Hanok Stays' },
@@ -32,16 +49,16 @@ const MapModal = ({ onClose }) => {
     { id: 8, cat3: 'B02011100', value: 'Guest House' },
   ];
 
-  const restaur = [
+  const restaurs = [
     { id: 1, cat3: 'A05020100', value: 'Korean' },
     { id: 2, cat3: 'A05020200', value: 'Western' },
     { id: 3, cat3: 'A05020300', value: 'Japanese' },
-    { id: 4, cat3: 'A05020400', value: 'Asian' },
-    { id: 5, cat3: 'A05020500', value: 'Family' },
-    { id: 6, cat3: 'A05020600', value: 'Unique' },
-    { id: 7, cat3: 'A05020700', value: 'Vegetarian' },
-    { id: 8, cat3: 'A05020800', value: 'Bars/Cafes' },
-    { id: 9, cat3: 'A05020900', value: 'Clubs' },
+    { id: 4, cat3: 'A05020400', value: 'Chinese' },
+    { id: 5, cat3: 'A05020500', value: 'Asian' },
+    { id: 6, cat3: 'A05020600', value: 'Family' },
+    { id: 7, cat3: 'A05020700', value: 'Unique' },
+    { id: 8, cat3: 'A05020800', value: 'Vegetarian' },
+    { id: 9, cat3: 'A05020900', value: 'Bars/Cafes' },
   ];
   const handleClose = () => {
     onClose?.();
@@ -81,9 +98,10 @@ const MapModal = ({ onClose }) => {
                   <input
                     id="MapModalT1"
                     type="radio"
-                    name="cat2"
                     value={item.cat2}
-                    onChange={onChange}
+                    onChange={() => {
+                      setTour(item.cat2);
+                    }}
                   ></input>
                   <div htmlFor="MapModalT1">{item.value}</div>
                 </label>
@@ -91,14 +109,14 @@ const MapModal = ({ onClose }) => {
             </div>
             <div>
               <SubTitle>Accommodations Type</SubTitle>
-              {accom.map((item) => (
+              {accoms.map((item) => (
                 <label className="MapModalT2" key={item.id}>
                   <input
                     id="MapModalT2"
                     type="radio"
-                    name="accom"
-                    value={item.cat3}
-                    onChange={onChange}
+                    onChange={() => {
+                      setAccom(item.cat3);
+                    }}
                   ></input>
                   <div htmlFor="MapModalT2"> {item.value}</div>
                 </label>
@@ -106,27 +124,32 @@ const MapModal = ({ onClose }) => {
             </div>
             <div>
               <SubTitle>Dining Type</SubTitle>
-              {restaur.map((item) => (
+              {restaurs.map((item) => (
                 <label className="MapModalT3" key={item.id}>
                   <input
                     id="MapModalT3"
                     type="radio"
-                    name="restaur"
-                    value={item.cat3}
-                    onChange={onChange}
+                    onChange={() => {
+                      setRestaur(item.cat3);
+                    }}
                   ></input>
                   <div htmlFor="MapModalT3">{item.value}</div>
                 </label>
               ))}
             </div>
-
-            <button className="btn1" type="button" onClick={handleClose}>
-              Cancel
-            </button>
-            <button className="btn2" type="submit">
-              Check
-            </button>
           </form>
+          <button className="btn1" type="button" onClick={handleClose}>
+            Cancel
+          </button>
+          <button
+            className="btn2"
+            onClick={() => {
+              handleClick();
+              handleClose();
+            }}
+          >
+            Check
+          </button>
         </div>
       </ModalWrap>
     </OverlayBackground>

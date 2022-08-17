@@ -22,6 +22,7 @@ import Tag from 'components/common/tag';
 import MyPage from 'pages/myPage';
 import PlaceShow from 'pages/placeShow';
 import ResultHimchan from 'pages/ResultHimchan';
+import FilterMapPage from 'pages/FilterMapPage';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           {/* <Route path="/checkLayout" element={<CheckLayout />}></Route> */}
           <Route path="/detail" element={<Detail />}></Route>
           <Route path="/search" element={<MapPage />}></Route>
+          <Route path="/filter" element={<FilterMapPage />}></Route>
           <Route path="/w" element={<MyPage />}></Route>
 
           <Route path="/surveyMir" element={<SurveyMir />}></Route>

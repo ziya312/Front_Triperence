@@ -8,8 +8,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
 import DetailMap from './detailMap';
-import Weather from '../components/Weather/weather'
-import defaultimg from '../images/default.jpg'
+import Weather from '../components/Weather/weather';
+import defaultimg from '../images/default.jpg';
 
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
 
@@ -35,7 +35,7 @@ const Detail = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const [A, setA] = useState(null);
-  const lat = place.max
+
   var checknull = '';
   const id = location.state.contentid;
   console.log(id);
@@ -111,8 +111,11 @@ const Detail = () => {
 
         <article className="images">
           {place.originimgurl.map((img, idx) => {
-            return (<div className='bordera'>
-            <img className={`img${idx + 1}`} src={img} alt="tripimg" /></div>);
+            return (
+              <div className="bordera">
+                <img className={`img${idx + 1}`} src={img} alt="tripimg" />
+              </div>
+            );
           })}
         </article>
 

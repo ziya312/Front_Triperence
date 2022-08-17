@@ -49,12 +49,9 @@ const TourListBlock = styled.div`
   }
 `;
 
-const TourList = ({ category }) => {
+const TourList = ({ category, accomparam, restaurparam, cat2param }) => {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [accom, setAccom] = useState(null);
-  const [restaur, setRestaur] = useState(null);
-  const [cat2, setCat2] = useState(null);
 
   useEffect(() => {
     //async 를 사용하는 함수 따로 선언
@@ -64,12 +61,11 @@ const TourList = ({ category }) => {
         const query = category === 'all' ? 'all' : `${category}`;
         const response = await axios.get(`http://localhost:8080/places/category=${query}`, {
           params: {
-            accom: '',
-            restaur: '',
-            cat2: '',
+            accom: accomparam,
+            restaur: restaurparam,
+            cat2: cat2param,
           },
         });
-        console.log(accom);
         setPlace(response.data);
         console.log(response.data);
       } catch (e) {
@@ -77,6 +73,7 @@ const TourList = ({ category }) => {
       }
       setLoading(false);
     };
+
     fetchData();
   }, [category]);
 
@@ -86,10 +83,9 @@ const TourList = ({ category }) => {
   if (!place) {
     return null;
   }
-  // item 값이 유효할 때
+  //item 값이 유효할 때
   return (
     <>
-      <Mapmodalper />
       <Box>
         <CardPlace>
           {place.map((place) => (
