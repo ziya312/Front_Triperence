@@ -66,23 +66,23 @@ const MapModal = ({ onClose }) => {
           <img src={Cross} />
         </CloseButton>
         <div>
-          <Title>Filter</Title>
+          <Title>Option</Title>
           <Line />
 
           <form className="mapForm">
             <div>
               <SubTitle>Type</SubTitle>
               {tours.map((item) => (
-                <label className="MapModalT1" htmlFor="MapModalT1" key={item.id}>
+                <label className="MapModalT1" key={item.id}>
                   <input id="MapModalT1" type="radio" name={item.cat2} onChange={onChange}></input>
-                  <div>{item.value}</div>
+                  <div htmlFor="MapModalT1">{item.value}</div>
                 </label>
               ))}
             </div>
             <div>
               <SubTitle>Accommodations Type</SubTitle>
               {accom.map((item) => (
-                <label className="MapModalT2" htmlFor="MapModalT2" key={item.id}>
+                <label className="MapModalT2" key={item.id}>
                   <input
                     id="MapModalT2"
                     type="radio"
@@ -90,14 +90,14 @@ const MapModal = ({ onClose }) => {
                     value={item.cat3}
                     onChange={onChange}
                   ></input>
-                  <div> {item.value}</div>
+                  <div htmlFor="MapModalT2"> {item.value}</div>
                 </label>
               ))}
             </div>
             <div>
               <SubTitle>Dining Type</SubTitle>
               {restaur.map((item) => (
-                <label className="MapModalT3" htmlFor="MapModalT3" key={item.id}>
+                <label className="MapModalT3" key={item.id}>
                   <input
                     id="MapModalT3"
                     type="radio"
@@ -105,7 +105,7 @@ const MapModal = ({ onClose }) => {
                     value={item.cat3}
                     onChange={onChange}
                   ></input>
-                  <div>{item.value}</div>
+                  <div htmlFor="MapModalT3">{item.value}</div>
                 </label>
               ))}
             </div>
