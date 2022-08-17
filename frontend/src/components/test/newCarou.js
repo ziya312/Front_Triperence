@@ -229,7 +229,7 @@ function NewCarou({ place }) {
             <Link to="/detail" state={{ contentid }}>
               <H>
                 <Cardtitle>
-                  <Mmm />
+                  <Mmm areacode={areacode} />
                 </Cardtitle>
                 <Cardname>{title}</Cardname>
               </H>

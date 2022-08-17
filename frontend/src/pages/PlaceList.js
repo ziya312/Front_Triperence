@@ -59,16 +59,8 @@ const PlaceList = ({ place }) => {
   const { title, addr1, cat2, cat3, tel, firstimage, contentid, areacode } = place;
 
   console.log('이건 플레이스 리스트', cat2);
+  console.log('쓰리', cat3);
 
-  <div>
-    {cat3 === 'A05020900' ? (
-      <>
-        <PlaceOne place={place} />
-      </>
-    ) : (
-      ''
-    )}
-  </div>;
 
   return (
     <div>
@@ -77,10 +69,8 @@ const PlaceList = ({ place }) => {
           <PlaceOne place={place} />
         </>
       ) : cat3 === 'A05020900' ? (
-        <>
           <PlaceOne place={place} />
-        </>
-      )  : ''}
+      )  : '' }
     </div>
   );
 

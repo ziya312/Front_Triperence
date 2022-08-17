@@ -162,7 +162,7 @@ const ResultHimchan = () => {
     console.debug(idx, '모양ㅇ모양');
     return (
       <Img
-        name={character[2].name}
+        name={currentUser.nickname}
         value={character[2].value}
         imageSrc={character[2].imageSrc}
         type={character[2].type}
@@ -207,16 +207,3 @@ const ResultHimchan = () => {
 export default ResultHimchan;
 
 
-{/* <hahaha아래> --------------------------------------------------------------*/}
-   {/* <Img
-          name={character[type].name} // 
-          value={character[type].value}
-          imageSrc={character[type].imageSrc}
-          type={character[type].type}
-          id={character[type].id}
-        /> */}
-        {/* {character.map((item) => {
-          return (
-            <Img name={item.name} value={item.value} imageSrc={item.imageSrc} type={item.type} />
-          );
-        })} */}

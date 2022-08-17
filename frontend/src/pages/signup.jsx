@@ -71,7 +71,7 @@ const vfamilyname = value => {
 };
 
 const vgivenname = value => {
-  if (value.length < 3 || value.length > 40) {
+  if (value.length < 1 || value.length > 40) {
     return (
       <div className="alert alert-danger" role="alert">
         The password must be between 6 and 40 characters.
@@ -141,8 +141,7 @@ const Sign = () => {
 
   const handleRegister = e => {
     e.preventDefault();
-
-    setMessage("");
+    setMessage(" ");
     setSuccessful(false);
 
     form.current.validateAll();
@@ -166,6 +165,7 @@ const Sign = () => {
           response => {
             setMessage(response.data.message);
             setSuccessful(true);
+            message();
           },
           error => {
             const resMessage =
@@ -240,7 +240,7 @@ const Sign = () => {
                   placeholder="Givename"
                   value={givenname}
                   onChange={onChangeGivenname}
-                  validations={[required, ]}
+                  validations={[required, vgivenname]}
                 />
               </div>
 
@@ -253,7 +253,7 @@ const Sign = () => {
                   placeholder="Familyname"
                   value={familyname}
                   onChange={onChangeFamilyname}
-                  validations={[required]}
+                  Validations={[required, vfamilyname]}
                 />
               </div>
 
