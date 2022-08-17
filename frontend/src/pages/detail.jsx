@@ -172,6 +172,7 @@ const Detail = () => {
                   src={require('icons/detail/parking.svg').default}
                   alt=""
                 />
+                <div className="detailtitle">Parking</div>
                 <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.parking }} />
               </div>
             )}
@@ -184,6 +185,7 @@ const Detail = () => {
                   src={require('icons/detail/usetime.svg').default}
                   alt=""
                 />
+                <div className="detailtitle">Usetime</div>
                 <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.usetime }} />
               </div>
             )}
@@ -196,6 +198,7 @@ const Detail = () => {
                   src={require('icons/detail/restdate.svg').default}
                   alt=""
                 />
+                <div className="detailtitle">Day Off</div>
                 <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.restdate }} />
               </div>
             )}
@@ -210,6 +213,7 @@ const Detail = () => {
                   src={require('icons/detail/chkcooking.svg').default}
                   alt=""
                 />
+                <div className="detailtitle">Cooking</div>
                 <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.chkcooking }} />
               </div>
             )}
@@ -224,6 +228,7 @@ const Detail = () => {
                   src={require('icons/detail/pickup.svg').default}
                   alt=""
                 />
+                <div className="detailtitle">Pickup Service</div>
                 <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.pickup }} />
               </div>
             )}
@@ -237,6 +242,7 @@ const Detail = () => {
                   src={require('icons/detail/reservation.svg').default}
                   alt=""
                 />
+                <div className="detailtitle">Reservation</div>
                 <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.reservation }} />
               </div>
             )}
@@ -250,11 +256,27 @@ const Detail = () => {
                   src={require('icons/detail/checkinout.svg').default}
                   alt=""
                 />
+                <div className="detailtitle">Check In/Out</div>
                 <div className="detailindex">
                   Check-In : {place.checkintime}
                   <br />                
                   Check-Out : {place.checkouttime}
                   </div>
+              </div>
+            )}
+
+            {/* 각종시설 가능 여부 */}
+            {place.foodplace === null ? (
+              ''
+            ) : (
+              <div className="detailbox">
+                <img
+                  className="detailicon"
+                  src={require('icons/detail/foodplace.svg').default}
+                  alt=""
+                />
+                <div className="detailtitle">Foodplace</div>
+                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.foodplace }} />
               </div>
             )}
           </div>

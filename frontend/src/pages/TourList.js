@@ -52,8 +52,9 @@ const TourListBlock = styled.div`
 const TourList = ({ category }) => {
   const [place, setPlace] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [accom, setAccom] = useState('');
-  const [restaur, setRestaur] = useState('');
+  const [accom, setAccom] = useState(null);
+  const [restaur, setRestaur] = useState(null);
+  const [cat2, setCat2] = useState(null);
 
   useEffect(() => {
     //async 를 사용하는 함수 따로 선언
@@ -63,9 +64,6 @@ const TourList = ({ category }) => {
         const query = category === 'all' ? 'all' : `${category}`;
         const response = await axios.get(`http://localhost:8080/places/category=${query}`, {
           params: {
-            accom: 'B02011200',
-            restaur: 'A05020800',
-            cat2: 'A0101',
           },
         });
         console.log(accom);
