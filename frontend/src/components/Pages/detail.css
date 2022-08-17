@@ -103,13 +103,12 @@ hr {
   margin-top: 36px;
   margin-bottom: 24px;
   height: 32px;
-  font-style: normal;
-  font-weight: 20;
   font-size: 20px;
   display: flex;
   align-items: center;
   font-family: 'Pretendard Variable';
   font-weight: 300;
+  color: #595959;
 }
 .details {
   float: left;
