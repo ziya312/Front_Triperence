@@ -109,10 +109,13 @@ const MapModal = ({ onClose }) => {
                 </label>
               ))}
             </div>
-            <button type="button" onClick={handleClose}>
+    
+
+            <button className='btn1' type="button" onClick={handleClose}>
               Cancel
             </button>
-            <button type="submit">Check</button>
+            <button className='btn2' type="submit">Check</button>
+          
           </form>
         </div>
       </ModalWrap>
@@ -173,6 +176,14 @@ const CloseButton = styled.div`
   right: 16px;
   cursor: pointer;
 `;
+
+const Btn = styled.div`
+height: 48px;
+margin-top: 10px;
+
+
+display: inline;
+`
 
 export default MapModal;
 // // import React from "react";

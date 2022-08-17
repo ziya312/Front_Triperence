@@ -50,7 +50,7 @@ function App() {
           <Route path="/showResult" element={<ShowResult />}></Route>
           <Route path="/resultHimchan" element={<ResultHimchan />}></Route>
 
-          <Route path="/placeShow" element={<PlaceShow />}></Route>
+          <Route path="/place" element={<PlaceShow />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
