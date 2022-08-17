@@ -112,78 +112,152 @@ const Detail = () => {
         </article>
 
         <Box place={place} />
+        <div className="entire">
+          <article className="Information" dangerouslySetInnerHTML={{ __html: place.overview }}></article>
+          <hr />
+          <article className="Details">
+            <img className="details" src={require('icons/p.svg').default} alt="" />
+            {place.addr1}
+            <CopyToClipboard text={place.addr1}>
+              <img
+                className="d"
+                src={require('icons/ss.svg').default}
+                onClick={() => alert('Copy success')}
+                alt=""
+              />
+            </CopyToClipboard>
+          </article>
 
-        <article className="Information">{place.overview}</article>
-        <hr />
-        <article className="Details">
-          <img className="details" src={require('icons/p.svg').default} alt="" />
-          {place.addr1}
-          <CopyToClipboard text={place.addr1}>
-            <img
-              className="d"
-              src={require('icons/ss.svg').default}
-              onClick={() => alert('Copy success')}
-              alt=""
-            />
-          </CopyToClipboard>
-        </article>
+          <article className="Details">
+            <img className="details" src={require('icons/tel.svg').default} alt="" />
+            {place.tel}
+            <CopyToClipboard text={place.tel}>
+              <img
+                className="d"
+                src={require('icons/ss.svg').default}
+                onClick={() => alert('Copy success')}
+                alt=""
+              />
+            </CopyToClipboard>
+          </article>
 
-        <article className="Details">
-          <img className="details" src={require('icons/tel.svg').default} alt="" />
-          {place.tel}
-          <CopyToClipboard text={place.tel}>
-            <img
-              className="d"
-              src={require('icons/ss.svg').default}
-              onClick={() => alert('Copy success')}
-              alt=""
-            />
-          </CopyToClipboard>
-        </article>
+          <article className="Details" style={{ marginBottom: '24px' }}>
+            <img className="details" src={require('icons/w.svg').default} alt="" />
+            <div dangerouslySetInnerHTML={{ __html: place.usefee }}></div>
+          </article>
+          <hr />
+          <br />
+          <div className="subtitle">Detailed Location</div>
+          <DetailMap place={place} />
+          <div className="locationdetail">
+            {place.directions === null ? (
+              ''
+            ) : (
+              <div
+                className="locationdetail"
+                dangerouslySetInnerHTML={{ __html: place.directions }}
+              ></div>
+            )}
+          </div>
+          <br />
+          <hr />
+          <div className="subtitle">Detailed Information</div>
+          <div className="DetailEntire">
+            {place.parking === null ? (
+              ''
+            ) : (
+              <div className="detailbox">
+                <img
+                  className="detailicon"
+                  src={require('icons/detail/parking.svg').default}
+                  alt=""
+                />
+                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.parking }} />
+              </div>
+            )}
+            {place.usetime === null ? (
+              ''
+            ) : (
+              <div className="detailbox">
+                <img
+                  className="detailicon"
+                  src={require('icons/detail/usetime.svg').default}
+                  alt=""
+                />
+                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.usetime }} />
+              </div>
+            )}
+            {place.restdate === null ? (
+              ''
+            ) : (
+              <div className="detailbox">
+                <img
+                  className="detailicon"
+                  src={require('icons/detail/restdate.svg').default}
+                  alt=""
+                />
+                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.restdate }} />
+              </div>
+            )}
 
-        <article className="Details" style={{ marginBottom: '24px' }}>
-          <img className="details" src={require('icons/w.svg').default} alt="" />
-          <div dangerouslySetInnerHTML={{ __html: place.usefee }}></div>
-        </article>
-        <hr />
-        <br />
-        <div className="subtitle">Detailed Location</div>
-        <DetailMap place={place} />
-        <div className="locationdetail">
-        {place.directions === null ? (
-          ''
-        ) : (
-          <div className="locationdetail" dangerouslySetInnerHTML={{ __html: place.directions }}></div>
-        )}
-        </div>
-        <br />
-        <hr />
-        <div className="subtitle">Detailed Information</div>
-        <div className='DetailEntire'>
-          {
-            place.parking === null?('')
-            :(<div className="detailbox">
-            <img className="detailicon" src={require('icons/detail/parking.svg').default} alt="" />
-            <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.parking }}/></div>)
-          }
-          {
-            place.usetime === null?('')
-            :(<div className="detailbox">
-            <img className="detailicon" src={require('icons/detail/usetime.svg').default} alt="" />
-            <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.usetime }}/></div>)
-          }
-          {
-            place.parking === null?('')
-            :(<div className="detailbox">
-            <img className="detailicon" src={require('icons/detail/parking.svg').default} alt="" />
-            <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.parking }}/></div>)
-          }
-          {
-            place.restdate === null?('')
-            :(<div className="detailbox">
-            <img className="detailicon" src={require('icons/detail/restdate.svg').default} alt="" />
-            <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.restdate }}/></div>)
-          }
+            {/* 요리 가능 여부 */}
+            {place.chkcooking === null ? (
+              ''
+            ) : (
+              <div className="detailbox">
+                <img
+                  className="detailicon"
+                  src={require('icons/detail/chkcooking.svg').default}
+                  alt=""
+                />
+                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.chkcooking }} />
+              </div>
+            )}
+
+            {/* 픽업 가능 여부 */}
+            {place.pickup === null ? (
+              ''
+            ) : (
+              <div className="detailbox">
+                <img
+                  className="detailicon"
+                  src={require('icons/detail/pickup.svg').default}
+                  alt=""
+                />
+                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.pickup }} />
+              </div>
+            )}
+            {/* 예약 가능 여부 */}
+            {place.reservation === null ? (
+              ''
+            ) : (
+              <div className="detailbox">
+                <img
+                  className="detailicon"
+                  src={require('icons/detail/reservation.svg').default}
+                  alt=""
+                />
+                <div className="detailindex" dangerouslySetInnerHTML={{ __html: place.reservation }} />
+              </div>
+            )}
+
+            {place.checkintime === null ? (
+              ''
+            ) : (
+              <div className="detailbox">
+                <img
+                  className="detailicon"
+                  src={require('icons/detail/checkinout.svg').default}
+                  alt=""
+                />
+                <div className="detailindex">
+                  Check-In : {place.checkintime}
+                  <br />                
+                  Check-Out : {place.checkouttime}
+                  </div>
+              </div>
+            )}
+          </div>
         </div>
       </section>
     </div>
