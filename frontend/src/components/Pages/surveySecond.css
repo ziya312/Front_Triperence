@@ -53,9 +53,9 @@
 .second-survey .na1 div,
 .second-survey .na2 div,
 .second-survey .na3 div {
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
   display: inline-block;
-  color: #d4d4d4;
+  color: #c9c9c9;
   border-radius: 30px;
   width: 26%;
   line-height: 48px;
@@ -67,7 +67,7 @@
 .na1 input:checked + div,
 .na2 input:checked + div,
 .na3 input:checked + div {
-  border: 1px solid #77aefc;
+  border: 2px solid #77aefc;
   color: #77aefc;
   border-radius: 30px;
   width: 26%;
@@ -79,9 +79,9 @@
 .second-survey .st1 div,
 .second-survey .st2 div,
 .second-survey .st3 div {
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
   display: inline-block;
-  color: #d4d4d4;
+  color: #c9c9c9;
   border-radius: 30px;
   width: 26%;
   line-height: 48px;
@@ -98,7 +98,7 @@
   border-radius: 5px;
   height: 48px;
   color: #000;
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
 }
 .nationdefault option {
   color: #999;
@@ -113,7 +113,7 @@ button {
   width: 48%;
   height: 48px;
   border: none;
-  background-color: #d1d1d1;
+  background-color: #c9c9c9;
   color: white;
   border-radius: 30px;
   font-weight: bold;

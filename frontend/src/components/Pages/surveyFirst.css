@@ -1,4 +1,3 @@
-
 .first-survey {
   display: flex;
   align-items: center;
@@ -28,12 +27,11 @@
   font-family: 'Noto Sans';
   font-size: 24px;
   font-weight: 700;
- 
 }
 .bd-m {
   display: block;
   margin-bottom: 24px;
-  color: #c1c1c1;
+  color: #c9c9c9;
   margin-top: 10px;
 }
 
@@ -71,9 +69,9 @@
 }
 
 .first-survey .fi-map div {
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
   display: inline-block;
-  color: #d4d4d4;
+  color: #c9c9c9;
   border-radius: 30px;
   width: 26%;
   line-height: 48px;
@@ -81,28 +79,28 @@
   text-align: center;
   background: none;
   margin-left: 15px;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .fi-map input:checked + div {
-  border: 1px solid #77aefc;
+  border: 2px solid #77aefc;
   color: #77aefc;
   border-radius: 30px;
   width: 26%;
   cursor: pointer;
   background: none;
   text-align: center;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .first-survey .fi-s div {
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
   display: inline-block;
-  color: #d4d4d4;
+  color: #c9c9c9;
   border-radius: 30px;
   width: 18%;
   line-height: 48px;
@@ -110,27 +108,27 @@
   text-align: center;
   background: none;
   margin-left: 15px;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .fi-s input:checked + div {
-  border: 1px solid #77aefc;
+  border: 2px solid #77aefc;
   color: #77aefc;
   border-radius: 30px;
   width: 18%;
   cursor: pointer;
   background: none;
   text-align: center;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .first-survey .des1 div,
 .first-survey .des2 div {
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
   display: inline-block;
   color: #d4d4d4;
   border-radius: 30px;
@@ -140,23 +138,23 @@
   text-align: center;
   background: none;
   margin-left: 15px;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .des1 input:checked + div,
 .des2 input:checked + div {
-  border: 1px solid #77aefc;
+  border: 2px solid #77aefc;
   color: #77aefc;
   border-radius: 30px;
   width: 40%;
   cursor: pointer;
   background: none;
   text-align: center;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 /* ---------------------------------------------------- */
@@ -167,11 +165,11 @@
   border-radius: 5px;
   height: 48px;
   color: #000;
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
 }
 
 .nationdefault option {
-  color: #999;
+  color: #c9c9c9;
   font-size: 16px;
 }
 
@@ -183,13 +181,13 @@
   width: 48%;
   height: 48px;
   border: none;
-  background-color: #d1d1d1;
+  background-color: #c9c9c9;
   color: white;
   border-radius: 30px;
   line-height: 1px;
   cursor: pointer;
   margin-bottom: 15px;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
   font-weight: 700;
 }
@@ -219,7 +217,7 @@ button:hover {
 }
 
 .new-map div {
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
   display: inline-block;
   color: #d4d4d4;
   border-radius: 30px;
@@ -229,24 +227,24 @@ button:hover {
   cursor: pointer;
   text-align: center;
   background: none;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 700;
   margin-left: 16px;
   max-width: 180px;
 }
 
 .new-map input:checked + div {
-  border: 1px solid #77aefc;
+  border: 2px solid #77aefc;
   color: #77aefc;
   border-radius: 30px;
   width: 25%;
   cursor: pointer;
   background: none;
   text-align: center;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 700;
   margin-left: 16px;
   max-width: 180px;
   outline: none;
@@ -265,7 +263,7 @@ button:hover {
 }
 
 /* .new-map + div {
-    border: 1px solid #d8d8d8;
+    border: 2px solid #c9c9c9;
     display: inline-block;
     color: #d4d4d4;
     border-radius: 30px;
@@ -278,7 +276,7 @@ button:hover {
     background: none;
     font-family: 'Inter';
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 700;
 }
 
 .new-map input:checked + div {
@@ -292,11 +290,11 @@ button:hover {
     text-align: center;
     font-family: 'Inter';
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 700;
 } */
 
 .n-map + div {
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
   display: inline-block;
   color: #d4d4d4;
   border-radius: 30px;
@@ -307,14 +305,14 @@ button:hover {
   cursor: pointer;
   text-align: center;
   background: none;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
   outline: none;
 }
 
 .n-map input:checked + div {
-  border: 1px solid #77aefc;
+  border: 2px solid #77aefc;
   color: #77aefc;
   border-radius: 30px;
   width: 270px;
@@ -322,9 +320,9 @@ button:hover {
   cursor: pointer;
   background: none;
   text-align: center;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
   outline: none;
 }
 
@@ -369,7 +367,7 @@ button:hover {
 }
 
 .so-map div {
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
   display: inline-block;
   color: #d4d4d4;
   border-radius: 30px;
@@ -379,29 +377,29 @@ button:hover {
   cursor: pointer;
   text-align: center;
   background: none;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
   margin-left: 16px;
   max-width: 180px;
 }
 
 .new-map input:checked + div {
-  border: 1px solid #77aefc;
+  border: 2px solid #77aefc;
   color: #77aefc;
   border-radius: 30px;
   width: 25%;
   cursor: pointer;
   background: none;
   text-align: center;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
   margin-left: 16px;
 }
 
 .nori-map div {
-  border: 1px solid #d8d8d8;
+  border: 2px solid #c9c9c9;
   display: inline-block;
   color: #d4d4d4;
   border-radius: 30px;
@@ -411,24 +409,24 @@ button:hover {
   cursor: pointer;
   text-align: center;
   background: none;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
   margin-left: 48px;
   max-width: 100%;
 }
 
 .nori-map input:checked + div {
-  border: 1px solid #77aefc;
+  border: 2px solid #77aefc;
   color: #77aefc;
   border-radius: 30px;
   width: 32%;
   cursor: pointer;
   background: none;
   text-align: center;
-  font-family: 'Inter';
+  font-family: 'Pretendard-variable';
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 700;
   margin-left: 48px;
   max-width: 100%;
 }
