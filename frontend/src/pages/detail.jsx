@@ -109,7 +109,7 @@ const Detail = () => {
           {/* <HeartButton like={like} onClick={toggleLike}/> */}
         </article>
 
-        <article className="images">
+      
           {place.originimgurl.map((img, idx) => {
             return (
               <div className="bordera">
@@ -117,7 +117,7 @@ const Detail = () => {
               </div>
             );
           })}
-        </article>
+
 
         <Box place={place} />
         <div className="entire">
