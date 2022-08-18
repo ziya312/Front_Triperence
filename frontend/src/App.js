@@ -23,6 +23,8 @@ import MyPage from 'pages/myPage';
 import PlaceShow from 'pages/placeShow';
 import ResultHimchan from 'pages/ResultHimchan';
 import FilterMapPage from 'pages/FilterMapPage';
+import NoLoginPlace from 'pages/NoLoginPlace';
+
 
 function App() {
   return (
@@ -53,6 +55,8 @@ function App() {
           <Route path="/resultHimchan" element={<ResultHimchan />}></Route>
 
           <Route path="/place" element={<PlaceShow />}></Route>
+          <Route path="/spot" element={<NoLoginPlace />}></Route>
+
         </Routes>
         <Footer />
       </BrowserRouter>

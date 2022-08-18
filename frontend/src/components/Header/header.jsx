@@ -67,7 +67,7 @@ function Header() {
 
           <Link
             className="menu"
-            to="/place"
+            to="/spot"
             style={{ marginRight: '24px', marginLeft: '0px' }}
             onMouseOver={() => setCOURSE('on')}
             onMouseOut={() => setCOURSE('out')}
