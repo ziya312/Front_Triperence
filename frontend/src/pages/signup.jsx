@@ -12,13 +12,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import AuthService from '../services/auth.service';
 import axios from 'axios';
+import {NationList} from 'components/NationList'
 
 const Join = styled.div`
 text-align:center;
 
 `;
-
-
 
 const required = value => {
   if (!value) {
@@ -360,48 +359,18 @@ const Sign = () => {
               <div className="form-group">
               <label>Nationality</label>
                 <Select className="select-custom" name="nationality" value={nationality} onChange={onChangeNationality} validations={[required]}>
-                  <option value="">Nationality</option>
+                {NationList.map(list => (
+                <option value={list.name}>
+                  {list.name}
+                </option>))}
+                  
+                  {/* <option value="">Nationality</option>
                   <option value={'USA'}>USA</option>
                   <option value={'UK'}>UK</option>
                   <option value={'JAPAN'}>JAPAN</option>
-                  <option value={'CHINA'}>CHINA</option>
+                  <option value={'CHINA'}>CHINA</option> */}
                 </Select>
               </div>
-
-              {/* <div className="form-group">
-                <label htmlFor="age">Age</label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="age"
-                  value={age}
-                  
-                  onChange={onChangeAge}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="nationality">Nationality</label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="nationality"
-                  value={nationality}
-                  onChange={onChangeNationality}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="gender">Gender</label>
-                <Input
-                  type="text"
-                  className="form-control"
-                  name="gender"
-                  value={gender}
-                  onChange={onChangeGender}
-                />
-              </div> */}
-
 
               <div className="form-group">
 

@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import HeartButton from 'components/common/HeartButton';
 
-
-
 const C = styled.div`
   float: left;
 
@@ -42,7 +40,7 @@ const H = styled.div`
 `;
 const Cardtitle = styled.div`
   float: left;
-  z-index:-1;
+  z-index: -1;
   margin-left: 10px;
   margin-right: 80px;
   margin-top: 12px;
@@ -89,7 +87,6 @@ const Cardclass = styled.div`
   font-size: 16px;
   color: #999999;
 `;
-
 
 const TourItem = ({ place }) => {
   const { title, addr1, cat1, tel, firstimage, contentid, areacode } = place;
@@ -144,7 +141,7 @@ const TourItem = ({ place }) => {
           {/* <HeartButton like={like} onClick={toggleLike}/> */}
           <Cardclass>
             {cat1 === 'A01'
-              ? 'Nauture'
+              ? 'Nature'
               : cat1 === 'A02'
               ? 'Culture/Art/History'
               : cat1 === 'A03'
@@ -153,7 +150,7 @@ const TourItem = ({ place }) => {
               ? 'Cuisine'
               : cat1 === 'B02'
               ? 'Accommodation'
-            :cat1}
+              : cat1}
           </Cardclass>
         </Link>
       </C>

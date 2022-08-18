@@ -99,7 +99,7 @@ const character = [
   {
     id: 3,
     name: 'HIMCHAN',
-    value: 'Himchan who loves taking phothos!',
+    value: 'Himchan who loves taking photos!',
     type: 'Photo/Film',
     imageSrc: require('images/character/himchan.jpg'),
   },
@@ -159,7 +159,7 @@ const ShowResult = () => {
 
   const hahahaha = (idx) => {
     const currentUser = AuthService.getCurrentUser();
-  
+
     return (
       <Img
         name={currentUser.nickname}
