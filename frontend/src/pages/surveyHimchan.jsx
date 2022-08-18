@@ -55,7 +55,7 @@ const SurveyHimchan = () => {
           title: 'Complete',
           text: 'Click OK to show your "travel preferences!"',
           confirmButtonText: 'OK'
-        }).then(function(){navigate('/showResult');})
+        }).then(function(){navigate('/    resultHimchan');})
         // navigate('/showResult');
         // console.log(response.data);
       })

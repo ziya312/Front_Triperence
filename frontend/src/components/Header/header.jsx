@@ -126,13 +126,13 @@ function Header() {
           </Link>
         )}
 
-        <div className="searchimg">
+        {/* <div className="searchimg">
           <input className="searchbox" />
 
           <button className="searchbutton" href="/">
             <img className="sl" src={require('../../icons/Icon.svg').default} alt="" />
           </button>
-        </div>
+        </div> */}
         <div className="wow" />
         <div className="wow1" onClick={() => setsearchbox('vis')} />
       </div>
