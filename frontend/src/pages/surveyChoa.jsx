@@ -6,6 +6,7 @@ import Button from 'components/common/Button';
 import CustomButton from 'components/common/CustomButton';
 import AuthService from "../components/Header/services/auth.service";
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 const SurveyChoa = () => {
   const [values, setValues] = useState({});
@@ -27,14 +28,7 @@ const SurveyChoa = () => {
   const aaa = location;
 
   let ty = location.state;
-  // ty['transportation'] = ty['transportation'];
-  // ty['stay'] = ty['stay'];
-  // ty['destination'] = tyde['stination'];
-  // ty['allergie'] = ty['allergie'];
-  // ty['eat'] = ty['eat'];
-  // ty['category'] = ty['category'];
-  // ty["k_pop"] = ty["k_pop"]
-  // ty["k_movie_drama"] = ty["k_movie_drama"]
+
 
   const eatResult = ty.eat.join();
   const allergieResult = ty.allergie.join();
@@ -48,46 +42,10 @@ const SurveyChoa = () => {
   // console.log('두번 볼거야ㅑ', category2["k_movie_drama"]);
 
   const handleApi = () => {
-    // console.debug(category1, '하하하ㅏ');
-    // console.debug(category2, '하하하ㅏ');
-    // console.log('dddd', category2);
-    // console.log('이게 aaa', aaa.state);
-    // console.log('이게 ty', k_popResult)
-
-    // axios({
-    //   method: 'post',
-    //   url: '/survey/save',
-    //   data: {
-
-    //   "transportation": aaa.state.transportation,
-    //   "destination": aaa.state.destination,
-    //   "category": aaa.state.category,
-    //   }
-
-    //   // baseURL: 'http://localhost:8080'
-    // })
-    // .then(function (response) {
-    //       alert('다음장');
-    //       console.log(response.data);
-    //       navigate('/showResult');
-    // })
-    //-----------------------------------------
+    
     axios
       .post('/survey/save', {
-        // nature: arr
-        // param1: category1, //백에서 param이라는 이름으로
-        // param2: category2,
-        // param: location(state),
-
-        //이 아래도 되는것
-        // "transportation": aaa.state.transportation,
-        // "stay": aaa.state.stay,
-        // "eat": aaa.state.eat,
-        // "allergie": aaa.state.allergie,
-        // "destination": aaa.state.destination,
-        // "category": aaa.state.category,
-        // "k_pop": category1["k_pop"],
-        // "k_movie_drama": category2["k_movie_drama"]
+    
 
         "transportation": ty.transportation,
         "stay": ty.stay,
@@ -105,8 +63,12 @@ const SurveyChoa = () => {
         // 함수 하나 만들어서 변수에 배열을 저장해주면 됨
       })
       .then(function (response) {
-        alert('다음장');
-        navigate('/showResult');
+        Swal.fire({
+          title: 'Complete',
+          text: 'Click OK to show your "travel preferences!"',
+          confirmButtonText: 'OK'
+        }).then(function(){navigate('/showResult');})
+        // navigate('/showResult');
         // console.log(response.data);
       })
 
@@ -303,7 +265,6 @@ const SurveyChoa = () => {
           </div>
         </form>
       </div>
-      {/* <code>{JSON.stringify({ data: aaa.state.transportation })}</code> */}
     </div>
   );
 };

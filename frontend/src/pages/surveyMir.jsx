@@ -47,7 +47,7 @@ const SurveyMir = () => {
 
       .then((result) => {
         // console.log(result.data);
-        alert('다음장');
+        alert('Click OK to show your travel preferences!');
         navigate('/showResult');
       })
 

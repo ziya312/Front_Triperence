@@ -3,9 +3,10 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SecondHeader from 'components/Header/secondHeader';
 import 'components/Pages/character.css';
 import Button from 'components/common/Button';
-import AuthService from "../components/Header/services/auth.service";
+import AuthService from '../components/Header/services/auth.service';
 import CustomButton from 'components/common/CustomButton';
 import axios from 'axios';
+import Swal from 'sweetalert2'
 
 const SurveyHimchan = () => {
   const [values, setValues] = useState({});
@@ -16,47 +17,47 @@ const SurveyHimchan = () => {
   const [category2, setcategory2] = useState({ subject: ['null'] });
   const navigate = useNavigate();
   const location = useLocation(); //가져올 때              //{state}
-  const state = '헤헤';                                   // 
+  const state = '헤헤'; //
 
   useEffect(() => {
     console.log('값', location.state);
   }, []);
 
-  
   let ty = location.state;
 
   const eatResult = ty.eat.join();
   const allergieResult = ty.allergie.join();
-  const shootResult = category1["shoot"].join();
-  const subjectResult = category2["subject"].join();
+  const shootResult = category1['shoot'].join();
+  const subjectResult = category2['subject'].join();
 
   const currentUser = AuthService.getCurrentUser();
-  console.log(currentUser.email, currentUser.id );
-
+  console.log(currentUser.email, currentUser.id);
 
   const handleApi = () => {
-  
     console.debug(category2, '가가가');
 
     axios
       .post('/survey/save', {
-      
-        "transportation": ty.transportation,
-        "stay": ty.stay,
-        "destination": ty.destination,
-        "category": ty.category,
-        "eat": eatResult,
-        "allergie" : allergieResult,
-        "shoot": shootResult,
-        "subject": subjectResult,
-        "user_id":  currentUser.id,
-        "user_email": currentUser.email,
+        transportation: ty.transportation,
+        stay: ty.stay,
+        destination: ty.destination,
+        category: ty.category,
+        eat: eatResult,
+        allergie: allergieResult,
+        shoot: shootResult,
+        subject: subjectResult,
+        user_id: currentUser.id,
+        user_email: currentUser.email,
       })
 
-      .then((result) => {
-        console.log(result.data);
-        alert('다음장');
-        navigate('/resultHimchan');
+      .then(function (response) {
+        Swal.fire({
+          title: 'Complete',
+          text: 'Click OK to show your "travel preferences!"',
+          confirmButtonText: 'OK'
+        }).then(function(){navigate('/showResult');})
+        // navigate('/showResult');
+        // console.log(response.data);
       })
 
       .catch((error) => {
@@ -64,7 +65,6 @@ const SurveyHimchan = () => {
         alert('service error');
       });
   };
-
 
   const formPrefer = [
     { id: 1, name: 'shoot', value: 'Photo' },
@@ -167,9 +167,7 @@ const SurveyHimchan = () => {
             </div>
           </div>
           <div className="fsbtn">
-       
-              <Button onClick={handleApi}>Finish</Button>
-    
+            <Button onClick={handleApi}>Finish</Button>
           </div>
         </form>
       </div>
